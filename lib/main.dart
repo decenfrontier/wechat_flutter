@@ -1,9 +1,14 @@
-import 'dart:html';
+import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
+import 'package:ws_chat_flutter/page/Message.dart';
 
 void main() {
   runApp(const MyApp());
+  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.dark);
+  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
 class MyApp extends StatelessWidget {
@@ -45,14 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: tabIndex,
           selectedItemColor: Colors.green,  // 让label字体变绿
           unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
+          type: BottomNavigationBarType.fixed,
           onTap: (index) {
             setState(() {
               tabIndex = index;
@@ -113,9 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
         body: IndexedStack(
           index: tabIndex,
           children: [
-            Center(
-              child: Text("1"),
-            ),
+            message(),
+
             Center(
               child: Text("2"),
             ),
