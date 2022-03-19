@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,43 +33,99 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  // 点击的tab下标
+  var tabIndex = 0;
 
   void _incrementCounter() {
     setState(() {
-
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: tabIndex,
+          selectedItemColor: Colors.green,  // 让label字体变绿
+          unselectedItemColor: Colors.grey,
+          showUnselectedLabels: true,
+          onTap: (index) {
+            setState(() {
+              tabIndex = index;
+            });
+          },
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          items: [
+            BottomNavigationBarItem(
+              label: "微信",
+              icon: Image.asset(
+                "assets/images/message.png",
+                width: 25,
+              ),
+              activeIcon: Image.asset(
+                "assets/images/message.png",
+                width: 25,
+                color: Colors.green,
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            BottomNavigationBarItem(
+              label: "联系人",
+              icon: Image.asset(
+                "assets/images/contact.png",
+                width: 25,
+              ),
+              activeIcon: Image.asset(
+                "assets/images/contact.png",
+                width: 25,
+                color: Colors.green,
+              ),
             ),
+            BottomNavigationBarItem(
+              label: "发现",
+              icon: Image.asset(
+                "assets/images/find.png",
+                width: 25,
+              ),
+              activeIcon: Image.asset(
+                "assets/images/find.png",
+                width: 25,
+                color: Colors.green,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: "我的",
+              icon: Image.asset(
+                "assets/images/mine.png",
+                width: 25,
+              ),
+              activeIcon: Image.asset(
+                "assets/images/mine.png",
+                width: 25,
+                color: Colors.green,
+              ),
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: IndexedStack(
+          index: tabIndex,
+          children: [
+            Center(
+              child: Text("1"),
+            ),
+            Center(
+              child: Text("2"),
+            ),
+            Center(
+              child: Text("3"),
+            ),
+            Center(
+              child: Text("4"),
+            ),
+          ],
+        ));
   }
 }
