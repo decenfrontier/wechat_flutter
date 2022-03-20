@@ -40,21 +40,35 @@ class _ContactState extends State<Contact> {
 
   Container buildContactRightBar() {
     return Container(
-            height: 15.0 * labels.length,
-            width: 20,
-            child: ListView.builder(itemBuilder: (context, index) {
-              return Ink(
-                child: InkWell(
-                  focusColor: Colors.green,
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  child: Container(
-                    height: 15,
-                    child: Text(labels[index]),
-                  ),
-                ),
-              );
-            }),
-          );
+      color: Colors.transparent,
+      height: labels.length * 20.0,
+      width: 20,
+      child: ListView.builder(
+        itemCount: labels.length,
+          itemBuilder: (context, index) {
+        return Ink(
+          child: InkWell(
+            highlightColor: Colors.green,
+            splashColor: Colors.green,
+            hoverColor: Colors.green,
+            focusColor: Colors.green,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            onTap: () {
+              print(labels[index]);
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 20,
+              width: 20,
+              child: Text(
+                labels[index],
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        );
+      }),
+    );
   }
 
   // 联系人列表
@@ -162,8 +176,8 @@ class _ContactState extends State<Contact> {
                 height: 50,
                 decoration: BoxDecoration(
                     border: Border(
-                        bottom:
-                        BorderSide(width: 0.5, color: Colors.grey.shade300))),
+                        bottom: BorderSide(
+                            width: 0.5, color: Colors.grey.shade300))),
                 child: Text(
                   text,
                   style: TextStyle(
@@ -178,5 +192,3 @@ class _ContactState extends State<Contact> {
         ));
   }
 }
-
-
