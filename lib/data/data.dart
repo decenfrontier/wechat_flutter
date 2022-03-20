@@ -29,7 +29,7 @@ class Data {
   ];
 
   static Map contact = {
-    "first":[],
+    "first": [],
     "A": [
       {"avator": "assets/images/avator.jpg", "nickName": "阿布", "pinyin": "abu"}
     ],
