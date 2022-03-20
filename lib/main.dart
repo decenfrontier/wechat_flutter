@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:ws_chat_flutter/page/Message.dart';
+import 'package:ws_chat_flutter/page/Contact.dart';
 
 void main() {
   runApp(const MyApp());
@@ -111,9 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           index: tabIndex,
           children: [
             message(),
-            Center(
-              child: Text("2"),
-            ),
+            Contact(),
             Center(
               child: Text("3"),
             ),
