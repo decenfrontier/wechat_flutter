@@ -33,13 +33,6 @@ class Data {
     "A": [
       {"avator": "assets/images/avator.jpg", "nickName": "阿布", "pinyin": "abu"}
     ],
-    "L": [
-      {
-        "avator": "assets/images/avator2.jpg",
-        "nickName": "老葛",
-        "pinyin": "luokeke"
-      }
-    ],
     "W": [
       {
         "avator": "assets/images/file.jpg",
@@ -51,56 +44,13 @@ class Data {
         "nickName": "微信团队",
         "pinyin": "weixintuandui"
       },
+    ],
+    "Y": [
       {
-        "avator": "assets/images/file.jpg",
-        "nickName": "文件传输助手",
-        "pinyin": "wenjianchuanshuzhushou"
-      },
-      {
-        "avator": "assets/images/icon.png",
-        "nickName": "微信团队",
-        "pinyin": "weixintuandui"
-      },
-      {
-        "avator": "assets/images/file.jpg",
-        "nickName": "文件传输助手",
-        "pinyin": "wenjianchuanshuzhushou"
-      },
-      {
-        "avator": "assets/images/icon.png",
-        "nickName": "微信团队",
-        "pinyin": "weixintuandui"
-      },
-      {
-        "avator": "assets/images/file.jpg",
-        "nickName": "文件传输助手",
-        "pinyin": "wenjianchuanshuzhushou"
-      },
-      {
-        "avator": "assets/images/icon.png",
-        "nickName": "微信团队",
-        "pinyin": "weixintuandui"
-      },
-      {
-        "avator": "assets/images/file.jpg",
-        "nickName": "文件传输助手",
-        "pinyin": "wenjianchuanshuzhushou"
-      },
-      {
-        "avator": "assets/images/icon.png",
-        "nickName": "微信团队",
-        "pinyin": "weixintuandui"
-      },
-      {
-        "avator": "assets/images/file.jpg",
-        "nickName": "文件传输助手",
-        "pinyin": "wenjianchuanshuzhushou"
-      },
-      {
-        "avator": "assets/images/icon.png",
-        "nickName": "微信团队",
-        "pinyin": "weixintuandui"
-      },
-    ]
+        "avator": "assets/images/506.jpg",
+        "nickName": "云中君",
+        "pinyin": "yunzhongjun"
+      }
+    ],
   };
 }
