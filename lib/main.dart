@@ -6,8 +6,8 @@ import 'package:ws_chat_flutter/page/Message.dart';
 void main() {
   runApp(const MyApp());
   SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark);
+      statusBarColor: Colors.transparent, statusBarBrightness: Brightness.dark
+  );
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
@@ -38,22 +38,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  // 点击的tab下标
-  var tabIndex = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  var tabIndex = 0; // 点击的tab下标
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: tabIndex,
-          selectedItemColor: Colors.green,  // 让label字体变绿
+          selectedItemColor: Colors.green,
+          // 让label字体变绿
           unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
@@ -118,7 +111,6 @@ class _MyHomePageState extends State<MyHomePage> {
           index: tabIndex,
           children: [
             message(),
-
             Center(
               child: Text("2"),
             ),

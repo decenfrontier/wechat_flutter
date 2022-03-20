@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ws_chat_flutter/data/data.dart';
+import 'package:ws_chat_flutter/widget/MyAppBar.dart';
 
 class message extends StatelessWidget {
   @override
@@ -10,36 +11,7 @@ class message extends StatelessWidget {
         .of(context)
         .size;
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        shadowColor: Colors.grey.shade300,
-        backgroundColor: Colors.grey.shade300,
-        title: Text(
-          "微信",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        actions: [
-          Image.asset(
-            "assets/images/search.png",
-            width: 25,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Image.asset(
-            "assets/images/more.png",
-            width: 25,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-        ],
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarBrightness: Brightness.dark,
-          statusBarColor: Colors.grey.shade300,
-        ),
-      ),
+      appBar: MyAppBar.BuildAppBar("微信"),
       body: Container(
         height: size.height,
         child: ListView.builder(
