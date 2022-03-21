@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class MyAppBar {
+class HeaderBar {
   static AppBar BuildAppBar(String title) {
     return AppBar(
       centerTitle: true,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ws_chat_flutter/data/data.dart';
-import 'package:ws_chat_flutter/widget/MyAppBar.dart';
+import 'package:ws_chat_flutter/widgets/app_bar.dart';
 
 class message extends StatelessWidget {
   @override
@@ -11,7 +10,7 @@ class message extends StatelessWidget {
         .of(context)
         .size;
     return Scaffold(
-      appBar: MyAppBar.BuildAppBar("微信"),
+      appBar: HeaderBar.BuildAppBar("聊天"),
       body: Container(
         height: size.height,
         child: ListView.builder(

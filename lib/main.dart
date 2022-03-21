@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
-import 'package:ws_chat_flutter/page/Message.dart';
-import 'package:ws_chat_flutter/page/Contact.dart';
+import 'package:ws_chat_flutter/page/message.dart';
+import 'package:ws_chat_flutter/page/friend.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

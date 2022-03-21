@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ws_chat_flutter/data/data.dart';
-import 'package:ws_chat_flutter/widget/MyAppBar.dart';
+import 'package:ws_chat_flutter/widgets/app_bar.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: MyAppBar.BuildAppBar("通讯录"),
+        appBar: HeaderBar.BuildAppBar("通讯录"),
         body: Stack(
           alignment: Alignment.centerRight,
           children: [
