@@ -11,20 +11,86 @@ class LoginPage extends GetView<LoginController> {
     return GetBuilder<LoginController>(
       builder: (_) {
         return Scaffold(
-            appBar: AppBar(title: const Text("login")),
-            body: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 30,
-                ),
-                Text("账号密码登录", style: TextStyle(fontSize: 25)),
-                SizedBox(height: 50.0),
-              ],
-            ));
+            body: Container(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 100),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("login_title".tr, style: TextStyle(fontSize: 25)),
+                      ],
+                    ),
+                    SizedBox(height: 50),
+                    _buildLoginForm()
+                  ],
+                )));
       },
     );
   }
 
+  Form _buildLoginForm() {
+    return Form(
+        key: controller.formKey,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        child: Column(
+          children: [
+            TextFormField(
+              autofocus: true,
+              decoration: InputDecoration(
+                labelText: "login_email".tr,
+                hintText: "login_email_hint".tr,
+                icon: Icon(Icons.email),
+              ),
+              validator: controller.emailValidator,
+              onSaved: (value) {
+                controller.userEmail = value!;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: "login_password".tr,
+                hintText: "login_password_hint".tr,
+                icon: Icon(Icons.lock),
+              ),
+              obscureText: true,
+              validator: controller.passwordValidator,
+              onSaved: (value) {
+                controller.userPassword = value!;
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            // 注册 与 登录按钮
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text("login_button_register".tr),
+                  ),
+                  onPressed: () {
+                    controller.RegisterSubmit();
+                  },
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text("login_button_login".tr),
+                  ),
+                  onPressed: () {
+                    controller.LoginSubmit();
+                  },
+                )
+              ],
+            )
+          ],
+        ));
+  }
 }
