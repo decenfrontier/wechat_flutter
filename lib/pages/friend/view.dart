@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ws_chat_flutter/data/data.dart';
-import 'package:ws_chat_flutter/widgets/app_bar.dart';
+import 'package:ws_chat_flutter/common/mock/data.dart';
+import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class _ContactState extends State<Contact> {
                         : buildContactors(context, index, pItem);
                   }),
             ),
-            buildContactRightBar()
+            buildContactRightBar(),
           ],
         ));
   }

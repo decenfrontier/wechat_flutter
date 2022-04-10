@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:ws_chat_flutter/data/data.dart';
-import 'package:ws_chat_flutter/widgets/app_bar.dart';
+import 'package:ws_chat_flutter/common/mock/data.dart';
+import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
-class message extends StatelessWidget {
+class Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery
