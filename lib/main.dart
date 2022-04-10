@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import 'common/routes/routes.dart';
 
-
 void main() {
   runApp(const MyApp());
 }

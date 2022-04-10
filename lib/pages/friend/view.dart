@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
+import 'package:ws_chat_flutter/pages/friend/controller.dart';
 
-class Contact extends StatefulWidget {
-  const Contact({Key? key}) : super(key: key);
+class FriendPage extends GetView<FriendController> {
+  FriendPage({Key? key}) : super(key: key);
 
-  @override
-  State<Contact> createState() => _ContactState();
-}
-
-class _ContactState extends State<Contact> {
   String labels = "↑ABCDEFGHIJKLMNOPQRSTUVWSYZ#";
 
   @override
   Widget build(BuildContext context) {
+    // 获取app窗口大小
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: HeaderBar.BuildAppBar("通讯录"),

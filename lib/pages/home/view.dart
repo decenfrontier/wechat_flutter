@@ -19,7 +19,7 @@ class HomePage extends GetView<HomeController> {
       index: controller.tabIndex.value,
       children: [
         Message(),
-        Contact(),
+        FriendPage(),
         Center(
           child: Text("3"),
         ),
