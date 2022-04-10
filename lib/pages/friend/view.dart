@@ -14,7 +14,7 @@ class FriendPage extends GetView<FriendController> {
     // 获取app窗口大小
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: HeaderBar.BuildAppBar("通讯录"),
+        appBar: HeaderBar.BuildAppBar("好友"),
         body: Stack(
           alignment: Alignment.centerRight,
           children: [

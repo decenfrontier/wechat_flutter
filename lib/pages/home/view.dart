@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/pages/friend/view.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
-import 'package:ws_chat_flutter/pages/message/view.dart';
+import 'package:ws_chat_flutter/pages/message/index.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class HomePage extends GetView<HomeController> {
     return IndexedStack(
       index: controller.tabIndex.value,
       children: [
-        Message(),
+        MessagePage(),
         FriendPage(),
         Center(
           child: Text("3"),
@@ -42,7 +42,7 @@ class HomePage extends GetView<HomeController> {
       },
       items: [
         BottomNavigationBarItem(
-          label: "微信",
+          label: "消息",
           icon: Image.asset(
             "assets/images/message.png",
             width: 25,
@@ -54,7 +54,7 @@ class HomePage extends GetView<HomeController> {
           ),
         ),
         BottomNavigationBarItem(
-          label: "联系人",
+          label: "好友",
           icon: Image.asset(
             "assets/images/contact.png",
             width: 25,
@@ -93,4 +93,3 @@ class HomePage extends GetView<HomeController> {
     );
   }
 }
-
