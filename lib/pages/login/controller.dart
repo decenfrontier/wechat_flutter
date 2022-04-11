@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/login.dart';
 import 'package:ws_chat_flutter/common/models/user.dart';
 
-import 'index.dart';
 
 class LoginController extends GetxController {
   LoginController();
@@ -26,7 +25,7 @@ class LoginController extends GetxController {
     return null;
   }
 
-  void loginSubmit() {
+  void submitLogin() {
     final isValid = formKey.currentState!.validate();
     print("isValid:$isValid");
     Get.focusScope!.unfocus();
@@ -42,11 +41,10 @@ class LoginController extends GetxController {
       }).catchError((e) {
         print(e);
       });
-      ;
     }
   }
 
-  void RegisterSubmit() {
+  void submitRegister() {
     final isValid = formKey.currentState!.validate();
     print("isValid:$isValid");
     Get.focusScope!.unfocus();

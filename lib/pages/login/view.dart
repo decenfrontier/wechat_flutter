@@ -75,7 +75,7 @@ class LoginPage extends GetView<LoginController> {
                     child: Text("login_button_register".tr),
                   ),
                   onPressed: () {
-                    controller.RegisterSubmit();
+                    controller.submitRegister();
                   },
                 ),
                 SizedBox(width: 20),
@@ -85,7 +85,7 @@ class LoginPage extends GetView<LoginController> {
                     child: Text("login_button_login".tr),
                   ),
                   onPressed: () {
-                    controller.loginSubmit();
+                    controller.submitLogin();
                   },
                 )
               ],
