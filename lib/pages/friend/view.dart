@@ -42,30 +42,30 @@ class FriendPage extends GetView<FriendController> {
       height: labels.length * 20.0,
       width: 20,
       child: ListView.builder(
-        itemCount: labels.length,
+          itemCount: labels.length,
           itemBuilder: (context, index) {
-        return Ink(
-          child: InkWell(
-            highlightColor: Colors.green,
-            splashColor: Colors.green,
-            hoverColor: Colors.green,
-            focusColor: Colors.green,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            onTap: () {
-              print(labels[index]);
-            },
-            child: Container(
-              alignment: Alignment.center,
-              height: 20,
-              width: 20,
-              child: Text(
-                labels[index],
-                textAlign: TextAlign.center,
+            return Ink(
+              child: InkWell(
+                highlightColor: Colors.green,
+                splashColor: Colors.green,
+                hoverColor: Colors.green,
+                focusColor: Colors.green,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                onTap: () {
+                  print(labels[index]);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 20,
+                  width: 20,
+                  child: Text(
+                    labels[index],
+                    textAlign: TextAlign.center,
+                  ),
+                ),
               ),
-            ),
-          ),
-        );
-      }),
+            );
+          }),
     );
   }
 

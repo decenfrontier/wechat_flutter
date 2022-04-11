@@ -58,8 +58,7 @@ class MessagePage extends GetView<MessageController> {
           SizedBox(
             height: 5,
           ),
-          Text(lastMessage,
-              style: TextStyle(color: Colors.grey, fontSize: 14)),
+          Text(lastMessage, style: TextStyle(color: Colors.grey, fontSize: 14)),
           SizedBox(
             height: 10,
           ),

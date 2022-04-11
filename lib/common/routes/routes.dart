@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/pages/frame/login/bindings.dart';
-import 'package:ws_chat_flutter/pages/frame/login/view.dart';
+import 'package:ws_chat_flutter/pages/login/bindings.dart';
+import 'package:ws_chat_flutter/pages/login/view.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
-import 'package:ws_chat_flutter/pages/frame/notfound/index.dart';
+import 'package:ws_chat_flutter/pages/notfound/index.dart';
 
 class AppRouter {
   static const Login = '/login'; // 登录页

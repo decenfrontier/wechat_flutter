@@ -85,7 +85,7 @@ class LoginPage extends GetView<LoginController> {
                     child: Text("login_button_login".tr),
                   ),
                   onPressed: () {
-                    controller.LoginSubmit();
+                    controller.loginSubmit();
                   },
                 )
               ],
