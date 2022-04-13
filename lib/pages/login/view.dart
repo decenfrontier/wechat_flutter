@@ -40,6 +40,7 @@ class LoginPage extends GetView<LoginController> {
           children: [
             TextFormField(
               autofocus: true,
+              initialValue: "ws156858@163.com",
               decoration: InputDecoration(
                 labelText: "login_email".tr,
                 hintText: "login_email_hint".tr,
@@ -51,6 +52,7 @@ class LoginPage extends GetView<LoginController> {
               },
             ),
             TextFormField(
+              initialValue: "123456",
               decoration: InputDecoration(
                 labelText: "login_password".tr,
                 hintText: "login_password_hint".tr,

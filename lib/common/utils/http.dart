@@ -3,17 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-import 'loading.dart';  // 避免和dio里的冲突
+import 'loading.dart'; // 避免和dio里的冲突
 
 // 服务器地址
-const SERVER_API_URL = "101.42.134.18:8000";
+const SERVER_API_URL = "http://127.0.0.1:10001";
 // 是否启用缓存
 const CACHE_ENABLE = false;
 // 缓存的最长时间，单位（秒）
 const CACHE_MAXAGE = 1000;
 // 最大缓存数
 const CACHE_MAXCOUNT = 100;
-
 
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
@@ -87,8 +86,6 @@ class HttpUtil {
       },
     ));
   }
-
-
 
   // 错误处理
   void onError(ErrorEntity eInfo) {
@@ -189,16 +186,16 @@ class HttpUtil {
     String path, {
     Map<String, dynamic>? queryParameters,
     Options? options,
-    bool refresh = false,  // 是否下拉刷新
-    bool noCache = !CACHE_ENABLE,  // 是否不缓存
-    bool list = false,  // 是否列表
-    String cacheKey = '',  // 缓存key
-    bool cacheDisk = false,  // 是否磁盘缓存
+    bool refresh = false, // 是否下拉刷新
+    bool noCache = !CACHE_ENABLE, // 是否不缓存
+    bool list = false, // 是否列表
+    String cacheKey = '', // 缓存key
+    bool cacheDisk = false, // 是否磁盘缓存
   }) async {
     Options requestOptions = options ?? Options();
 
-    requestOptions.extra ??= {};  // 若extra为null, 则设为空Map
-    
+    requestOptions.extra ??= {}; // 若extra为null, 则设为空Map
+
     requestOptions.extra!.addAll({
       "refresh": refresh,
       "noCache": noCache,
@@ -221,7 +218,8 @@ class HttpUtil {
     return response.data;
   }
 
-  Future post(String path, {
+  Future post(
+    String path, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,

@@ -1,11 +1,11 @@
-class User {
+class UserLoginRequest {
   String email;
   String password;
 
-  User({required this.email, required this.password});
+  UserLoginRequest({required this.email, required this.password});
 
-  factory User.fromJson(Map<String, dynamic> json) =>
-      User(email: json['email'], password: json['password']);
+  factory UserLoginRequest.fromJson(Map<String, dynamic> json) =>
+      UserLoginRequest(email: json['email'], password: json['password']);
 
   Map<String, dynamic> toJson() {
     var data = <String, dynamic>{};
@@ -14,3 +14,5 @@ class User {
     return data;
   }
 }
+
+class UserLoginResponse {}

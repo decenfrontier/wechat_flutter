@@ -1,4 +1,7 @@
 {
-    "email": "xxx@163.com",
-    "password": "123456"
+	"errorCode": "1000",
+	"errorMsg": "登录成功",
+	"result": {
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTE2NzQ0MzYsImp0aSI6IjEifQ.u7yuQOhztHZk8TEpnlfCvKINUQBKzyRLzQD-UKvvM5Y"
+	}
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/apis/login.dart';
+import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/models/user.dart';
-
 
 class LoginController extends GetxController {
   LoginController();
@@ -32,12 +31,11 @@ class LoginController extends GetxController {
 
     if (isValid) {
       formKey.currentState!.save();
-      print(userEmail);
-      print(userPassword);
       // 发送 登录请求
-      LoginAPI.login(param: User(email: userEmail, password: userPassword))
+      UserAPI.login(
+              data: UserLoginRequest(email: userEmail, password: userPassword))
           .then((value) {
-        print(value);
+        print("收到响应:$value");
       }).catchError((e) {
         print(e);
       });
