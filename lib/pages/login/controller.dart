@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/models/user.dart';
+import 'package:ws_chat_flutter/common/ret/codes.dart';
+import 'package:ws_chat_flutter/common/routes/routes.dart';
 
 class LoginController extends GetxController {
   LoginController();
@@ -34,8 +36,13 @@ class LoginController extends GetxController {
       // 发送 登录请求
       UserAPI.login(
               data: UserLoginRequest(email: userEmail, password: userPassword))
-          .then((value) {
-        print("收到响应:$value");
+          .then((response) {
+        if (response.errorCode != Ret.statusOk) {
+          Get.snackbar("login_fail".tr, "login_fail_detail".tr);
+          return;
+        }
+        Get.snackbar("login_success".tr, "login_success_detail".tr);
+        Get.offAllNamed(AppRouter.Home);
       }).catchError((e) {
         print(e);
       });
