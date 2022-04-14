@@ -1,4 +1,4 @@
-const Map<String, String> zh_Hans = {
+const Map<String, String> zh_hans = {
   'login_title': '微 信',
   'login_email': '电子邮箱',
   'login_email_hint': 'xxx@163.com',
@@ -10,4 +10,5 @@ const Map<String, String> zh_Hans = {
   'login_fail_detail': "账号或密码错误",
   "login_success": "登录成功",
   "login_success_detail": "欢迎进入微信",
+  "login_err": "登录异常",
 };

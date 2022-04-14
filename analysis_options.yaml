@@ -28,6 +28,7 @@ linter:
     avoid_print: false
     prefer_const_constructors_in_immutables: false
     prefer_const_literals_to_create_immutables: false
+    lowercase_with_underscores: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

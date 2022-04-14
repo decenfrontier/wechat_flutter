@@ -38,13 +38,13 @@ class LoginController extends GetxController {
               data: UserLoginRequest(email: userEmail, password: userPassword))
           .then((response) {
         if (response.errorCode != Ret.statusOk) {
-          Get.snackbar("login_fail".tr, "login_fail_detail".tr);
+          Get.snackbar("login_fail".tr, response.errorMsg!);
           return;
         }
-        Get.snackbar("login_success".tr, "login_success_detail".tr);
+        Get.snackbar("login_success".tr, response.errorMsg!);
         Get.offAllNamed(AppRouter.Home);
       }).catchError((e) {
-        print(e);
+        Get.snackbar("login_err".tr, "$e");
       });
     }
   }
