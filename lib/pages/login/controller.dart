@@ -4,11 +4,12 @@ import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/models/user.dart';
 import 'package:ws_chat_flutter/common/ret/codes.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
+import 'package:ws_chat_flutter/common/utils/auth.dart';
 
 class LoginController extends GetxController {
   LoginController();
 
-  final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>(); // 校验结果
   String userEmail = '';
   String userPassword = '';
 
@@ -41,6 +42,9 @@ class LoginController extends GetxController {
           return;
         }
         Get.snackbar("login_success".tr, response.errorMsg);
+        // 写入token到系统中
+        setToken(response.result!.token);
+        // 跳转首页
         Get.offAllNamed(AppRouter.Home);
       }).catchError((e) {
         Get.snackbar("login_err".tr, "$e");
@@ -55,6 +59,7 @@ class LoginController extends GetxController {
 
     if (isValid) {
       formKey.currentState!.save();
+      // 发送注册请求
       print(userEmail);
       print(userPassword);
       // User those values to send our auth request

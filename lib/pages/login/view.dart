@@ -25,14 +25,17 @@ class LoginPage extends GetView<LoginController> {
                       ],
                     ),
                     SizedBox(height: 30),
-                    _buildLoginForm()
+                    _buildForm(),
+                    SizedBox(height: 20),
+                    // 注册 与 登录按钮
+                    _buildButton(),
                   ],
                 ))));
       },
     );
   }
 
-  Form _buildLoginForm() {
+  Form _buildForm() {
     return Form(
         key: controller.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -64,35 +67,34 @@ class LoginPage extends GetView<LoginController> {
                 controller.userPassword = value!;
               },
             ),
-            SizedBox(
-              height: 20,
-            ),
-            // 注册 与 登录按钮
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text("login_button_register".tr),
-                  ),
-                  onPressed: () {
-                    controller.submitRegister();
-                  },
-                ),
-                SizedBox(width: 20),
-                ElevatedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text("login_button_login".tr),
-                  ),
-                  onPressed: () {
-                    controller.submitLogin();
-                  },
-                )
-              ],
-            )
           ],
         ));
+  }
+
+  Row _buildButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("login_button_register".tr),
+          ),
+          onPressed: () {
+            controller.submitRegister();
+          },
+        ),
+        SizedBox(width: 20),
+        ElevatedButton(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Text("login_button_login".tr),
+          ),
+          onPressed: () {
+            controller.submitLogin();
+          },
+        )
+      ],
+    );
   }
 }

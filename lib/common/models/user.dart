@@ -31,3 +31,5 @@ class UserLoginResponse {
         'token': token,
       };
 }
+
+// 注册请求
