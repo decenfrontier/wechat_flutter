@@ -2,6 +2,8 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:ws_chat_flutter/common/ret/codes.dart';
+import 'package:ws_chat_flutter/common/ret/response.dart';
 
 import 'loading.dart'; // 避免和dio里的冲突
 
@@ -13,6 +15,8 @@ const CACHE_ENABLE = false;
 const CACHE_MAXAGE = 1000;
 // 最大缓存数
 const CACHE_MAXCOUNT = 100;
+
+
 
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
@@ -60,30 +64,32 @@ class HttpUtil {
 
     // 添加拦截器
     dio.interceptors.add(InterceptorsWrapper(
+      // 请求拦截器
       onRequest: (options, handler) {
-        // Do something before request is sent
         return handler.next(options); //continue
-        // 如果你想完成请求并返回一些自定义数据，你可以resolve一个Response对象 `handler.resolve(response)`。
-        // 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义response.
-        //
-        // 如果你想终止请求并触发一个错误,你可以返回一个`DioError`对象,如`handler.reject(error)`，
-        // 这样请求将被中止并触发异常，上层catchError会被调用。
       },
+      // 响应拦截器
       onResponse: (response, handler) {
-        // Do something with response data
+        var respBody = ResponseData.fromJson(response.data);
+        if (respBody.errorCode != Ret.statusOk) {
+          handler.reject(DioError(
+              requestOptions:
+                  RequestOptions(data: respBody.errorMsg, path: '')));
+        }
         return handler.next(response); // continue
-        // 如果你想终止请求并触发一个错误,你可以 reject 一个`DioError`对象,如`handler.reject(error)`，
-        // 这样请求将被中止并触发异常，上层catchError会被调用。
       },
+      // 错误拦截器
       onError: (DioError e, handler) {
-        // Do something with response error
         Loading.dismiss();
         ErrorEntity eInfo = createErrorEntity(e);
         onError(eInfo);
         return handler.next(e); //continue
-        // 如果你想完成请求并返回一些自定义数据，可以resolve 一个`Response`,如`handler.resolve(response)`。
-        // 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义response.
       },
+      // 如果你想完成请求并返回一些自定义数据，你可以resolve一个Response对象 `handler.resolve(response)`。
+      // 这样请求将会被终止，上层then会被调用，then中返回的数据将是你的自定义response.
+      //
+      // 如果你想终止请求并触发一个错误,你可以返回一个`DioError`对象,如`handler.reject(error)`，
+      // 这样请求将被中止并触发异常，上层catchError会被调用。
     ));
   }
 

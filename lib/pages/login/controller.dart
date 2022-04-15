@@ -34,14 +34,13 @@ class LoginController extends GetxController {
     if (isValid) {
       formKey.currentState!.save();
       // 发送 登录请求
-      UserAPI.login(
-              data: UserLoginRequest(email: userEmail, password: userPassword))
-          .then((response) {
+      var data = UserLoginRequest(email: userEmail, password: userPassword);
+      UserAPI.login(data: data).then((response) {
         if (response.errorCode != Ret.statusOk) {
-          Get.snackbar("login_fail".tr, response.errorMsg!);
+          Get.snackbar("login_fail".tr, response.errorMsg);
           return;
         }
-        Get.snackbar("login_success".tr, response.errorMsg!);
+        Get.snackbar("login_success".tr, response.errorMsg);
         Get.offAllNamed(AppRouter.Home);
       }).catchError((e) {
         Get.snackbar("login_err".tr, "$e");
