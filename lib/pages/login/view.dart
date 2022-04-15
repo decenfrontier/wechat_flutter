@@ -11,20 +11,18 @@ class LoginPage extends GetView<LoginController> {
     return GetBuilder<LoginController>(
       builder: (_) {
         return Scaffold(
-            body: Container(
-                padding: EdgeInsets.all(20),
+            body: Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 100),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("login_title".tr, style: TextStyle(fontSize: 25)),
                       ],
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 30),
                     _buildLoginForm()
                   ],
                 )));
