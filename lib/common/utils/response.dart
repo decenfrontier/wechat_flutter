@@ -1,3 +1,7 @@
+class Ret {
+  static String statusOk = "1000"; 
+}
+
 class ResponseData<T> {
   String errorCode;
   String errorMsg;

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/models/user.dart';
-import 'package:ws_chat_flutter/common/ret/codes.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
-import 'package:ws_chat_flutter/common/utils/auth.dart';
+import 'package:ws_chat_flutter/common/store/user.dart';
+
+import '../../common/utils/response.dart';
 
 class LoginController extends GetxController {
   LoginController();
@@ -43,7 +44,7 @@ class LoginController extends GetxController {
         }
         Get.snackbar("login_success".tr, response.errorMsg);
         // 写入token到系统中
-        setToken(response.result!.token);
+        UserStore.to.setToken(response.result!.token);
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
       }).catchError((e) {

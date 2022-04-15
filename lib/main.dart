@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-import 'common/lang/translation_service.dart';
+import 'common/langs/translation_service.dart';
 import 'common/routes/routes.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRouter.initial,
+      initialRoute: AppRouter.INITIAL,
       getPages: AppRouter.routes,
       unknownRoute: AppRouter.unknownRoute,
       // 配置 加载中 效果

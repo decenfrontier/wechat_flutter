@@ -2,8 +2,7 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:ws_chat_flutter/common/ret/codes.dart';
-import 'package:ws_chat_flutter/common/ret/response.dart';
+import 'package:ws_chat_flutter/common/utils/response.dart';
 
 import 'loading.dart'; // 避免和dio里的冲突
 
