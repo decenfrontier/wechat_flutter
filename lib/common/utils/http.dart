@@ -15,8 +15,6 @@ const CACHE_MAXAGE = 1000;
 // 最大缓存数
 const CACHE_MAXCOUNT = 100;
 
-
-
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
   factory HttpUtil() => _instance;
@@ -267,7 +265,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful patch 操作
+  // restful patch 操作
   Future patch(
     String path, {
     dynamic data,
@@ -290,7 +288,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful delete 操作
+  // restful delete 操作
   Future delete(
     String path, {
     dynamic data,
@@ -313,7 +311,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful post form 表单提交操作
+  // restful post form 表单提交操作
   Future postForm(
     String path, {
     dynamic data,
@@ -336,7 +334,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful post Stream 流数据
+  // restful post Stream 流数据
   Future postStream(
     String path, {
     dynamic data,

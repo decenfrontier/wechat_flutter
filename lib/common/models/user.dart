@@ -32,4 +32,5 @@ class UserLoginResponse {
       };
 }
 
-// 注册请求
+// 获取用户信息请求
+

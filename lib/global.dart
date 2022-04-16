@@ -4,9 +4,9 @@ import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/utils/index.dart';
 import 'package:get/get.dart';
 
-/// 全局静态数据
+// 全局静态数据
 class Global {
-  /// 初始化
+  // 初始化
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

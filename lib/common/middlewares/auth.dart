@@ -5,15 +5,14 @@ import 'package:ws_chat_flutter/common/store/user.dart';
 
 // 需要登录
 class LoginRequired extends GetMiddleware {
-  // priority 数字小优先级高
-  @override
   int? priority = 0;
 
-  LoginRequired({required this.priority});
+  LoginRequired([this.priority]);
 
   @override
   RouteSettings? redirect(String? route) {
-    if (UserStore.to.isLogin || route == AppRouter.Login) {
+    // 如果获取到了token, 则
+    if (UserStore.to.token != "") {
       return null;
     }
     Future.delayed(

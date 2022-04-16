@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/middlewares/auth.dart';
 import 'package:ws_chat_flutter/pages/login/bindings.dart';
 import 'package:ws_chat_flutter/pages/login/view.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
@@ -13,7 +14,11 @@ class AppRouter {
   static const INITIAL = Home;
 
   static final routes = [
-    GetPage(name: Login, page: () => LoginPage(), binding: LoginBinding()),
+    GetPage(name: Login, 
+    page: () => LoginPage(), 
+    binding: LoginBinding(),
+    middlewares: [LoginRequired()],
+    ),
     GetPage(name: Home, page: () => HomePage(), binding: HomeBinding()),
   ];
 
