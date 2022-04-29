@@ -38,13 +38,13 @@ class LoginController extends GetxController {
       // 发送 登录请求
       var data = UserLoginRequest(email: userEmail, password: userPassword);
       UserAPI.login(data: data).then((response) {
-        if (response.errorCode != Ret.statusOk) {
-          Get.snackbar("login_fail".tr, response.errorMsg);
+        if (response.code != Ret.statusOk) {
+          Get.snackbar("login_fail".tr, response.msg);
           return;
         }
-        Get.snackbar("login_success".tr, response.errorMsg);
+        Get.snackbar("login_success".tr, response.msg);
         // 写入token到系统中
-        UserStore.to.setToken(response.result!.token);
+        UserStore.to.setToken(response.data!.token);
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
       }).catchError((e) {

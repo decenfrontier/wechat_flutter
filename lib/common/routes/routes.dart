@@ -14,10 +14,11 @@ class AppRouter {
   static const INITIAL = Home;
 
   static final routes = [
-    GetPage(name: Login, 
-    page: () => LoginPage(), 
-    binding: LoginBinding(),
-    middlewares: [LoginRequired()],
+    GetPage(
+      name: Login,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
+      middlewares: [LoginRequired()],
     ),
     GetPage(name: Home, page: () => HomePage(), binding: HomeBinding()),
   ];

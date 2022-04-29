@@ -3,15 +3,15 @@ class Ret {
 }
 
 class ResponseData<T> {
-  String errorCode;
-  String errorMsg;
-  T? result;
+  String code;
+  String msg;
+  T? data;
 
-  ResponseData({required this.errorCode, required this.errorMsg, T? result});
+  ResponseData({required this.code, required this.msg, this.data});
   factory ResponseData.fromJson(Map<String, dynamic> json) =>
       ResponseData(
-        errorCode: json['errorCode'] as String,
-        errorMsg: json['errorMsg'] as String,
-        result: json['result'] as T?,
+        code: json['code'] as String,
+        msg: json['msg'] as String,
+        data: json['data'] as T?,
       );
 }
