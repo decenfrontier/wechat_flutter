@@ -16,7 +16,6 @@ class UserStore extends GetxController {
   PersonalInfoResponse get profile => _profile.value;
   bool get hasToken => token.isNotEmpty;
 
-  
   @override
   void onInit() {
     super.onInit();
@@ -29,5 +28,8 @@ class UserStore extends GetxController {
     this.token = value;
   }
 
-
+  // 删除 token
+  Future<void> rmToken() async {
+    await StorageService.to.remove(STORAGE_USER_TOKEN_KEY);
+  }
 }

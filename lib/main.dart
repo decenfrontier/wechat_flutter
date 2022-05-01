@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:desktop_window/desktop_window.dart';
 
 import 'common/langs/translation_service.dart';
 import 'common/routes/routes.dart';
@@ -8,6 +9,7 @@ import './global.dart';
 
 Future<void> main() async {
   await Global.init();
+  DesktopWindow.setWindowSize(Size(360, 660));
   runApp(const MyApp());
 }
 

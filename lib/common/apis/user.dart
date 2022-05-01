@@ -1,12 +1,12 @@
 import 'package:ws_chat_flutter/common/api_datas/user.dart';
+import 'package:ws_chat_flutter/common/xerr/index.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 import 'package:ws_chat_flutter/common/utils/http.dart';
 
 // 用户接口
 class UserAPI {
   // 注册
-  static Future<RespBody> register(
-      {RegisterRequest? data}) async {
+  static Future<RespBody> register({RegisterRequest? data}) async {
     var respData = await HttpUtil().post(
       '/api/user/register',
       data: data?.toJson(),
@@ -15,12 +15,17 @@ class UserAPI {
   }
 
   // 登录
-  static Future<RespBody> login({LoginRequest? data}) async {
+  static Future<LoginResponse> login({LoginRequest? data}) async {
     var respData = await HttpUtil().post(
       '/api/user/login',
       data: data?.toJson(),
     );
-    return RespBody.fromJson(respData);
+    var respBody = RespBody.fromJson(respData);
+    if (respBody.code == Status.OK) {
+      return LoginResponse.fromJson(respBody.data);
+    }
+    // 其它情况直接抛异常
+    throw respBody;
   }
 
   // 获取个人信息

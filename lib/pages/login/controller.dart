@@ -36,22 +36,16 @@ class LoginController extends GetxController {
       formKey.currentState!.save();
       // 发送 登录请求
       var data = LoginRequest(email: userEmail, password: userPassword);
-      UserAPI.login(data: data).then((response) {
-        if (response.code != Status.OK) {
-          print(response);
-          Get.snackbar("login_fail".tr, response.msg);
-          return;
-        }
-        var respData = LoginResponse.fromJson(response.data);
+      UserAPI.login(data: data).then((loginResp) {
         // 写入token到系统中
-        UserStore.to.setToken(respData.accessToken);
+        UserStore.to.setToken(loginResp.accessToken);
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
         // 显示弹窗
-        Get.snackbar("login_success".tr, response.msg);
-      }).catchError((e) {
+        Get.snackbar("login_success".tr, "登录成功");
+      }).catchError((respBody) {
         // 显示弹窗
-        Get.snackbar("login_err".tr, "$e");
+        Get.snackbar("login_err".tr, "${respBody.code} ${respBody.msg}");
       });
     }
   }
@@ -62,6 +56,7 @@ class LoginController extends GetxController {
     Get.focusScope!.unfocus();
 
     if (isValid) {
+      UserStore.to.rmToken();
       formKey.currentState!.save();
       // 发送注册请求
       print(userEmail);

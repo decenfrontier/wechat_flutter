@@ -8,7 +8,7 @@ class RespBody {
     var respBody = RespBody(
       code: json['code'] as int,
       msg: json['msg'] as String,
-      data: json['data'] as Map<String, dynamic>,
+      data: json['data'] as Map<String, dynamic>?,
     );
     return respBody;
   }
