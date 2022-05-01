@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 
 import 'common/langs/translation_service.dart';
 import 'common/routes/routes.dart';
+import './global.dart';
 
-void main() {
+Future<void> main() async {
+  await Global.init();
   runApp(const MyApp());
 }
 

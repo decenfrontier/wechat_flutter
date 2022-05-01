@@ -18,9 +18,13 @@ class AppRouter {
       name: Login,
       page: () => LoginPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: Home,
+      page: () => HomePage(),
+      binding: HomeBinding(),
       middlewares: [LoginRequired()],
     ),
-    GetPage(name: Home, page: () => HomePage(), binding: HomeBinding()),
   ];
 
   static final unknownRoute =
