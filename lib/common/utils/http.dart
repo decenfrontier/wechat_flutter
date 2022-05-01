@@ -2,7 +2,8 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:ws_chat_flutter/common/utils/response.dart';
+import 'package:ws_chat_flutter/common/xerr/index.dart';
+import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 
 import 'loading.dart'; // 避免和dio里的冲突
 
@@ -70,10 +71,10 @@ class HttpUtil {
       // 响应拦截器
       onResponse: (response, handler) {
         var respBody = ResponseData.fromJson(response.data);
-        if (respBody.errorCode != Ret.statusOk) {
+        if (respBody.code != Status.OK) {
           handler.reject(DioError(
               requestOptions:
-                  RequestOptions(data: respBody.errorMsg, path: '')));
+                  RequestOptions(data: respBody.msg, path: '')));
         }
         return handler.next(response); // continue
       },
