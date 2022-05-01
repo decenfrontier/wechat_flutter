@@ -1,13 +1,15 @@
 main(List<String> args) {
-  var a = Animal(11);
-  var b = Person("ws", 18);
-  a.run();
-  b.run();
+  var dd = {
+    "aa": 11,
+    "bb": "22",
+  };
+  var a = Animal(11, dd);
 }
 
 class Animal {
   int age;
-  Animal(this.age);
+  dynamic dd;
+  Animal(this.age, dd);
   void run() {
     print("animal run");
   }
@@ -16,7 +18,7 @@ class Animal {
 class Person extends Animal {
   String name;
   Person(this.name, int age) : super(age);
-  @override  // 注解表示重写, 加不加都行
+  @override // 注解表示重写, 加不加都行
   void run() {
     print("people run");
   }

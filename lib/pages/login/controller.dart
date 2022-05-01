@@ -6,7 +6,6 @@ import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xerr/index.dart';
 
-
 class LoginController extends GetxController {
   LoginController();
 
@@ -39,15 +38,19 @@ class LoginController extends GetxController {
       var data = LoginRequest(email: userEmail, password: userPassword);
       UserAPI.login(data: data).then((response) {
         if (response.code != Status.OK) {
+          print(response);
           Get.snackbar("login_fail".tr, response.msg);
           return;
         }
-        Get.snackbar("login_success".tr, response.msg);
+        var respData = LoginResponse.fromJson(response.data);
         // 写入token到系统中
-        UserStore.to.setToken(response.data!.accessToken);
+        UserStore.to.setToken(respData.accessToken);
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
+        // 显示弹窗
+        Get.snackbar("login_success".tr, response.msg);
       }).catchError((e) {
+        // 显示弹窗
         Get.snackbar("login_err".tr, "$e");
       });
     }

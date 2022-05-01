@@ -68,11 +68,9 @@ class HttpUtil {
       },
       // 响应拦截器
       onResponse: (response, handler) {
-        var respBody = ResponseData.fromJson(response.data);
-        if (respBody.code != Status.OK) {
+        if (response.statusCode != 200) {
           handler.reject(DioError(
-              requestOptions:
-                  RequestOptions(data: respBody.msg, path: '')));
+              requestOptions: RequestOptions(data: response.data, path: '')));
         }
         return handler.next(response); // continue
       },
