@@ -8,15 +8,13 @@ import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 import 'loading.dart'; // 避免和dio里的冲突
 
 // 服务器地址
-const SERVER_API_URL = "http://127.0.0.1:10001";
+const SERVER_API_URL = "http://101.42.134.18:10001";
 // 是否启用缓存
 const CACHE_ENABLE = false;
 // 缓存的最长时间，单位（秒）
 const CACHE_MAXAGE = 1000;
 // 最大缓存数
 const CACHE_MAXCOUNT = 100;
-
-
 
 class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
@@ -268,7 +266,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful patch 操作
+  // restful patch 操作
   Future patch(
     String path, {
     dynamic data,
@@ -291,7 +289,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful delete 操作
+  // restful delete 操作
   Future delete(
     String path, {
     dynamic data,
@@ -314,7 +312,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful post form 表单提交操作
+  // restful post form 表单提交操作
   Future postForm(
     String path, {
     dynamic data,
@@ -337,7 +335,7 @@ class HttpUtil {
     return response.data;
   }
 
-  /// restful post Stream 流数据
+  // restful post Stream 流数据
   Future postStream(
     String path, {
     dynamic data,
