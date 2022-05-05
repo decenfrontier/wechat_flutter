@@ -1,6 +1,8 @@
 # ws_chat_flutter
+
 ## 1 项目简介
 仿微信即时通信软件(基于GetX和flutter框架)
+
 [![OeDBFS.png](https://s1.ax1x.com/2022/05/05/OeDBFS.png)](https://imgtu.com/i/OeDBFS)
 
 
