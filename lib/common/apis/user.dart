@@ -1,16 +1,39 @@
-import 'dart:io';
-
-import 'package:ws_chat_flutter/common/models/user.dart';
-import 'package:ws_chat_flutter/common/utils/response.dart';
+import 'package:ws_chat_flutter/common/api_datas/user.dart';
+import 'package:ws_chat_flutter/common/xerr/index.dart';
+import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 import 'package:ws_chat_flutter/common/utils/http.dart';
 
 // 用户接口
 class UserAPI {
-  static Future<ResponseData<UserLoginResponse>> login({UserLoginRequest? data}) async {
+  // 注册
+  static Future<RespBody> register({RegisterRequest? data}) async {
     var respData = await HttpUtil().post(
-      '/user/login',
+      '/api/user/register',
       data: data?.toJson(),
     );
-    return ResponseData.fromJson(respData);
+    return RespBody.fromJson(respData);
+  }
+
+  // 登录
+  static Future<LoginResponse> login({LoginRequest? data}) async {
+    var respData = await HttpUtil().post(
+      '/api/user/login',
+      data: data?.toJson(),
+    );
+    var respBody = RespBody.fromJson(respData);
+    if (respBody.code == Status.OK) {
+      return LoginResponse.fromJson(respBody.data);
+    }
+    // 其它情况直接抛异常
+    throw respBody;
+  }
+
+  // 获取个人信息
+  static Future<RespBody> personalInfo({LoginRequest? data}) async {
+    var respData = await HttpUtil().post(
+      '/api/user/personal_info',
+      data: data?.toJson(),
+    );
+    return RespBody.fromJson(respData);
   }
 }

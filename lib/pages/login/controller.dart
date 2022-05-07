@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
-import 'package:ws_chat_flutter/common/models/user.dart';
+import 'package:ws_chat_flutter/common/api_datas/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
-
-import '../../common/utils/response.dart';
+import 'package:ws_chat_flutter/common/xerr/index.dart';
 
 class LoginController extends GetxController {
   LoginController();
@@ -36,19 +35,17 @@ class LoginController extends GetxController {
     if (isValid) {
       formKey.currentState!.save();
       // 发送 登录请求
-      var data = UserLoginRequest(email: userEmail, password: userPassword);
-      UserAPI.login(data: data).then((response) {
-        if (response.code != Ret.statusOk) {
-          Get.snackbar("login_fail".tr, response.msg);
-          return;
-        }
-        Get.snackbar("login_success".tr, response.msg);
+      var data = LoginRequest(email: userEmail, password: userPassword);
+      UserAPI.login(data: data).then((loginResp) {
         // 写入token到系统中
-        UserStore.to.setToken(response.data!.token);
+        UserStore.to.setToken(loginResp.accessToken);
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
-      }).catchError((e) {
-        Get.snackbar("login_err".tr, "$e");
+        // 显示弹窗
+        Get.snackbar("login_success".tr, "登录成功");
+      }).catchError((respBody) {
+        // 显示弹窗
+        Get.snackbar("login_err".tr, "${respBody.code} ${respBody.msg}");
       });
     }
   }
@@ -59,6 +56,7 @@ class LoginController extends GetxController {
     Get.focusScope!.unfocus();
 
     if (isValid) {
+      UserStore.to.rmToken();
       formKey.currentState!.save();
       // 发送注册请求
       print(userEmail);

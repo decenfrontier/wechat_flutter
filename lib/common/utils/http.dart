@@ -2,7 +2,8 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:ws_chat_flutter/common/utils/response.dart';
+import 'package:ws_chat_flutter/common/xerr/index.dart';
+import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 
 import 'loading.dart'; // 避免和dio里的冲突
 
@@ -67,11 +68,9 @@ class HttpUtil {
       },
       // 响应拦截器
       onResponse: (response, handler) {
-        var respBody = ResponseData.fromJson(response.data);
-        if (respBody.code != Ret.statusOk) {
+        if (response.statusCode != 200) {
           handler.reject(DioError(
-              requestOptions:
-                  RequestOptions(data: respBody.msg, path: '')));
+              requestOptions: RequestOptions(data: response.data, path: '')));
         }
         return handler.next(response); // continue
       },
@@ -92,17 +91,14 @@ class HttpUtil {
 
   // 错误处理
   void onError(ErrorEntity eInfo) {
-    print('error.code -> ' +
-        eInfo.code.toString() +
-        ', error.message -> ' +
-        eInfo.message);
+    print('error.code -> ${eInfo.code}, error.message -> ${eInfo.message}');
     switch (eInfo.code) {
       case 401:
         // UserStore.to.onLogout();
         EasyLoading.showError(eInfo.message);
         break;
       default:
-        EasyLoading.showError('未知错误');
+        EasyLoading.showError(eInfo.message);
         break;
     }
   }

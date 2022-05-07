@@ -11,16 +11,20 @@ class AppRouter {
   static const Home = '/home'; // 首页
   static const NotFound = '/notfound'; // 未知页
 
-  static const INITIAL = Home;
+  static const INITIAL = Login;
 
   static final routes = [
     GetPage(
       name: Login,
       page: () => LoginPage(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: Home,
+      page: () => HomePage(),
+      binding: HomeBinding(),
       middlewares: [LoginRequired()],
     ),
-    GetPage(name: Home, page: () => HomePage(), binding: HomeBinding()),
   ];
 
   static final unknownRoute =
