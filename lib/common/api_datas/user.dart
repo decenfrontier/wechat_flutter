@@ -1,13 +1,13 @@
 class RegisterRequest {
   final String email;
   final String password;
-  final String nickName;
-  final int gender;
+  String? nickName;
+  int? gender;
   RegisterRequest({
     required this.email,
     required this.password,
-    required this.nickName,
-    required this.gender,
+    this.nickName,
+    this.gender,
   });
   factory RegisterRequest.fromJson(Map<String, dynamic> m) {
     return RegisterRequest(

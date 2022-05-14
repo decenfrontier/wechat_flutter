@@ -27,6 +27,7 @@ class LoginController extends GetxController {
     return null;
   }
 
+  // 提交 登录 请求
   void submitLogin() {
     final isValid = formKey.currentState!.validate();
     print("isValid:$isValid");
@@ -42,27 +43,31 @@ class LoginController extends GetxController {
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
         // 显示弹窗
-        Get.snackbar("login_success".tr, "登录成功");
+        Get.snackbar("login_success_title".tr, "login_success_detail".tr);
       }).catchError((respBody) {
         // 显示弹窗
-        Get.snackbar("login_err".tr, "${respBody.code} ${respBody.msg}");
+        Get.snackbar("login_err_title".tr, "${respBody.code} ${respBody.msg}");
       });
     }
   }
 
+  // 提交注册请求
   void submitRegister() {
     final isValid = formKey.currentState!.validate();
     print("isValid:$isValid");
     Get.focusScope!.unfocus();
 
     if (isValid) {
-      UserStore.to.rmToken();
       formKey.currentState!.save();
       // 发送注册请求
-      print(userEmail);
-      print(userPassword);
-      // User those values to send our auth request
-
+      var data = RegisterRequest(email: userEmail, password: userPassword);
+      UserAPI.register(data: data).then((registerResp) {
+        // 显示弹窗
+        Get.snackbar("register_success_title".tr, "register_success_detail".tr);
+      }).catchError((respBody) {
+        // 显示弹窗
+        Get.snackbar("register_err_title".tr, "${respBody.code} ${respBody.msg}");
+      });
     }
   }
 

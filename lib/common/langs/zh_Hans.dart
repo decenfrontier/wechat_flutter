@@ -6,9 +6,12 @@ const Map<String, String> zh_hans = {
   'login_password_hint': "6~12位大小写数字组合",
   'login_button_login': "登 录",
   'login_button_register': "注 册",
-  'login_fail': "登录失败",
-  'login_fail_detail': "账号或密码错误",
-  "login_success": "登录成功",
+
+  "login_success_title": "登录成功",
   "login_success_detail": "欢迎进入微信",
-  "login_err": "登录异常",
+  "login_err_title": "登录失败",
+
+  "register_success_title": "注册成功",
+  "register_success_detail": "点击登录进入主页面",
+  "register_err_title": "注册失败",
 };
