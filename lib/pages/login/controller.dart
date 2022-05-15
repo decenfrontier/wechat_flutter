@@ -66,7 +66,8 @@ class LoginController extends GetxController {
         Get.snackbar("register_success_title".tr, "register_success_detail".tr);
       }).catchError((respBody) {
         // 显示弹窗
-        Get.snackbar("register_err_title".tr, "${respBody.code} ${respBody.msg}");
+        Get.snackbar(
+            "register_err_title".tr, "${respBody.code} ${respBody.msg}");
       });
     }
   }

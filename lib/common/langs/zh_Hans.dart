@@ -14,4 +14,6 @@ const Map<String, String> zh_hans = {
   "register_success_title": "注册成功",
   "register_success_detail": "点击登录进入主页面",
   "register_err_title": "注册失败",
+
+  "personal_err_title": "获取个人信息失败",
 };

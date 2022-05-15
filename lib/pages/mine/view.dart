@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/store/user.dart';
 
 import 'controller.dart';
 
@@ -9,6 +10,7 @@ class MinePage extends GetView<MineController> {
 
   @override
   Widget build(BuildContext context) {
+    var profile = UserStore.to.profile;
     return Scaffold(
       appBar: AppBar(
         title: Text(""),
@@ -46,7 +48,7 @@ class MinePage extends GetView<MineController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "nickName",
+                              profile.nickName,
                               style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.black,
@@ -82,7 +84,9 @@ class MinePage extends GetView<MineController> {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.all(Radius.circular(13))),
                       child: Row(children: [
-                        SizedBox(width: 5,),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Icon(
                           Icons.add,
                           size: 14,
@@ -94,19 +98,21 @@ class MinePage extends GetView<MineController> {
                     )
                   ],
                 )),
-            SizedBox(height: 10,),
-            buildItem((){}, "assets/images/wxpay.png", "支付"),
             SizedBox(
               height: 10,
             ),
-            buildItem((){}, "assets/images/collect.png", "收藏"),
-            buildItem((){}, "assets/images/picture.png", "朋友圈"),
-            buildItem((){}, "assets/images/cardpackage.png", "卡包"),
-            buildItem((){}, "assets/images/emoij.png", "表情"),
+            buildItem(() {}, "assets/images/wxpay.png", "支付"),
             SizedBox(
               height: 10,
             ),
-            buildItem((){}, "assets/images/setting.png", "设置"),
+            buildItem(() {}, "assets/images/collect.png", "收藏"),
+            buildItem(() {}, "assets/images/picture.png", "朋友圈"),
+            buildItem(() {}, "assets/images/cardpackage.png", "卡包"),
+            buildItem(() {}, "assets/images/emoij.png", "表情"),
+            SizedBox(
+              height: 10,
+            ),
+            buildItem(() {}, "assets/images/setting.png", "设置"),
           ],
         )),
       ),

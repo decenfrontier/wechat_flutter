@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:ws_chat_flutter/common/api_datas/user.dart';
+import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xerr/index.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 import 'package:ws_chat_flutter/common/utils/http.dart';
@@ -29,11 +31,18 @@ class UserAPI {
   }
 
   // 获取个人信息
-  static Future<RespBody> personalInfo({LoginRequest? data}) async {
+  static Future<PersonalInfoResponse> personalInfo(
+      {PersonalInfoRequest? data}) async {
+    print("token:" + UserStore.to.token);
     var respData = await HttpUtil().post(
       '/api/user/personal_info',
       data: data?.toJson(),
+      options: Options(headers: {"Authorization": UserStore.to.token}),
     );
-    return RespBody.fromJson(respData);
+    var respBody = RespBody.fromJson(respData);
+    if (respBody.code == Status.OK) {
+      return PersonalInfoResponse.fromJson(respBody.data);
+    }
+    throw respBody;
   }
 }
