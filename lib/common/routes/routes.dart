@@ -7,11 +7,10 @@ import 'package:ws_chat_flutter/pages/notfound/index.dart';
 
 class AppRouter {
   static const Login = '/login'; // 登录页
-  static const ChangePwd = '/change_password'; // 修改密码页
   static const Home = '/home'; // 首页
   static const NotFound = '/notfound'; // 未知页
 
-  static const INITIAL = Login;
+  static const INITIAL = Home;
 
   static final routes = [
     GetPage(

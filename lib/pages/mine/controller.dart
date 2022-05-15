@@ -1,9 +1,7 @@
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  HomeController();
-
-  var tabIndex = 3.obs;
+class MineController extends GetxController {
+  MineController();
 
   @override
   void onInit() {

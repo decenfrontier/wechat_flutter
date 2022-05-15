@@ -9,7 +9,7 @@ import './global.dart';
 
 Future<void> main() async {
   await Global.init();
-  DesktopWindow.setWindowSize(Size(360, 660));
+  DesktopWindow.setWindowSize(Size(320, 700));
   runApp(const MyApp());
 }
 

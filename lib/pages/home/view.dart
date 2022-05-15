@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/pages/friend/view.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
 import 'package:ws_chat_flutter/pages/message/index.dart';
+import 'package:ws_chat_flutter/pages/mine/index.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);
@@ -21,11 +22,9 @@ class HomePage extends GetView<HomeController> {
         MessagePage(),
         FriendPage(),
         Center(
-          child: Text("3"),
+          child: Text("发现页 暂未开发"),
         ),
-        Center(
-          child: Text("4"),
-        ),
+        MinePage(),
       ],
     );
   }
