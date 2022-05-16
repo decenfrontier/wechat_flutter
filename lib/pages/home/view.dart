@@ -52,6 +52,7 @@ class HomePage extends GetView<HomeController> {
             width: 25,
             color: Colors.green,
           ),
+          tooltip: "",
         ),
         BottomNavigationBarItem(
           label: "好友",
@@ -64,6 +65,7 @@ class HomePage extends GetView<HomeController> {
             width: 25,
             color: Colors.green,
           ),
+          tooltip: "",
         ),
         BottomNavigationBarItem(
           label: "发现",
@@ -76,6 +78,7 @@ class HomePage extends GetView<HomeController> {
             width: 25,
             color: Colors.green,
           ),
+          tooltip: "",
         ),
         BottomNavigationBarItem(
           label: "我的",
@@ -88,6 +91,7 @@ class HomePage extends GetView<HomeController> {
             width: 25,
             color: Colors.green,
           ),
+          tooltip: "",
         )
       ],
     );

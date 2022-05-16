@@ -41,8 +41,6 @@ class LoginController extends GetxController {
         UserStore.to.setToken(loginResp.accessToken);
         // 跳转首页
         Get.offAllNamed(AppRouter.Home);
-        // 显示弹窗
-        Get.snackbar("login_success_title".tr, "login_success_detail".tr);
       }).catchError((respBody) {
         // 显示弹窗
         Get.snackbar("login_err_title".tr, "${respBody.code} ${respBody.msg}");

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/api_datas/user.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
+import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 
 import 'state.dart';
 
@@ -24,9 +25,12 @@ class HomeController extends GetxController {
       print(personalResp.userId);
       print("获取个人信息成功");
     }).catchError((err) {
-      print("运行异常: ${err.runtimeType}");
+      var errInfo = "$err";
+      if (err.runtimeType is RespBody) {
+        errInfo = "${err.code} ${err.msg}";
+      }
       // 显示弹窗
-      Get.snackbar("personal_err_title".tr, "${err.code} ${err.msg}");
+      Get.snackbar("personal_err_title".tr, errInfo);
       // 跳转到登录页面
       Get.offAllNamed(AppRouter.Login);
     });
