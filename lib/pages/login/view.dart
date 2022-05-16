@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/widgets/password.dart';
 
 import 'index.dart';
 
@@ -12,7 +13,7 @@ class LoginPage extends GetView<LoginController> {
       builder: (_) {
         return Scaffold(
             body: Container(
-                padding: EdgeInsets.all(30),
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Center(
                     child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -42,27 +43,29 @@ class LoginPage extends GetView<LoginController> {
         child: Column(
           children: [
             TextFormField(
+              restorationId: 'email_field',
               autofocus: true,
               initialValue: "ws156858@163.com",
-              decoration: InputDecoration(
-                labelText: "login_email".tr,
-                hintText: "login_email_hint".tr,
-                icon: Icon(Icons.email),
-              ),
+              textInputAction: TextInputAction.next,
               validator: controller.emailValidator,
+              decoration: InputDecoration(
+                filled: true,
+                border: const OutlineInputBorder(),
+                icon: const Icon(Icons.email),
+                hintText: "login_email_hint".tr,
+                labelText: "login_email".tr,
+              ),
+              keyboardType: TextInputType.emailAddress,
               onSaved: (value) {
                 controller.userEmail = value!;
               },
             ),
-            TextFormField(
-              initialValue: "123456",
-              decoration: InputDecoration(
-                labelText: "login_password".tr,
-                hintText: "login_password_hint".tr,
-                icon: Icon(Icons.lock),
-              ),
-              obscureText: true,
+            SizedBox(height: 25),
+            PasswordField(
+              labelText: "login_password".tr,
+              hintText: "login_password_hint".tr,
               validator: controller.passwordValidator,
+              textInputAction: TextInputAction.next,
               onSaved: (value) {
                 controller.userPassword = value!;
               },

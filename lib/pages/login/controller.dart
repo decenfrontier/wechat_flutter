@@ -59,8 +59,7 @@ class LoginController extends GetxController {
       // 发送注册请求
       var data = RegisterRequest(email: userEmail, password: userPassword);
       UserAPI.register(data: data).then((registerResp) {
-        // 显示弹窗
-        Get.snackbar("register_success_title".tr, "register_success_detail".tr);
+        print("注册成功");
       }).catchError((respBody) {
         // 显示弹窗
         Get.snackbar(
