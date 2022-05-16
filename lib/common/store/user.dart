@@ -17,6 +17,10 @@ class UserStore extends GetxController {
     email: 'xxx@yyy.com',
     groupList: [],
   ).obs;
+  // 设置 个人信息
+  void setProfile(PersonalInfoResponse personalInfo) {
+    this._profile.value = personalInfo;
+  }
 
   bool get isLogin => _isLogin.value;
   PersonalInfoResponse get profile => _profile.value;
@@ -40,9 +44,6 @@ class UserStore extends GetxController {
     await StorageService.to.remove(STORAGE_USER_TOKEN_KEY);
   }
 
-  // 设置 个人信息
-  void setProfile(PersonalInfoResponse personalInfo) {
-    this._profile.value = personalInfo;
-  }
+  
 
 }

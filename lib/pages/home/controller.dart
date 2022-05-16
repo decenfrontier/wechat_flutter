@@ -14,11 +14,19 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     print("home on init");
+    
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    print("on ready");
     // 发送请求 获取个人信息
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
       // 获取个人信息成功
       UserStore.to.setProfile(personalResp);
+      print("获取个人信息成功");
     }).catchError((err) {
       print("运行异常: ${err.runtimeType}");
       // 显示弹窗
@@ -26,11 +34,5 @@ class HomeController extends GetxController {
       // 跳转到登录页面
       Get.offAllNamed(AppRouter.Login);
     });
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-    print("on ready");
   }
 }

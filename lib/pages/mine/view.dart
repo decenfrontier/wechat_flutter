@@ -11,6 +11,9 @@ class MinePage extends GetView<MineController> {
   @override
   Widget build(BuildContext context) {
     var profile = UserStore.to.profile;
+    print(profile);
+    print(profile.nickName);
+    print(profile.email);
     return Scaffold(
       appBar: AppBar(
         title: Text(""),
@@ -59,7 +62,7 @@ class MinePage extends GetView<MineController> {
                               height: 5,
                             ),
                             Row(children: [
-                              Text("ws156858@163.com",
+                              Text(profile.email,
                                   style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.grey.shade600)),
