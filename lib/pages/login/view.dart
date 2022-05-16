@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/widgets/password.dart';
 
@@ -40,12 +41,14 @@ class LoginPage extends GetView<LoginController> {
     return Form(
         key: controller.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Column(
+        child: AutofillGroup(
+          child: Column(
           children: [
             TextFormField(
               restorationId: 'email_field',
               autofocus: true,
-              initialValue: "ws156858@163.com",
+              autofillHints: [AutofillHints.email],
+              // initialValue: "ws156858@163.com",
               textInputAction: TextInputAction.next,
               validator: controller.emailValidator,
               decoration: InputDecoration(
@@ -59,6 +62,7 @@ class LoginPage extends GetView<LoginController> {
               onSaved: (value) {
                 controller.userEmail = value!;
               },
+              onEditingComplete: () => TextInput.finishAutofillContext(),
             ),
             SizedBox(height: 25),
             PasswordField(
@@ -69,9 +73,10 @@ class LoginPage extends GetView<LoginController> {
               onSaved: (value) {
                 controller.userPassword = value!;
               },
+              
             ),
           ],
-        ));
+        )));
   }
 
   Row _buildButton() {

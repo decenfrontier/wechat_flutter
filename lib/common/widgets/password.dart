@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
@@ -51,6 +52,7 @@ class _PasswordFieldState extends State<PasswordField> with RestorationMixin {
       onSaved: widget.onSaved,
       validator: widget.validator,
       onFieldSubmitted: widget.onFieldSubmitted,
+      autofillHints: [AutofillHints.password],
       decoration: InputDecoration(
         filled: true,
         hintText: widget.hintText,
