@@ -1,37 +1,53 @@
-import 'package:flutter/material.dart';
-
 class Data {
   static List message = [
     {
-      "avator": "assets/images/avator.jpg",
-      "nickName": "阿布",
+      "avator": "assets/images/avator1.jpg",
+      "nickName": "Flutter",
       "time": "08:56",
-      "lastMessage": "[图片]"
+      "lastMessage": "一套代码支持全平台"
     },
     {
-      "avator": "assets/images/file.jpg",
-      "nickName": "文件传输助手",
+      "avator": "assets/images/avator2.jpg",
+      "nickName": "Python",
       "time": "09:55",
       "lastMessage": "[图片]"
     },
     {
-      "avator": "assets/images/506.jpg",
-      "nickName": "云中君",
+      "avator": "assets/images/avator3.jpg",
+      "nickName": "Golang",
       "time": "10:25",
-      "lastMessage": "记忆触手可得，蓝天延绵不绝"
+      "lastMessage": "通过通信来共享内存, 而非共享内存来通信"
     },
     {
       "avator": "assets/images/icon.png",
       "nickName": "微信团队",
       "time": "11:24",
-      "lastMessage": "[图片]"
+      "lastMessage": "欢迎来到微信"
     }
   ];
 
   static Map contact = {
     "first": [],
-    "A": [
-      {"avator": "assets/images/avator.jpg", "nickName": "阿布", "pinyin": "abu"}
+    "G": [
+      {
+        "avator": "assets/images/avator3.jpg",
+        "nickName": "Golang",
+        "pinyin": "golang"
+      }
+    ],
+    "F": [
+      {
+        "avator": "assets/images/avator1.jpg",
+        "nickName": "Flutter",
+        "pinyin": "flutter"
+      }
+    ],
+    "P": [
+      {
+        "avator": "assets/images/avator2.jpg",
+        "nickName": "Python",
+        "pinyin": "python"
+      }
     ],
     "W": [
       {
@@ -44,13 +60,6 @@ class Data {
         "nickName": "微信团队",
         "pinyin": "weixintuandui"
       },
-    ],
-    "Y": [
-      {
-        "avator": "assets/images/506.jpg",
-        "nickName": "云中君",
-        "pinyin": "yunzhongjun"
-      }
     ],
   };
 }

@@ -35,7 +35,7 @@ class MinePage extends GetView<HomeController> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(8)),
-                          child: Image.asset("assets/images/avator.jpg",
+                          child: Image.asset("assets/images/avator1.jpg",
                               width: 55),
                         ),
                         SizedBox(
