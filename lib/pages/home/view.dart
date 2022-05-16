@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/pages/friend/view.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
-import 'package:ws_chat_flutter/pages/message/index.dart';
-import 'package:ws_chat_flutter/pages/mine/index.dart';
+
+import 'widgets/mine.dart';
+import 'widgets/message.dart';
+import 'widgets/friend.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);

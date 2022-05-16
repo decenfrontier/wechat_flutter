@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
-import 'controller.dart';
+import '../controller.dart';
 
-class MessagePage extends GetView<MessageController> {
+class MessagePage extends GetView<HomeController> {
   const MessagePage({Key? key}) : super(key: key);
 
   @override

@@ -14,13 +14,6 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     print("home on init");
-    
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-    print("on ready");
     // 发送请求 获取个人信息
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
@@ -34,5 +27,12 @@ class HomeController extends GetxController {
       // 跳转到登录页面
       Get.offAllNamed(AppRouter.Login);
     });
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    print("on ready");
+    
   }
 }

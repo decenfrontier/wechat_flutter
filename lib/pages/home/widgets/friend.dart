@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-import 'package:ws_chat_flutter/pages/friend/controller.dart';
 
-class FriendPage extends GetView<FriendController> {
-  FriendPage({Key? key}) : super(key: key);
+import '../controller.dart';
 
-  String labels = "↑ABCDEFGHIJKLMNOPQRSTUVWSYZ#";
+class FriendPage extends GetView<HomeController> {
+  const FriendPage({Key? key}) : super(key: key);
+
+  final String labels = "↑ABCDEFGHIJKLMNOPQRSTUVWSYZ#";
 
   @override
   Widget build(BuildContext context) {

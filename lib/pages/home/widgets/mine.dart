@@ -3,15 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 
-import 'controller.dart';
+import '../controller.dart';
 
-class MinePage extends GetView<MineController> {
-  MinePage({Key? key}) : super(key: key);
+class MinePage extends GetView<HomeController> {
+  const MinePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var profile = UserStore.to.profile;
-    print(profile);
     print(profile.nickName);
     print(profile.email);
     return Scaffold(
