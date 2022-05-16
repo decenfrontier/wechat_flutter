@@ -2,13 +2,14 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/api_datas/user.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
+
+import 'state.dart';
 
 class HomeController extends GetxController {
   HomeController();
 
-  // 当前选项卡索引
-  var tabIndex = 3.obs;
+  // 响应式成员变量
+  final state = HomeState();
 
   @override
   void onInit() {
@@ -18,7 +19,9 @@ class HomeController extends GetxController {
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
       // 获取个人信息成功
-      UserStore.to.setProfile(personalResp);
+      state.email = personalResp.email;
+      state.nickName = personalResp.nickName;
+      print(personalResp.userId);
       print("获取个人信息成功");
     }).catchError((err) {
       print("运行异常: ${err.runtimeType}");
@@ -33,6 +36,5 @@ class HomeController extends GetxController {
   void onReady() {
     super.onReady();
     print("on ready");
-    
   }
 }

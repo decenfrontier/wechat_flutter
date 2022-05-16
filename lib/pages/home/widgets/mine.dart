@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
 
 import '../controller.dart';
 
@@ -10,9 +9,6 @@ class MinePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    var profile = UserStore.to.profile;
-    print(profile.nickName);
-    print(profile.email);
     return Scaffold(
       appBar: AppBar(
         title: Text(""),
@@ -49,22 +45,22 @@ class MinePage extends GetView<HomeController> {
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              profile.nickName,
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            Obx(() => Text(
+                                  controller.state.nickName,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )),
                             SizedBox(
                               height: 5,
                             ),
                             Row(children: [
-                              Text(profile.email,
+                              Obx(() => Text(controller.state.email,
                                   style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.grey.shade600)),
+                                      color: Colors.grey.shade600))),
                               Spacer(),
                               Image.asset("assets/images/qrcode.png",
                                   width: 20),

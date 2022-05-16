@@ -31,6 +31,7 @@ linter:
     lowercase_with_underscores: false
     annotate_overrides: false
     overridden_fields: false
+    prefer_final_fields: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
