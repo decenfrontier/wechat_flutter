@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
 
@@ -13,6 +14,7 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context);
     return Scaffold(
         bottomNavigationBar: Obx(() => buildBottomNavigationBar()),
         body: Obx((() => buildIndexedStack())));

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/style/style.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 import 'package:ws_chat_flutter/common/widgets/bubble.dart';
 
@@ -59,41 +61,74 @@ class ChatPage extends GetView<HomeController> {
 
   /// 最下方的输入框部分
   Widget inputView() {
-    final outlineInputBorder = OutlineInputBorder(
-      borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(16),
-    );
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return Container(
+      padding: EdgeInsets.only(
+          top: ScreenUtil().setHeight(2.0),
+          bottom: ScreenUtil().setHeight(2.0),
+          left: 0,
+          right: 0),
+      color: Color(0xFFF7F7F7),
       child: Row(
-        children: [
-          // 左侧文字输入框
+        children: <Widget>[
+          Container(
+            width: ScreenUtil().setWidth(60.0),
+            margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
+            child: IconButton(
+                icon: Icon(ICons.VOICE),
+                onPressed: () {
+                  print('切换到语音');
+                }),
+          ),
           Expanded(
+              child: Container(
+            padding: EdgeInsets.only(
+                top: ScreenUtil().setHeight(15.0),
+                bottom: ScreenUtil().setHeight(15.0)),
+            height: ScreenUtil().setHeight(60.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                color: Colors.white),
             child: TextField(
-              maxLines: null,
-              cursorColor: Colors.black,
-              keyboardType: TextInputType.multiline,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[200],
-                enabledBorder: outlineInputBorder,
-                focusedBorder: outlineInputBorder,
-              ),
+              // controller: controller,
+              decoration: InputDecoration.collapsed(hintText: null),
+              maxLines: 1,
+              autocorrect: true,
+              autofocus: false,
+              textAlign: TextAlign.start,
+              style: TextStyle(color: Colors.black),
+              cursorColor: Colors.green,
+              // onChanged: (text) {
+              //   setState(() {
+              //       hasText = text.length > 0 ?  true : false;
+              //   });
+              //   print('change=================== $text');
+              // },
+              // onSubmitted:_handleSubmitted,
+              enabled: true, //是否禁用
             ),
+          )),
+          Container(
+            width: ScreenUtil().setWidth(60.0),
+            child: IconButton(
+                icon: Icon(ICons.FACES), //发送按钮图标
+                onPressed: () {
+                  print('打开表情面板');
+                }),
           ),
-          const SizedBox(width: 12),
-          // 右侧发送文字的按钮
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('发送'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.white,
-              onPrimary: Colors.black,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-          ),
+          Container(
+            width: ScreenUtil().setWidth(60.0),
+            margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
+            child: IconButton(
+                //发送按钮或者+按钮
+                icon: Icon(Icons.send), //发送按钮图标
+                onPressed: () {
+                  // if(!hasText){
+                  //   print('打开功能面板');
+                  // }else{
+                  //   _handleSubmitted(controller.text);
+                  // }
+                }),
+          )
         ],
       ),
     );

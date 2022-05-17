@@ -22,11 +22,10 @@ class BubbleWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
-        // 忘了用这个变量了，好了，剩下的就是再调调UI了....
         textDirection: direction,
         children: [
           CircleAvatar(
-            radius: 24, // 只要不比48的二分之一小就是圆形
+            radius: 24,
             backgroundImage: NetworkImage(avatar),
             child: const SizedBox(
               width: 48,
@@ -41,7 +40,7 @@ class BubbleWidget extends StatelessWidget {
                 vertical: 8,
               ),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: Colors.grey[500],
                 borderRadius: BorderRadius.circular(32),
               ),
               child: SelectableText(text),

@@ -43,6 +43,7 @@ dependencies:
   shared_preferences: ^2.0.13
   desktop_window: ^0.4.0
   uuid: ^3.0.6
+  flutter_screenutil: ^5.5.2
 
 dev_dependencies:
   flutter_test:
@@ -95,3 +96,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: wxIconFont
+      fonts:
+        - asset: assets/fonts/iconfont.ttf 

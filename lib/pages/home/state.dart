@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class HomeState {
   // 当前选项卡索引
-  var _tabIndex = 3.obs;
+  var _tabIndex = 2.obs;
   set tabIndex(value) => _tabIndex.value = value;
   get tabIndex => _tabIndex.value;
 
