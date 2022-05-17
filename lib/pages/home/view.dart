@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
 
+import 'widgets/discover.dart';
 import 'widgets/mine.dart';
 import 'widgets/message.dart';
 import 'widgets/friend.dart';
@@ -22,9 +23,7 @@ class HomePage extends GetView<HomeController> {
       children: [
         MessagePage(),
         FriendPage(),
-        Center(
-          child: Text("发现页 暂未开发"),
-        ),
+        DiscoverPage(),
         MinePage(),
       ],
     );
