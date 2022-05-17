@@ -12,7 +12,7 @@ class ChatPage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: HeaderBar.BuildAppBar("群聊"),
+      appBar: HeaderBar.BuildAppBar("群 聊"),
       body: bodyView(),
     );
   }

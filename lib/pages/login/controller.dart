@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
-import 'package:ws_chat_flutter/common/api_datas/user.dart';
+import 'package:ws_chat_flutter/common/entities/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 

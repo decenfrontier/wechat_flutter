@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ws_chat_flutter/common/api_datas/user.dart';
+import 'package:ws_chat_flutter/common/entities/user.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xerr/index.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';

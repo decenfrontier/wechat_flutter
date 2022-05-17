@@ -8,7 +8,7 @@
 
 ## 2 common目录说明
 - apis: 访问服务器的接口封装
-- api_datas: 网络请求与响应体结构
+- entities: 网络请求与响应体结构
 - langs: 国际化多语言翻译
 - middlewares: 中间件, 如是否登录鉴权
 - mock: 模拟的假数据, 渲染到界面上展示效果
