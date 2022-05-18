@@ -71,8 +71,8 @@ class ChatPage extends GetView<HomeController> {
       child: Row(
         children: <Widget>[
           Container(
-            width: ScreenUtil().setWidth(60.0),
-            margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
+            width: ScreenUtil().setWidth(40.0),
+            margin: EdgeInsets.only(right: ScreenUtil().setWidth(10.0)),
             child: IconButton(
                 icon: Icon(ICons.VOICE),
                 onPressed: () {
@@ -84,7 +84,7 @@ class ChatPage extends GetView<HomeController> {
             padding: EdgeInsets.only(
                 top: ScreenUtil().setHeight(15.0),
                 bottom: ScreenUtil().setHeight(15.0)),
-            height: ScreenUtil().setHeight(60.0),
+            height: ScreenUtil().setHeight(40.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 color: Colors.white),
@@ -108,7 +108,7 @@ class ChatPage extends GetView<HomeController> {
             ),
           )),
           Container(
-            width: ScreenUtil().setWidth(60.0),
+            width: ScreenUtil().setWidth(40.0),
             child: IconButton(
                 icon: Icon(ICons.FACES), //发送按钮图标
                 onPressed: () {
@@ -116,7 +116,7 @@ class ChatPage extends GetView<HomeController> {
                 }),
           ),
           Container(
-            width: ScreenUtil().setWidth(60.0),
+            width: ScreenUtil().setWidth(40.0),
             margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
             child: IconButton(
                 //发送按钮或者+按钮
