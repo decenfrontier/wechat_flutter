@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
 
-import 'widgets/chat.dart';
-import 'widgets/discover.dart';
-import 'widgets/mine.dart';
-import 'widgets/message.dart';
-import 'widgets/friend.dart';
+import 'views/chat.dart';
+import 'views/discover.dart';
+import 'views/mine.dart';
+import 'views/message.dart';
+import 'views/friend.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({Key? key}) : super(key: key);

@@ -47,7 +47,7 @@ class ChatPage extends GetView<HomeController> {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           itemCount: _data.length,
           itemBuilder: (context, index) {
-            final model = _data.elementAt(index);
+            final model = _data[index];
             return BubbleWidget(
               avatar: model.avatar,
               text: model.text,
