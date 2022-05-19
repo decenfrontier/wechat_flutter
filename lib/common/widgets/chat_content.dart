@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ws_chat_flutter/common/style/colors.dart';
 
 import 'user_avatar.dart';
 
 class ChatContentView extends StatelessWidget {
-  int type; //0 代表对方 ， 1代表自己
+  bool isSelf; //false 代表对方 ， true代表自己
   String text; //聊天内容
   String avatar; //头像url
   String username; //昵称
-  int userType; //聊天类型 2群组  1单聊
-  bool isNetwork;
+  int type; //聊天类型 1单聊 2群聊
   ChatContentView(
-      {required Key key,
-      required this.type,
+      {Key? key,
+      required this.isSelf,
       required this.text,
-      this.avatar,
-      this.isNetwork,
-      this.username,
-      this.userType})
+      required this.avatar,
+      required this.username,
+      required this.type})
       : super(key: key);
 
   @override
@@ -27,21 +26,20 @@ class ChatContentView extends StatelessWidget {
     Widget userAvatar = UserAvatar(
         padding: EdgeInsets.only(
             top: ScreenUtil().setHeight(5),
-            right: (type == 0 ? 0.0 : ScreenUtil().setWidth(15)),
-            left: (type == 0 ? ScreenUtil().setWidth(15) : 0.0)),
+            right: (isSelf == false ? 0.0 : ScreenUtil().setWidth(15)),
+            left: (isSelf == false ? ScreenUtil().setWidth(15) : 0.0)),
         width: ScreenUtil().setWidth(80),
         height: ScreenUtil().setWidth(80),
-        image: avatar != '' ? avatar : 'assets/images/ic_public_account.png',
-        isNetwork: isNetwork,
+        image: avatar,
         onPressed: () {
           print('点击头像');
         });
 
     Widget userNameWidget = Container(
       margin: EdgeInsets.only(
-          left: type == 0 ? ScreenUtil().setWidth(20) : 0,
+          left: isSelf == 0 ? ScreenUtil().setWidth(20) : 0,
           bottom: ScreenUtil().setHeight(10),
-          right: type == 0 ? 0 : ScreenUtil().setWidth(20)),
+          right: isSelf == 0 ? 0 : ScreenUtil().setWidth(20)),
       child: Text(
         username,
         style: TextStyle(
@@ -49,60 +47,60 @@ class ChatContentView extends StatelessWidget {
             fontSize: ScreenUtil().setSp(23.0)),
       ),
     );
-    _showMenu(BuildContext context, Offset tapPos) {
-      final RenderBox overlay = Overlay.of(context).context.findRenderObject();
-      final RelativeRect position = RelativeRect.fromLTRB(tapPos.dx, tapPos.dy,
-          overlay.size.width - tapPos.dx, overlay.size.height - tapPos.dy);
-      showMenu<String>(
-          context: context,
-          position: position,
-          items: <PopupMenuItem<String>>[
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_COPY_VALUE),
-              value: MessageDetailSelects.MENU_COPY,
-            ),
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_SHARE_FRIENDS_VALUE),
-              value: MessageDetailSelects.MENU_SHARE_FRIENDS,
-            ),
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_FAVORIITE_VALUE),
-              value: MessageDetailSelects.MENU_FAVORIITE,
-            ),
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_REMIND_VALUE),
-              value: MessageDetailSelects.MENU_REMIND,
-            ),
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_TRANSLATE_VALUE),
-              value: MessageDetailSelects.MENU_TRANSLATE,
-            ),
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_DELATE_VALUE),
-              value: MessageDetailSelects.MENU_DELATE,
-            ),
-            PopupMenuItem(
-              child: Text(MessageDetailSelects.MENU_MULTIPE_CHOICE_VALUE),
-              value: MessageDetailSelects.MENU_MULTIPE_CHOICE,
-            ),
-          ]).then<String>((String selected) {
-        switch (selected) {
-          default:
-            print('当前选中的是：$selected');
-        }
-      });
-    }
+    // _showMenu(BuildContext context, Offset tapPos) {
+    //   final RenderObject? overlay = Overlay.of(context)?.context.findRenderObject();
+    //   final RelativeRect position = RelativeRect.fromLTRB(tapPos.dx, tapPos.dy,
+    //       overlay.size.width - tapPos.dx, overlay.size.height - tapPos.dy);
+    //   showMenu<String>(
+    //       context: context,
+    //       position: position,
+    //       items: <PopupMenuItem<String>>[
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_COPY_VALUE),
+    //           value: MessageDetailSelects.MENU_COPY,
+    //         ),
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_SHARE_FRIENDS_VALUE),
+    //           value: MessageDetailSelects.MENU_SHARE_FRIENDS,
+    //         ),
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_FAVORIITE_VALUE),
+    //           value: MessageDetailSelects.MENU_FAVORIITE,
+    //         ),
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_REMIND_VALUE),
+    //           value: MessageDetailSelects.MENU_REMIND,
+    //         ),
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_TRANSLATE_VALUE),
+    //           value: MessageDetailSelects.MENU_TRANSLATE,
+    //         ),
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_DELATE_VALUE),
+    //           value: MessageDetailSelects.MENU_DELATE,
+    //         ),
+    //         PopupMenuItem(
+    //           child: Text(MessageDetailSelects.MENU_MULTIPE_CHOICE_VALUE),
+    //           value: MessageDetailSelects.MENU_MULTIPE_CHOICE,
+    //         ),
+    //       ]).then<String>((String selected) {
+    //     switch (selected) {
+    //       default:
+    //         print('当前选中的是：$selected');
+    //     }
+    //   });
+    // }
 
     Widget messageTextWidget = InkWell(
       onTapDown: (TapDownDetails details) {
         tapPos = details.globalPosition;
       },
       onLongPress: () {
-        _showMenu(context, tapPos);
+        // _showMenu(context, tapPos);
         print('弹出会话菜单');
       },
       child: Container(
-        margin: type == 0
+        margin: isSelf == 0
             ? EdgeInsets.only(
                 left: ScreenUtil().setWidth(20),
                 right: ScreenUtil().setWidth(115))
@@ -123,7 +121,7 @@ class ChatContentView extends StatelessWidget {
             top: ScreenUtil().setHeight(15)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
-          color: type == 0
+          color: isSelf == 0
               ? Color(AppColors.TextBobuleLeft)
               : Color(AppColors.TextBobuleRight),
         ),
@@ -136,8 +134,8 @@ class ChatContentView extends StatelessWidget {
       return Expanded(
           child: Column(
         crossAxisAlignment:
-            type == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-        children: userType == 2 && type == 0 ? nameAndText : onlyText,
+            isSelf == 0 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+        children: type == 2 && isSelf == 0 ? nameAndText : onlyText,
       ));
     }
 
@@ -145,7 +143,7 @@ class ChatContentView extends StatelessWidget {
       margin: EdgeInsets.only(
           bottom: ScreenUtil().setHeight(10.0),
           top: ScreenUtil().setHeight(10.0)),
-      child: type == 0
+      child: isSelf == 0
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[userAvatar, textBubble()],

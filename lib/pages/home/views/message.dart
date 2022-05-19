@@ -1,5 +1,8 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/entities/message.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
@@ -16,18 +19,21 @@ class MessagePage extends GetView<HomeController> {
       body: SizedBox(
         height: size.height,
         child: ListView.builder(
-            itemCount: Data.message.length,
+            itemCount: Data.mockMessageList.length,
             itemBuilder: (context, index) {
-              Map item = Data.message[index];
-              return buildMessageItem(item["avator"], item["nickName"],
-                  item["time"], item["lastMessage"]);
+              ChatMsg item = Data.mockMessageList[index];
+              var senderId = item.senderId;
+              var userInfo = Data.senderInfoMap[senderId]!;
+            
+              return buildMessageItem(userInfo["avatar"]!, userInfo["nickName"]!,
+                  item.createTime, item.content);
             }),
       ),
     );
   }
 
   Container buildMessageItem(
-      String avator, String name, String time, String lastMessage) {
+      String avator, String name, int time, String lastMessage) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: Row(children: [
@@ -52,7 +58,7 @@ class MessagePage extends GetView<HomeController> {
                       fontWeight: FontWeight.bold,
                       fontSize: 16)),
               Spacer(),
-              Text(time, style: TextStyle(color: Colors.grey, fontSize: 13)),
+              Text("$time", style: TextStyle(color: Colors.grey, fontSize: 13)),
             ],
           ),
           SizedBox(

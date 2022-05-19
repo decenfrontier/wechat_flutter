@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/style/style.dart';
+import 'package:ws_chat_flutter/common/style/icons.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-import 'package:ws_chat_flutter/common/widgets/bubble.dart';
+// import 'package:ws_chat_flutter/common/widgets/bubble.dart';
+import 'package:ws_chat_flutter/common/widgets/chat_content.dart';
+import 'package:ws_chat_flutter/common/mock/data.dart';
 
 import '../controller.dart';
 
@@ -45,19 +47,30 @@ class ChatPage extends GetView<HomeController> {
       // 到了最后，再改成ListView.builder，现在代码少点，UI逻辑会更清楚
       child: ListView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-          itemCount: _data.length,
+          itemCount: Data.mockMessageList.length,
           itemBuilder: (context, index) {
-            final model = _data[index];
-            return BubbleWidget(
-              avatar: model.avatar,
-              text: model.text,
-              direction: model.isMyself
-                  ? TextDirection.rtl
-                  : TextDirection.ltr, // 那么这个时候默认值就没意义了
+            final chatMsg = Data.mockMessageList[index];
+            var senderId = chatMsg.senderId;
+            var userInfo = Data.senderInfoMap[senderId]!;
+
+            return ChatContentView(
+              isSelf: senderId == 2,
+              text: chatMsg.content,
+              avatar: userInfo["avatar"]!,
+              username: userInfo["nickName"]!,
+              type: chatMsg.type,
             );
           }),
     );
   }
+
+  // BubbleWidget(
+  //             avatar: model.avatar,
+  //             text: model.text,
+  //             direction: model.isMyself
+  //                 ? TextDirection.rtl
+  //                 : TextDirection.ltr,
+  //           );
 
   /// 最下方的输入框部分
   Widget inputView() {
@@ -153,43 +166,4 @@ class ChatPage extends GetView<HomeController> {
   //   _controller.clear();
   // }
 
-  final List<Model> _data = [
-    Model(
-      avatar: 'https://cdn.jsdelivr.net/gh/mocaraka/assets/temp/375.jpg',
-      text: '1',
-      isMyself: false, // bool默认值也是false，可以不用填，但对代码来说，有规律是好的
-    ),
-    Model(
-      avatar: 'https://cdn.jsdelivr.net/gh/mocaraka/assets/temp/375.jpg',
-      text: '2',
-      isMyself: false, // bool默认值也是false，可以不用填，但对代码来说，有规律是好的
-    ),
-    Model(
-      avatar: 'https://cdn.jsdelivr.net/gh/mocaraka/assets/temp/375.jpg',
-      text: '3',
-      isMyself: false, // bool默认值也是false，可以不用填，但对代码来说，有规律是好的
-    ),
-    Model(
-      avatar: 'https://cdn.jsdelivr.net/gh/mocaraka/assets/temp/56.jpg',
-      text: 'a',
-      isMyself: true, // bool默认值也是false，可以不用填，但对代码来说，有规律是好的
-    ),
-    Model(
-      avatar: 'https://cdn.jsdelivr.net/gh/mocaraka/assets/temp/375.jpg',
-      text: '4',
-      isMyself: false, // bool默认值也是false，可以不用填，但对代码来说，有规律是好的
-    ),
-  ];
-}
-
-class Model {
-  final String avatar;
-  final String text;
-  final bool isMyself;
-
-  Model({
-    required this.avatar,
-    required this.text,
-    required this.isMyself,
-  });
 }

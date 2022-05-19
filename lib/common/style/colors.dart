@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+
+class AppColors {
+  static const APPBarColor = 0xffededed;
+  static const APPBarTextColor = 0xff010101;
+  static const APPCardColor = 0xff303030;
+  static const TabIconNormal = 0xff999999;
+  static const TabIconActive = 0xff46c11b;
+  static const AppBarPopupMenuTextColor = 0xffffffff;
+  static const TitleColor = 0xff353535;
+  static const ConversationItemBg = 0xffffffff;
+  static const DesTextColor = 0xff9e9e9e;
+  static const DividerColor = 0xffd9d9d9;
+  static const NotifyDotBg = 0xffff3e3e;
+  static const NotifyDotText = 0xffffffff;
+  static const ConversationMuteIcon = 0xffd8d8d8;
+  static const DeviceInfoItemBg = 0xfff5f5f5;
+  static const DeviceInfoItemText = 0xff606062;
+  static const PrimaryColor = 0xffebebeb;
+  static const BackgroundColor = 0xffededed;
+  static const AppBarColor = 0xffededed;
+  static const ActionIconColor = 0xff000000;
+  static const ActionMenuBgColor = 0xff4c4c4c;
+  static const CardBgColor = 0xffffffff;
+  static const AppBarPopupMenuColor = 0xffffffff;
+  static const DeviceInfoItemIcon = 0xff606062;
+  static const ContactGroupTitleBg = 0xffebebeb;
+  static const ContactGroupTitleText = 0xff888888;
+  static const IndexLetterBoxBg = Colors.black45;
+  static const HeaderCardBg = Colors.white;
+  static const HeaderCardTitleText = 0xff353535;
+  static const HeaderCardDesText = 0xff7f7f7f;
+  static const ButtonDesText = 0xff8c8c8c;
+  static const ButtonArrowColor = 0xffadadad;
+  static const NewTagBg = 0xfffa5251;
+  static const FullWithIconButton = 0xff3d3d3d;
+  static const KeyboardArrowRight = 0xffacacac;
+  static const TextBobuleRight = 0xff9def71;
+  static const TextBobuleLeft = 0xffffffff;
+  static const TextBobule = 0xff3e3e3e;
+  static const ChatDetailBg = 0xffefefef;
+  static const ChatTime = 0xffababab;
+}
