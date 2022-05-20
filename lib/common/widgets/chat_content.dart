@@ -25,9 +25,10 @@ class ChatContentView extends StatelessWidget {
     //头像组件
     Widget userAvatar = UserAvatar(
         padding: EdgeInsets.only(
-            top: ScreenUtil().setHeight(5),
-            right: (isSelf == false ? 0.0 : ScreenUtil().setWidth(15)),
-            left: (isSelf == false ? ScreenUtil().setWidth(15) : 0.0)),
+            top: (isSelf == false ? ScreenUtil().setHeight(5): 0.0),
+            right: (isSelf == false ? 0.0 : ScreenUtil().setWidth(10)),
+            left: (isSelf == false ? ScreenUtil().setWidth(10) : 0.0)
+          ),
         width: ScreenUtil().setWidth(40),
         height: ScreenUtil().setWidth(40),
         image: avatar,
@@ -37,14 +38,14 @@ class ChatContentView extends StatelessWidget {
 
     Widget userNameWidget = Container(
       margin: EdgeInsets.only(
-          left: isSelf == false ? ScreenUtil().setWidth(20) : 0,
-          bottom: ScreenUtil().setHeight(10),
-          right: isSelf == false ? 0 : ScreenUtil().setWidth(20)),
+          left: isSelf == false ? ScreenUtil().setWidth(14) : 0,
+          bottom: ScreenUtil().setHeight(5),
+          right: isSelf == false ? 0 : ScreenUtil().setWidth(14)),
       child: Text(
         username,
         style: TextStyle(
             color: Color(AppColors.ChatTime),
-            fontSize: ScreenUtil().setSp(15.0)),
+            fontSize: ScreenUtil().setSp(12.0)),
       ),
     );
     // _showMenu(BuildContext context, Offset tapPos) {
@@ -102,23 +103,23 @@ class ChatContentView extends StatelessWidget {
       child: Container(
         margin: isSelf == false
             ? EdgeInsets.only(
-                left: ScreenUtil().setWidth(20),
+                left: ScreenUtil().setWidth(14),
                 right: ScreenUtil().setWidth(20))
             : EdgeInsets.only(
                 left: ScreenUtil().setWidth(20),
-                right: ScreenUtil().setWidth(20)),
+                right: ScreenUtil().setWidth(14)),
         child: Text(
           text,
           style: TextStyle(
-              fontSize: ScreenUtil().setSp(15.0),
+              fontSize: ScreenUtil().setSp(14.0),
               color: Color(AppColors.TextBobule),
               height: 1.2),
         ),
         padding: EdgeInsets.only(
-            left: ScreenUtil().setWidth(15),
-            right: ScreenUtil().setWidth(15),
-            bottom: ScreenUtil().setHeight(15),
-            top: ScreenUtil().setHeight(15)),
+            left: ScreenUtil().setWidth(12),
+            right: ScreenUtil().setWidth(12),
+            bottom: ScreenUtil().setHeight(12),
+            top: ScreenUtil().setHeight(12)),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
           color: isSelf == false
@@ -141,8 +142,8 @@ class ChatContentView extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(
-          bottom: ScreenUtil().setHeight(10.0),
-          top: ScreenUtil().setHeight(10.0)),
+          bottom: ScreenUtil().setHeight(6.0),
+          top: ScreenUtil().setHeight(6.0)),
       child: isSelf == false
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,

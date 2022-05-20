@@ -46,7 +46,7 @@ class ChatPage extends GetView<HomeController> {
     return Expanded(
       // 到了最后，再改成ListView.builder，现在代码少点，UI逻辑会更清楚
       child: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
           itemCount: Data.mockMessageList.length,
           itemBuilder: (context, index) {
             final chatMsg = Data.mockMessageList[index];
@@ -64,25 +64,17 @@ class ChatPage extends GetView<HomeController> {
     );
   }
 
-  // BubbleWidget(
-  //             avatar: model.avatar,
-  //             text: model.text,
-  //             direction: model.isMyself
-  //                 ? TextDirection.rtl
-  //                 : TextDirection.ltr,
-  //           );
-
   /// 最下方的输入框部分
   Widget inputView() {
     return Container(
       padding: EdgeInsets.only(
           top: ScreenUtil().setHeight(2.0),
           bottom: ScreenUtil().setHeight(2.0),
-          left: 10,
-          right: 0),
+          left: ScreenUtil().setWidth(5.0),
+          right: ScreenUtil().setWidth(5.0)),
       color: Color(0xFFF7F7F7),
       child: Row(
-        children: <Widget>[
+        children: [
           Container(
             width: ScreenUtil().setWidth(40.0),
             margin: EdgeInsets.only(right: ScreenUtil().setWidth(10.0)),
@@ -130,7 +122,7 @@ class ChatPage extends GetView<HomeController> {
           ),
           Container(
             width: ScreenUtil().setWidth(40.0),
-            margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
+            // margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
             child: IconButton(
                 //发送按钮或者+按钮
                 icon: Icon(Icons.send), //发送按钮图标
