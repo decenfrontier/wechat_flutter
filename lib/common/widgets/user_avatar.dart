@@ -26,7 +26,7 @@ class UserAvatar extends StatelessWidget {
         child: ClipRRect(
             borderRadius: BorderRadius.all(Radius.circular(5.0)),
             child: FadeInImage.assetNetwork(
-              placeholder: 'asstes/images/avatar1.jpg',  // https://s1.ax1x.com/2022/05/19/Oq3yDg.jpg
+              placeholder: 'asstes/images/icon.png',  // https://s1.ax1x.com/2022/05/19/Oq3yDg.jpg
               //预览图
               fit: BoxFit.fitWidth,
               image: image,

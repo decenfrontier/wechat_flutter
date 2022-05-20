@@ -9,7 +9,7 @@ class HeaderBar {
       shadowColor: Colors.grey.shade300,
       backgroundColor: Colors.grey.shade300,
       title: Text(
-        "$title",
+        title,
         style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
       actions: [

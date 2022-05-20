@@ -33,6 +33,7 @@ linter:
     overridden_fields: false
     prefer_final_fields: false
     must_be_immutable: false
+    non_constant_identifier_names: false
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
