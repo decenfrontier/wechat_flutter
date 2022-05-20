@@ -41,7 +41,7 @@ class MessagePage extends GetView<HomeController> {
         ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(5)),
           child: FadeInImage.assetNetwork(
-            placeholder: 'asstes/images/icon.png',
+            placeholder: 'assets/images/icon.png',
             fit: BoxFit.fitWidth,
             image: avator,
             width: 40,

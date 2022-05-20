@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/status.dart' as status;
 import 'package:ws_chat_flutter/common/entities/user.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
@@ -33,6 +35,14 @@ class HomeController extends GetxController {
       Get.snackbar("personal_err_title".tr, errInfo);
       // 跳转到登录页面
       Get.offAllNamed(AppRouter.Login);
+    });
+    // 建立websocket连接
+    final channel = IOWebSocketChannel.connect('ws://101.42.134.18:10002/ws');
+    print("websocket connected");
+    channel.stream.listen((message) {
+      print("received $message");
+      // channel.sink.add('received!'); // 收到消息后回复
+      // channel.sink.close(status.goingAway);
     });
   }
 
