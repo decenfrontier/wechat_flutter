@@ -78,7 +78,7 @@ class ChatPage extends GetView<HomeController> {
       padding: EdgeInsets.only(
           top: ScreenUtil().setHeight(2.0),
           bottom: ScreenUtil().setHeight(2.0),
-          left: 0,
+          left: 10,
           right: 0),
       color: Color(0xFFF7F7F7),
       child: Row(
