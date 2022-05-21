@@ -48,11 +48,11 @@ class HomePage extends GetView<HomeController> {
           label: "消息",
           icon: Image.asset(
             "assets/images/message.png",
-            width: 25,
+            width: 22,
           ),
           activeIcon: Image.asset(
             "assets/images/message.png",
-            width: 25,
+            width: 22,
             color: Colors.green,
           ),
           tooltip: "",
@@ -61,11 +61,11 @@ class HomePage extends GetView<HomeController> {
           label: "好友",
           icon: Image.asset(
             "assets/images/contact.png",
-            width: 25,
+            width: 22,
           ),
           activeIcon: Image.asset(
             "assets/images/contact.png",
-            width: 25,
+            width: 22,
             color: Colors.green,
           ),
           tooltip: "",
@@ -74,11 +74,11 @@ class HomePage extends GetView<HomeController> {
           label: "发现",
           icon: Image.asset(
             "assets/images/find.png",
-            width: 25,
+            width: 22,
           ),
           activeIcon: Image.asset(
             "assets/images/find.png",
-            width: 25,
+            width: 22,
             color: Colors.green,
           ),
           tooltip: "",
@@ -87,11 +87,11 @@ class HomePage extends GetView<HomeController> {
           label: "我的",
           icon: Image.asset(
             "assets/images/mine.png",
-            width: 25,
+            width: 22,
           ),
           activeIcon: Image.asset(
             "assets/images/mine.png",
-            width: 25,
+            width: 22,
             color: Colors.green,
           ),
           tooltip: "",

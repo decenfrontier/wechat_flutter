@@ -6,23 +6,24 @@ class HeaderBar {
     return AppBar(
       centerTitle: true,
       elevation: 0,
+      toolbarHeight: 34,
       shadowColor: Colors.grey.shade300,
       backgroundColor: Colors.grey.shade300,
       title: Text(
         title,
-        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.black, fontSize: 16),
       ),
       actions: [
         Image.asset(
           "assets/images/search.png",
-          width: 25,
+          width: 22,
         ),
         SizedBox(
           width: 10,
         ),
         Image.asset(
           "assets/images/more.png",
-          width: 25,
+          width: 22,
         ),
         SizedBox(
           width: 10,
