@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ws_chat_flutter/common/style/colors.dart';
+import 'package:ws_chat_flutter/common/style/menus.dart';
 
 import 'user_avatar.dart';
 
@@ -25,10 +26,9 @@ class ChatContentView extends StatelessWidget {
     //头像组件
     Widget userAvatar = UserAvatar(
         padding: EdgeInsets.only(
-            top: (isSelf == false ? ScreenUtil().setHeight(5): 0.0),
+            top: (isSelf == false ? ScreenUtil().setHeight(5) : 0.0),
             right: (isSelf == false ? 0.0 : ScreenUtil().setWidth(10)),
-            left: (isSelf == false ? ScreenUtil().setWidth(10) : 0.0)
-          ),
+            left: (isSelf == false ? ScreenUtil().setWidth(10) : 0.0)),
         width: ScreenUtil().setWidth(40),
         height: ScreenUtil().setWidth(40),
         image: avatar,
@@ -48,56 +48,54 @@ class ChatContentView extends StatelessWidget {
             fontSize: ScreenUtil().setSp(12.0)),
       ),
     );
-    // _showMenu(BuildContext context, Offset tapPos) {
-    //   final RenderObject? overlay = Overlay.of(context)?.context.findRenderObject();
-    //   final RelativeRect position = RelativeRect.fromLTRB(tapPos.dx, tapPos.dy,
-    //       overlay.size.width - tapPos.dx, overlay.size.height - tapPos.dy);
-    //   showMenu<String>(
-    //       context: context,
-    //       position: position,
-    //       items: <PopupMenuItem<String>>[
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_COPY_VALUE),
-    //           value: MessageDetailSelects.MENU_COPY,
-    //         ),
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_SHARE_FRIENDS_VALUE),
-    //           value: MessageDetailSelects.MENU_SHARE_FRIENDS,
-    //         ),
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_FAVORIITE_VALUE),
-    //           value: MessageDetailSelects.MENU_FAVORIITE,
-    //         ),
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_REMIND_VALUE),
-    //           value: MessageDetailSelects.MENU_REMIND,
-    //         ),
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_TRANSLATE_VALUE),
-    //           value: MessageDetailSelects.MENU_TRANSLATE,
-    //         ),
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_DELATE_VALUE),
-    //           value: MessageDetailSelects.MENU_DELATE,
-    //         ),
-    //         PopupMenuItem(
-    //           child: Text(MessageDetailSelects.MENU_MULTIPE_CHOICE_VALUE),
-    //           value: MessageDetailSelects.MENU_MULTIPE_CHOICE,
-    //         ),
-    //       ]).then<String>((String selected) {
-    //     switch (selected) {
-    //       default:
-    //         print('当前选中的是：$selected');
-    //     }
-    //   });
-    // }
+
+    _showMenu(BuildContext context, Offset tapPos) {
+      RenderBox overlay = context.findRenderObject()! as RenderBox;
+      final RelativeRect position = RelativeRect.fromLTRB(
+          tapPos.dx, tapPos.dy, -tapPos.dx, overlay.size.height - tapPos.dy);
+      showMenu<String>(
+          context: context,
+          position: position,
+          items: <PopupMenuItem<String>>[
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_COPY_VALUE),
+              value: MessageDetailSelects.MENU_COPY,
+            ),
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_SHARE_FRIENDS_VALUE),
+              value: MessageDetailSelects.MENU_SHARE_FRIENDS,
+            ),
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_FAVORIITE_VALUE),
+              value: MessageDetailSelects.MENU_FAVORIITE,
+            ),
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_REMIND_VALUE),
+              value: MessageDetailSelects.MENU_REMIND,
+            ),
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_TRANSLATE_VALUE),
+              value: MessageDetailSelects.MENU_TRANSLATE,
+            ),
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_DELATE_VALUE),
+              value: MessageDetailSelects.MENU_DELATE,
+            ),
+            PopupMenuItem(
+              child: Text(MessageDetailSelects.MENU_MULTIPE_CHOICE_VALUE),
+              value: MessageDetailSelects.MENU_MULTIPE_CHOICE,
+            ),
+          ]).then<void>((String? selected) {
+        print('当前选中的是：$selected');
+      });
+    }
 
     Widget messageTextWidget = InkWell(
       onTapDown: (TapDownDetails details) {
         tapPos = details.globalPosition;
       },
       onLongPress: () {
-        // _showMenu(context, tapPos);
+        _showMenu(context, tapPos);
         print('弹出会话菜单');
       },
       child: Container(
