@@ -44,6 +44,8 @@ class HomeController extends GetxController {
       // channel.sink.add('received!'); // 收到消息后回复
       // channel.sink.close(status.goingAway);
     });
+    // 拉取离线消息
+    
   }
 
   @override

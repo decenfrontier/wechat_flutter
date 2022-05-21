@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/utils/storage.dart';
 import 'package:ws_chat_flutter/common/values/storage.dart';
 
+// 用户信息存储到本地
 class UserStore extends GetxController {
   static UserStore get to => Get.find();
   // token
