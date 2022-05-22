@@ -31,7 +31,7 @@ class Data {
       type: 2,
       content: "一套代码支持全平台",
       uuid: "123",
-      createTime: 1652973045,
+      createTime: 1652973045000,
     ),
     ChatMsg(
       groupId: 1,
@@ -39,7 +39,7 @@ class Data {
       type: 2,
       content: "hello world",
       uuid: "123",
-      createTime: 1652973046,
+      createTime: 1652973046000,
     ),
     ChatMsg(
       groupId: 1,
@@ -47,7 +47,7 @@ class Data {
       type: 2,
       content: "[图片]",
       uuid: "123",
-      createTime: 1652973047,
+      createTime: 1652973047000,
     ),
     ChatMsg(
       groupId: 1,
@@ -55,7 +55,7 @@ class Data {
       type: 2,
       content: "通过通信来共享内存, 而非共享内存来通信",
       uuid: "123",
-      createTime: 1652973048,
+      createTime: 1652973048000,
     ),
     ChatMsg(
       groupId: 1,
@@ -63,7 +63,7 @@ class Data {
       type: 2,
       content: "欢迎来到微信",
       uuid: "123",
-      createTime: 1652973049,
+      createTime: 1652973049000,
     ),
   ];
 

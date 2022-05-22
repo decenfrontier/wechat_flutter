@@ -46,7 +46,7 @@ class MinePage extends GetView<HomeController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Obx(() => Text(
-                                  controller.state.nickName,
+                                  controller.mineState.nickName,
                                   style: TextStyle(
                                     fontSize: 16,
                                     color: Colors.black,
@@ -57,7 +57,7 @@ class MinePage extends GetView<HomeController> {
                               height: 5,
                             ),
                             Row(children: [
-                              Obx(() => Text(controller.state.email,
+                              Obx(() => Text(controller.mineState.email,
                                   style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.grey.shade600))),

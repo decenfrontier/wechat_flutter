@@ -22,7 +22,7 @@ class HomePage extends GetView<HomeController> {
 
   IndexedStack buildIndexedStack() {
     return IndexedStack(
-      index: controller.state.tabIndex,
+      index: controller.homeState.tabIndex,
       children: [
         MessagePage(),
         FriendPage(),
@@ -35,13 +35,13 @@ class HomePage extends GetView<HomeController> {
 
   BottomNavigationBar buildBottomNavigationBar() {
     return BottomNavigationBar(
-      currentIndex: controller.state.tabIndex,
+      currentIndex: controller.homeState.tabIndex,
       selectedItemColor: Colors.green,
       unselectedItemColor: Colors.grey,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
-        controller.state.tabIndex = index;
+        controller.homeState.tabIndex = index;
       },
       items: [
         BottomNavigationBarItem(

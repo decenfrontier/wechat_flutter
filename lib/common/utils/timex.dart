@@ -4,6 +4,7 @@ timeStampToString(int timeStamp) {
       DateTime.fromMillisecondsSinceEpoch(timeStamp); //传入的日期 millTime为毫秒级时间戳
 
   String _returnTime = ''; //转换后的时间
+  var flagMonth = 0;
 
   if (_nowDate.year != _conDate.year) {
     _returnTime = '${_conDate.year}年';
@@ -11,9 +12,13 @@ timeStampToString(int timeStamp) {
 
   if (_nowDate.month != _conDate.month) {
     _returnTime = _returnTime + '${_conDate.month}月';
+    flagMonth = 1;
   }
 
   if (_nowDate.day != _conDate.day) {
+    if (flagMonth == 0) {
+      _returnTime = _returnTime + '${_conDate.month}月';
+    }
     _returnTime = _returnTime + '${_conDate.day}日 ';
     return _returnTime;
   }
