@@ -8,12 +8,17 @@ import 'package:ws_chat_flutter/common/utils/http.dart';
 // 用户接口
 class UserAPI {
   // 注册
-  static Future<RespBody> register({RegisterRequest? data}) async {
+  static Future<RegisterResponse> register({RegisterRequest? data}) async {
     var respData = await HttpUtil().post(
       '/api/user/register',
       data: data?.toJson(),
     );
-    return RespBody.fromJson(respData);
+    var respBody = RespBody.fromJson(respData);
+    if (respBody.code == Status.OK) {
+      return RegisterResponse.fromJson(respBody.data);
+    }
+    // 其它情况直接抛异常
+    throw respBody;
   }
 
   // 登录

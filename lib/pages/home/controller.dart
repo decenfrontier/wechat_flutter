@@ -28,7 +28,7 @@ class HomeController extends GetxController {
       print("获取个人信息成功");
     }).catchError((err) {
       var errInfo = "$err";
-      if (err.runtimeType is RespBody) {
+      if (err.runtimeType == RespBody) {
         errInfo = "${err.code} ${err.msg}";
       }
       // 显示弹窗
@@ -45,7 +45,6 @@ class HomeController extends GetxController {
       // channel.sink.close(status.goingAway);
     });
     // 拉取离线消息
-    
   }
 
   @override
