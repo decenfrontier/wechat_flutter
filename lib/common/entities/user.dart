@@ -108,7 +108,7 @@ class PersonalInfoResponse {
       nickName: m['nickName'],
       gender: m['gender'],
       email: m['email'],
-      groupList: m['groupList'],
+      groupList: List<String>.from(m['groupList']),
     );
   }
   Map<String, dynamic> toJson() {

@@ -6,7 +6,7 @@ class HeaderBar {
     return AppBar(
       centerTitle: true,
       elevation: 0,
-      toolbarHeight: 34,
+      toolbarHeight: 36,
       shadowColor: Colors.grey.shade300,
       backgroundColor: Colors.grey.shade300,
       title: Text(
