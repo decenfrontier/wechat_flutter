@@ -45,6 +45,7 @@ class _PasswordFieldState extends State<PasswordField> with RestorationMixin {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: "123456",
       key: widget.fieldKey,
       restorationId: 'password_text_field',
       obscureText: _obscureText.value,

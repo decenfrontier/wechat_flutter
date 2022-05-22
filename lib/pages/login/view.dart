@@ -46,6 +46,7 @@ class LoginPage extends GetView<LoginController> {
           children: [
             TextFormField(
               restorationId: 'email_field',
+              initialValue: "ws156858@163.com",
               autofocus: true,
               autofillHints: [AutofillHints.email],
               // initialValue: "ws156858@163.com",
