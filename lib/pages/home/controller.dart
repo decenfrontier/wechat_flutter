@@ -12,7 +12,8 @@ class HomeController extends GetxController {
   HomeController();
 
   // 响应式成员变量
-  final state = HomeState();
+  final homeState = HomeState();
+  final mineState = MineState();
 
   @override
   void onInit() {
@@ -22,8 +23,9 @@ class HomeController extends GetxController {
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
       // 获取个人信息成功
-      state.email = personalResp.email;
-      state.nickName = personalResp.nickName;
+      mineState.email = personalResp.email;
+      mineState.nickName = personalResp.nickName;
+      mineState.userId = personalResp.userId;
       print(personalResp.userId);
       print("获取个人信息成功");
     }).catchError((err) {
