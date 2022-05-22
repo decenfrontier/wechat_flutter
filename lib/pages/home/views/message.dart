@@ -24,10 +24,10 @@ class MessagePage extends GetView<HomeController> {
             itemBuilder: (context, index) {
               ChatMsg item = Data.mockMessageList[index];
               var senderId = item.senderId;
-              var userInfo = Data.senderInfoMap[senderId]!;
+              var userInfo = Data.mockGroupInfoMap[senderId]!;
               var time_format = timeStampToString(item.createTime);
               return buildMessageItem(userInfo["avatar"]!,
-                  userInfo["nickName"]!, time_format, item.content);
+                  userInfo["aliasName"]!, time_format, item.content);
             }),
       ),
     );

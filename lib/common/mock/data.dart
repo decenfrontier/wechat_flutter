@@ -1,25 +1,25 @@
 import 'package:ws_chat_flutter/common/entities/message.dart';
 
 class Data {
-  static var senderInfoMap = {
+  static var mockGroupInfoMap = {
     1: {
-      "nickName": "flutter",
+      "aliasName": "flutter",
       "avatar": "https://s1.ax1x.com/2022/05/19/Oq3yDg.jpg",
     },
     2: {
-      "nickName": "python",
+      "aliasName": "python",
       "avatar": "https://s1.ax1x.com/2022/05/19/Oq3fCq.jpg",
     },
     3: {
-      "nickName": "golang",
+      "aliasName": "golang",
       "avatar": "https://s1.ax1x.com/2022/05/19/Oq3h80.jpg",
     },
     4: {
-      "nickName": "ruby",
+      "aliasName": "ruby",
       "avatar": "https://s1.ax1x.com/2022/05/19/Oq3TrF.jpg",
     },
     5: {
-      "nickName": "C++",
+      "aliasName": "C++",
       "avatar": "https://s1.ax1x.com/2022/05/19/Oq8API.jpg",
     },
   };

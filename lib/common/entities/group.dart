@@ -1,3 +1,5 @@
+import 'message.dart';
+
 class AddFriendRequest {
   final int userId;
   AddFriendRequest({
@@ -96,4 +98,25 @@ class GroupUsersResponse {
       'list': list,
     };
   }
+}
+
+// 群组信息
+class GroupInfoEntity {
+  final String groupId; // 群组id
+  final String aliasName; // 备注
+  final String avatarUrl; // 头像
+  final ChatMsg lastMsg; // 最后一条消息
+  GroupInfoEntity({
+    required this.groupId,
+    required this.aliasName,
+    required this.avatarUrl,
+    required this.lastMsg,
+  });
+}
+
+// 群组消息
+class GroupMsgEntity {
+  final String groupId; // 群组id
+  List<ChatMsg> msgList; // 消息列表
+  GroupMsgEntity({required this.groupId, required this.msgList});
 }

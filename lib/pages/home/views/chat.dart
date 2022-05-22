@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/style/icons.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-// import 'package:ws_chat_flutter/common/widgets/bubble.dart';
 import 'package:ws_chat_flutter/common/widgets/chat_content.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 
@@ -51,13 +50,13 @@ class ChatPage extends GetView<HomeController> {
           itemBuilder: (context, index) {
             final chatMsg = Data.mockMessageList[index];
             var senderId = chatMsg.senderId;
-            var userInfo = Data.senderInfoMap[senderId]!;
+            var userInfo = Data.mockGroupInfoMap[senderId]!;
 
             return ChatContentView(
               isSelf: senderId == 2,
               text: chatMsg.content,
               avatar: userInfo["avatar"]!,
-              username: userInfo["nickName"]!,
+              username: userInfo["aliasName"]!,
               type: chatMsg.type,
             );
           }),
