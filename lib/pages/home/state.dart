@@ -6,14 +6,16 @@ class HomeState {
   var _tabIndex = 2.obs;
   set tabIndex(value) => _tabIndex.value = value;
   get tabIndex => _tabIndex.value;
+}
+
+class MessageState {
   // 群组信息表(群组id, 备注, 头像, 最后一条消息)
   var _groupInfoMap = Rx<Map<int, GroupInfoEntity>?>(null);
   set groupInfoMap(value) => _groupInfoMap.value = value;
   get groupInfoMap => _groupInfoMap.value;
-  
 }
 
-class MessageState {
+class ChatState {
   // 群组消息表
   var _groupMsgList = Rx<List<GroupMsgEntity>?>(null);
   set groupList(value) => _groupMsgList.value = value;

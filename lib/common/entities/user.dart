@@ -94,13 +94,11 @@ class PersonalInfoResponse {
   final String nickName;
   final int gender;
   final String email;
-  final List<String>? groupList;
   PersonalInfoResponse({
     required this.userId,
     required this.nickName,
     required this.gender,
     required this.email,
-    this.groupList,
   });
   factory PersonalInfoResponse.fromJson(Map<String, dynamic> m) {
     return PersonalInfoResponse(
@@ -108,7 +106,6 @@ class PersonalInfoResponse {
       nickName: m['nickName'],
       gender: m['gender'],
       email: m['email'],
-      groupList: List<String>.from(m['groupList']),
     );
   }
   Map<String, dynamic> toJson() {
@@ -117,7 +114,6 @@ class PersonalInfoResponse {
       'nickName': nickName,
       'gender': gender,
       'email': email,
-      'groupList': groupList,
     };
   }
 }

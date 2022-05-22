@@ -17,7 +17,6 @@ class UserAPI {
     if (respBody.code == Status.OK) {
       return RegisterResponse.fromJson(respBody.data);
     }
-    // 其它情况直接抛异常
     throw respBody;
   }
 
@@ -31,14 +30,12 @@ class UserAPI {
     if (respBody.code == Status.OK) {
       return LoginResponse.fromJson(respBody.data);
     }
-    // 其它情况直接抛异常
     throw respBody;
   }
 
   // 获取个人信息
   static Future<PersonalInfoResponse> personalInfo(
       {PersonalInfoRequest? data}) async {
-    print("token:" + UserStore.to.token);
     var respData = await HttpUtil().post(
       '/api/user/personal_info',
       data: data?.toJson(),
