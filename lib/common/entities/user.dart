@@ -29,7 +29,7 @@ class RegisterRequest {
 
 class RegisterResponse {
   RegisterResponse();
-  factory RegisterResponse.fromJson(Map<String, dynamic> m) {
+  factory RegisterResponse.fromJson(Map<String, dynamic>? m) {
     return RegisterResponse();
   }
   Map<String, dynamic> toJson() {
