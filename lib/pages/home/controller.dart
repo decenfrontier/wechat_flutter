@@ -14,7 +14,7 @@ class HomeController extends GetxController {
   // 响应式成员变量
   final homeState = HomeState();
   final mineState = MineState();
-  final messageState = MessageState();
+  // final messageState = MessageState();
 
   @override
   void onInit() {
@@ -23,13 +23,11 @@ class HomeController extends GetxController {
     // 发送请求 获取个人信息
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
-      // 获取个人信息
+      // 我的
+      mineState.userId = personalResp.userId;
       mineState.email = personalResp.email;
       mineState.nickName = personalResp.nickName;
-      mineState.userId = personalResp.userId;
-      // 获取群组信息
-      // messageState.groupInfoMap = 
-      
+      mineState.gender = personalResp.gender;
       print("获取个人信息成功");
     }).catchError((err) {
       var errInfo = "$err";
@@ -49,7 +47,8 @@ class HomeController extends GetxController {
       // channel.sink.add('received!'); // 收到消息后回复
       // channel.sink.close(status.goingAway);
     });
-    // 拉取离线消息
+    // 发送请求 获取消息页数据
+    // GroupAPI.
   }
 
   @override

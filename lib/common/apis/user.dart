@@ -7,9 +7,10 @@ import 'package:ws_chat_flutter/common/utils/http.dart';
 
 // 用户接口
 class UserAPI {
+  static final _httpClient = HttpClient("http://101.42.134.18:10001");
   // 注册
   static Future<RegisterResponse> register({RegisterRequest? data}) async {
-    var respData = await HttpUtil().post(
+    var respData = await _httpClient.post(
       '/api/user/register',
       data: data?.toJson(),
     );
@@ -22,7 +23,7 @@ class UserAPI {
 
   // 登录
   static Future<LoginResponse> login({LoginRequest? data}) async {
-    var respData = await HttpUtil().post(
+    var respData = await _httpClient.post(
       '/api/user/login',
       data: data?.toJson(),
     );
@@ -36,7 +37,7 @@ class UserAPI {
   // 获取个人信息
   static Future<PersonalInfoResponse> personalInfo(
       {PersonalInfoRequest? data}) async {
-    var respData = await HttpUtil().post(
+    var respData = await _httpClient.post(
       '/api/user/personal_info',
       data: data?.toJson(),
       options: Options(headers: {"Authorization": UserStore.to.token}),

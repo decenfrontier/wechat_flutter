@@ -1,4 +1,4 @@
-import 'message.dart';
+// --./group--
 
 class AddFriendRequest {
   final int userId;
@@ -37,14 +37,14 @@ class HandleFriendRequest {
   });
   factory HandleFriendRequest.fromJson(Map<String, dynamic> m) {
     return HandleFriendRequest(
-      groupId: m['group_id'],
-      isAgree: m['is_agree'],
+      groupId: m['groupId'],
+      isAgree: m['isAgree'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'group_id': groupId,
-      'is_agree': isAgree,
+      'groupId': groupId,
+      'isAgree': isAgree,
     };
   }
 }
@@ -56,40 +56,40 @@ class HandleFriendResponse {
   });
   factory HandleFriendResponse.fromJson(Map<String, dynamic> m) {
     return HandleFriendResponse(
-      groupId: m['group_id'],
+      groupId: m['groupId'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'group_id': groupId,
+      'groupId': groupId,
     };
   }
 }
 
-class GroupUsersRequest {
+class GroupUserListRequest {
   final String groupId;
-  GroupUsersRequest({
+  GroupUserListRequest({
     required this.groupId,
   });
-  factory GroupUsersRequest.fromJson(Map<String, dynamic> m) {
-    return GroupUsersRequest(
-      groupId: m['group_id'],
+  factory GroupUserListRequest.fromJson(Map<String, dynamic> m) {
+    return GroupUserListRequest(
+      groupId: m['groupId'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'group_id': groupId,
+      'groupId': groupId,
     };
   }
 }
 
-class GroupUsersResponse {
+class GroupUserListResponse {
   final List<int> list;
-  GroupUsersResponse({
+  GroupUserListResponse({
     required this.list,
   });
-  factory GroupUsersResponse.fromJson(Map<String, dynamic> m) {
-    return GroupUsersResponse(
+  factory GroupUserListResponse.fromJson(Map<String, dynamic> m) {
+    return GroupUserListResponse(
       list: m['list'],
     );
   }
@@ -100,23 +100,105 @@ class GroupUsersResponse {
   }
 }
 
-// 群组信息
-class GroupInfoEntity {
-  final String groupId; // 群组id (group_user表)
-  final String aliasName; // 备注 (group_user表)
-  final String avatarUrl; // 头像 (user表)
-  final ChatMsg lastMsg; // 最后一条消息 (chat_msg表)
-  GroupInfoEntity({
+class MessageGroupInfoListRequest {
+  MessageGroupInfoListRequest();
+  factory MessageGroupInfoListRequest.fromJson(Map<String, dynamic> m) {
+    return MessageGroupInfoListRequest();
+  }
+  Map<String, dynamic> toJson() {
+    return {};
+  }
+}
+
+class ChatMsg {
+  final String groupId;
+
+  final int senderId;
+
+  final int type;
+
+  final String content;
+
+  final String uuid;
+
+  final int createTime;
+  ChatMsg({
+    required this.groupId,
+    required this.senderId,
+    required this.type,
+    required this.content,
+    required this.uuid,
+    required this.createTime,
+  });
+  factory ChatMsg.fromJson(Map<String, dynamic> m) {
+    return ChatMsg(
+      groupId: m['groupId'],
+      senderId: m['senderId'],
+      type: m['type'],
+      content: m['content'],
+      uuid: m['uuid'],
+      createTime: m['createTime'],
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'groupId': groupId,
+      'senderId': senderId,
+      'type': type,
+      'content': content,
+      'uuid': uuid,
+      'createTime': createTime,
+    };
+  }
+}
+
+class MessageGroupInfo {
+  final String groupId;
+
+  final String aliasName;
+
+  final String avatarUrl;
+
+  final ChatMsg lastMsg;
+  MessageGroupInfo({
     required this.groupId,
     required this.aliasName,
     required this.avatarUrl,
     required this.lastMsg,
   });
+  factory MessageGroupInfo.fromJson(Map<String, dynamic> m) {
+    return MessageGroupInfo(
+      groupId: m['groupId'],
+      aliasName: m['aliasName'],
+      avatarUrl: m['avatarUrl'],
+      lastMsg: ChatMsg.fromJson(m['lastMsg']),
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'groupId': groupId,
+      'aliasName': aliasName,
+      'avatarUrl': avatarUrl,
+      'lastMsg': lastMsg.toJson(),
+    };
+  }
 }
 
-// 群组消息
-class GroupMsgEntity {
-  final String groupId; // 群组id
-  List<ChatMsg> msgList; // 消息列表 (chat_msg表)
-  GroupMsgEntity({required this.groupId, required this.msgList});
+class MessageGroupInfoListResponse {
+  final List<MessageGroupInfo> list;
+  MessageGroupInfoListResponse({
+    required this.list,
+  });
+  factory MessageGroupInfoListResponse.fromJson(Map<String, dynamic> m) {
+    return MessageGroupInfoListResponse(
+      list: (m['list'] as List<dynamic>)
+          .map((i) => MessageGroupInfo.fromJson(i))
+          .toList(),
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'list': list.map((i) => i.toJson()),
+    };
+  }
 }
