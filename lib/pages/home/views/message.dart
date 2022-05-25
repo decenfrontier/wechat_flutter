@@ -1,9 +1,7 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/entities/message.dart';
-import 'package:ws_chat_flutter/common/mock/data.dart';
+import 'package:ws_chat_flutter/common/entities/index.dart';
+// import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/utils/timex.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
@@ -20,14 +18,15 @@ class MessagePage extends GetView<HomeController> {
       body: SizedBox(
         height: size.height,
         child: ListView.builder(
-            itemCount: Data.mockMessageList.length,
+            itemCount: controller.messageState.messageGroupList.length,
             itemBuilder: (context, index) {
-              ChatMsg item = Data.mockMessageList[index];
-              var senderId = item.senderId;
-              var userInfo = Data.mockGroupInfoMap[senderId]!;
+              ChatMsg item = controller.messageState.messageGroupList[index];
+              var groupId = item.groupId;
+              var groupInfo = controller.messageState.messageGroupInfoMap[groupId]!;
               var time_format = timeStampToString(item.createTime);
-              return buildMessageItem(userInfo["avatar"]!,
-                  userInfo["aliasName"]!, time_format, item.content);
+              print("index: $index, groupInfo: ${groupInfo}");
+              return buildMessageItem(groupInfo["avatarUrl"]!,
+                  groupInfo["aliasName"]!, time_format, item.content);
             }),
       ),
     );

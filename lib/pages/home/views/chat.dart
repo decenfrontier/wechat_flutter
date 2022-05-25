@@ -46,17 +46,17 @@ class ChatPage extends GetView<HomeController> {
       // 到了最后，再改成ListView.builder，现在代码少点，UI逻辑会更清楚
       child: ListView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
-          itemCount: Data.mockMessageList.length,
+          itemCount: Data.mockchatMessageList.length,
           itemBuilder: (context, index) {
-            final chatMsg = Data.mockMessageList[index];
+            final chatMsg = Data.mockchatMessageList[index];
             var senderId = chatMsg.senderId;
-            var userInfo = Data.mockGroupInfoMap[senderId]!;
-
+            var groupId = chatMsg.groupId;
+            var groupInfo = Data.mockGroupInfoMap[groupId]!;
             return ChatContentView(
               isSelf: senderId == 2,
               text: chatMsg.content,
-              avatar: userInfo["avatar"]!,
-              username: userInfo["aliasName"]!,
+              avatar: groupInfo["avatarUrl"]!,
+              username: groupInfo["aliasName"]!,
               type: chatMsg.type,
             );
           }),

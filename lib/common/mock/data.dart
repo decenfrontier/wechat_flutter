@@ -1,48 +1,49 @@
-import 'package:ws_chat_flutter/common/entities/message.dart';
+import 'package:ws_chat_flutter/common/entities/index.dart';
 
 class Data {
   static var mockGroupInfoMap = {
-    1: {
+    "39_40": {
       "aliasName": "flutter",
-      "avatar": "https://s1.ax1x.com/2022/05/19/Oq3yDg.jpg",
+      "avatarUrl": "https://s1.ax1x.com/2022/05/19/Oq3yDg.jpg",
     },
-    2: {
+    "39_41": {
       "aliasName": "python",
-      "avatar": "https://s1.ax1x.com/2022/05/19/Oq3fCq.jpg",
+      "avatarUrl": "https://s1.ax1x.com/2022/05/19/Oq3fCq.jpg",
     },
-    3: {
+    "39_42": {
       "aliasName": "golang",
-      "avatar": "https://s1.ax1x.com/2022/05/19/Oq3h80.jpg",
+      "avatarUrl": "https://s1.ax1x.com/2022/05/19/Oq3h80.jpg",
     },
-    4: {
+    "39_43": {
       "aliasName": "ruby",
-      "avatar": "https://s1.ax1x.com/2022/05/19/Oq3TrF.jpg",
+      "avatarUrl": "https://s1.ax1x.com/2022/05/19/Oq3TrF.jpg",
     },
-    5: {
+    "39_44": {
       "aliasName": "C++",
-      "avatar": "https://s1.ax1x.com/2022/05/19/Oq8API.jpg",
+      "avatarUrl": "https://s1.ax1x.com/2022/05/19/Oq8API.jpg",
     },
   };
 
+  // 消息页
   static List<ChatMsg> mockMessageList = [
     ChatMsg(
-      groupId: 1,
+      groupId: "39_40",
       senderId: 1,
-      type: 2,
+      type: 1,
       content: "一套代码支持全平台",
       uuid: "123",
       createTime: 1652973045000,
     ),
     ChatMsg(
-      groupId: 1,
+      groupId: "39_41",
       senderId: 2,
-      type: 2,
+      type: 1,
       content: "hello world",
       uuid: "123",
       createTime: 1652973046000,
     ),
     ChatMsg(
-      groupId: 1,
+      groupId: "39_42",
       senderId: 3,
       type: 2,
       content: "[图片]",
@@ -50,17 +51,61 @@ class Data {
       createTime: 1652973047000,
     ),
     ChatMsg(
-      groupId: 1,
+      groupId: "39_43",
       senderId: 4,
-      type: 2,
+      type: 1,
       content: "通过通信来共享内存, 而非共享内存来通信",
       uuid: "123",
       createTime: 1652973048000,
     ),
     ChatMsg(
-      groupId: 1,
+      groupId: "39_44",
       senderId: 5,
+      type: 1,
+      content: "欢迎来到微信",
+      uuid: "123",
+      createTime: 1652973049000,
+    ),
+  ];
+
+  // 聊天详情
+  static List<ChatMsg> mockchatMessageList = [
+    ChatMsg(
+      groupId: "39_40",
+      senderId: 1,
+      type: 1,
+      content: "一套代码支持全平台",
+      uuid: "123",
+      createTime: 1652973045000,
+    ),
+    ChatMsg(
+      groupId: "39_41",
+      senderId: 2,
+      type: 1,
+      content: "hello world",
+      uuid: "123",
+      createTime: 1652973046000,
+    ),
+    ChatMsg(
+      groupId: "39_41",
+      senderId: 3,
       type: 2,
+      content: "[图片]",
+      uuid: "123",
+      createTime: 1652973047000,
+    ),
+    ChatMsg(
+      groupId: "39_41",
+      senderId: 4,
+      type: 1,
+      content: "通过通信来共享内存, 而非共享内存来通信",
+      uuid: "123",
+      createTime: 1652973048000,
+    ),
+    ChatMsg(
+      groupId: "39_41",
+      senderId: 5,
+      type: 1,
       content: "欢迎来到微信",
       uuid: "123",
       createTime: 1652973049000,

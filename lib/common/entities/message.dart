@@ -1,9 +1,7 @@
 // --./message--
 
 class UploadRequest {
-  final int groupId;
-
-  final int senderId;
+  final String groupId;
 
   final int type;
 
@@ -12,7 +10,6 @@ class UploadRequest {
   final String uuid;
   UploadRequest({
     required this.groupId,
-    required this.senderId,
     required this.type,
     required this.content,
     required this.uuid,
@@ -20,7 +17,6 @@ class UploadRequest {
   factory UploadRequest.fromJson(Map<String, dynamic> m) {
     return UploadRequest(
       groupId: m['groupId'],
-      senderId: m['senderId'],
       type: m['type'],
       content: m['content'],
       uuid: m['uuid'],
@@ -29,7 +25,6 @@ class UploadRequest {
   Map<String, dynamic> toJson() {
     return {
       'groupId': groupId,
-      'senderId': senderId,
       'type': type,
       'content': content,
       'uuid': uuid,
@@ -60,34 +55,34 @@ class UploadResponse {
 }
 
 class PullRequest {
-  final String email;
-
   final String platform;
 
-  final int groupId;
+  final String groupId;
+
+  final int chatMsgId;
   PullRequest({
-    required this.email,
     required this.platform,
     required this.groupId,
+    required this.chatMsgId,
   });
   factory PullRequest.fromJson(Map<String, dynamic> m) {
     return PullRequest(
-      email: m['email'],
       platform: m['platform'],
       groupId: m['groupId'],
+      chatMsgId: m['chatMsgId'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'email': email,
       'platform': platform,
       'groupId': groupId,
+      'chatMsgId': chatMsgId,
     };
   }
 }
 
 class ChatMsg {
-  final int groupId;
+  final String groupId;
 
   final int senderId;
 

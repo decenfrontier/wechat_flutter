@@ -1,5 +1,7 @@
 // --./group--
 
+import 'message.dart';
+
 class AddFriendRequest {
   final int userId;
   AddFriendRequest({
@@ -110,47 +112,6 @@ class MessageGroupInfoListRequest {
   }
 }
 
-class ChatMsg {
-  final String groupId;
-
-  final int senderId;
-
-  final int type;
-
-  final String content;
-
-  final String uuid;
-
-  final int createTime;
-  ChatMsg({
-    required this.groupId,
-    required this.senderId,
-    required this.type,
-    required this.content,
-    required this.uuid,
-    required this.createTime,
-  });
-  factory ChatMsg.fromJson(Map<String, dynamic> m) {
-    return ChatMsg(
-      groupId: m['groupId'],
-      senderId: m['senderId'],
-      type: m['type'],
-      content: m['content'],
-      uuid: m['uuid'],
-      createTime: m['createTime'],
-    );
-  }
-  Map<String, dynamic> toJson() {
-    return {
-      'groupId': groupId,
-      'senderId': senderId,
-      'type': type,
-      'content': content,
-      'uuid': uuid,
-      'createTime': createTime,
-    };
-  }
-}
 
 class MessageGroupInfo {
   final String groupId;

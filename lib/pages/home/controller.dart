@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:web_socket_channel/io.dart';
+import 'package:ws_chat_flutter/common/apis/group.dart';
+import 'package:ws_chat_flutter/common/entities/index.dart';
 // import 'package:web_socket_channel/status.dart' as status;
-import 'package:ws_chat_flutter/common/entities/user.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
@@ -14,7 +15,7 @@ class HomeController extends GetxController {
   // 响应式成员变量
   final homeState = HomeState();
   final mineState = MineState();
-  // final messageState = MessageState();
+  final messageState = MessageState();
 
   @override
   void onInit() {
@@ -48,7 +49,27 @@ class HomeController extends GetxController {
       // channel.sink.close(status.goingAway);
     });
     // 发送请求 获取消息页数据
-    // GroupAPI.
+    var data2 = MessageGroupInfoListRequest();
+    GroupAPI.messageGroupInfoList(data: data2).then((messageGroupInfoListResp) {
+      var messageGroupInfoList = messageGroupInfoListResp.list;
+      var messageGroupInfoMap = <String, dynamic>{};
+      var messageGroupList = <ChatMsg>[];
+      for (var i = 0; i < messageGroupInfoList.length; i++) {
+        var groupMsg = messageGroupInfoList[i];
+        var groupId = groupMsg.groupId;
+        messageGroupInfoMap[groupId] = {
+          "aliasName": groupMsg.aliasName,
+          "avatarUrl": groupMsg.avatarUrl,
+        };
+        messageGroupList.add(groupMsg.lastMsg);
+      }
+      messageState.messageGroupInfoMap = messageGroupInfoMap;
+      messageState.messageGroupList = messageGroupList;
+      print("获取消息页数据成功");
+    }).catchError((err) {
+      // 显示弹窗
+      Get.snackbar("获取消息页数据失败", "$err");
+    });
   }
 
   @override

@@ -1,4 +1,6 @@
-import 'package:ws_chat_flutter/common/entities/group.dart';
+import 'package:dio/dio.dart';
+import 'package:ws_chat_flutter/common/entities/index.dart';
+import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xerr/index.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 import 'package:ws_chat_flutter/common/utils/http.dart';
@@ -11,6 +13,7 @@ class GroupAPI {
     var respData = await _httpClient.post(
       '/api/group/add_friend',
       data: data?.toJson(),
+      options: Options(headers: {"Authorization": UserStore.to.token}),
     );
     var respBody = RespBody.fromJson(respData);
     if (respBody.code == Status.OK) {
@@ -25,6 +28,7 @@ class GroupAPI {
     var respData = await _httpClient.post(
       '/api/group/handle_friend',
       data: data?.toJson(),
+      options: Options(headers: {"Authorization": UserStore.to.token}),
     );
     var respBody = RespBody.fromJson(respData);
     if (respBody.code == Status.OK) {
@@ -39,6 +43,7 @@ class GroupAPI {
     var respData = await _httpClient.post(
       '/api/group/group_user_list',
       data: data?.toJson(),
+      options: Options(headers: {"Authorization": UserStore.to.token}),
     );
     var respBody = RespBody.fromJson(respData);
     if (respBody.code == Status.OK) {
@@ -53,6 +58,7 @@ class GroupAPI {
     var respData = await _httpClient.post(
       '/api/group/message_group_info_list',
       data: data?.toJson(),
+      options: Options(headers: {"Authorization": UserStore.to.token}),
     );
     var respBody = RespBody.fromJson(respData);
     if (respBody.code == Status.OK) {
