@@ -24,7 +24,6 @@ class MessagePage extends GetView<HomeController> {
               var groupId = item.groupId;
               var groupInfo = controller.messageState.messageGroupInfoMap[groupId]!;
               var time_format = timeStampToString(item.createTime);
-              print("index: $index, groupInfo: ${groupInfo}");
               return buildMessageItem(groupInfo["avatarUrl"]!,
                   groupInfo["aliasName"]!, time_format, item.content);
             }),
