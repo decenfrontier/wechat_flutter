@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/pages/home/index.dart';
 
-// import 'views/chat.dart';
-import 'views/discover.dart';
-import 'views/mine.dart';
-import 'views/message.dart';
-import 'views/friend.dart';
+import 'controller.dart';
+import '../discover/index.dart';
+import '../friend/index.dart';
+import '../message/index.dart';
+import '../mine/index.dart';
 
 class HomePage extends GetView<HomeController> {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final controller1 = Get.put(MineController());
+  final controller2 = Get.put(MessageController());
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,10 @@ class HomePage extends GetView<HomeController> {
 
   IndexedStack buildIndexedStack() {
     return IndexedStack(
-      index: controller.homeState.tabIndex,
+      index: controller.state.tabIndex,
       children: [
         MessagePage(),
         FriendPage(),
-        // ChatPage(),
         DiscoverPage(),
         MinePage(),
       ],
@@ -35,13 +36,13 @@ class HomePage extends GetView<HomeController> {
 
   BottomNavigationBar buildBottomNavigationBar() {
     return BottomNavigationBar(
-      currentIndex: controller.homeState.tabIndex,
+      currentIndex: controller.state.tabIndex,
       selectedItemColor: Colors.green,
       unselectedItemColor: Colors.grey,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
-        controller.homeState.tabIndex = index;
+        controller.state.tabIndex = index;
       },
       items: [
         BottomNavigationBarItem(

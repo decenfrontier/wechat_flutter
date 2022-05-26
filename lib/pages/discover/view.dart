@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
-import '../controller.dart';
+import 'controller.dart';
 
-class DiscoverPage extends GetView<HomeController> {
+class DiscoverPage extends GetView<DiscoverController> {
   const DiscoverPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +39,6 @@ class DiscoverPage extends GetView<HomeController> {
       ),
     );
   }
-
-  
 }
 
 Ink buildItem(Function press, String image, String text) {

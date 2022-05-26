@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
-// import 'package:ws_chat_flutter/common/mock/data.dart';
+import 'package:ws_chat_flutter/common/entities/message.dart';
 import 'package:ws_chat_flutter/common/utils/timex.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-import 'package:ws_chat_flutter/pages/home/views/chat.dart';
 
-import '../controller.dart';
+import '../chat/view.dart';
+import 'controller.dart';
 
-class MessagePage extends GetView<HomeController> {
+class MessagePage extends GetView<MessageController> {
   const MessagePage({Key? key}) : super(key: key);
 
   @override
@@ -19,12 +18,12 @@ class MessagePage extends GetView<HomeController> {
       body: SizedBox(
         height: size.height,
         child: ListView.builder(
-            itemCount: controller.messageState.messageGroupList.length,
+            itemCount: controller.state.messageGroupList.length,
             itemBuilder: (context, index) {
-              ChatMsg chatMsg = controller.messageState.messageGroupList[index];
+              ChatMsg chatMsg = controller.state.messageGroupList[index];
               var groupId = chatMsg.groupId;
               var groupInfo =
-                  controller.messageState.messageGroupInfoMap[groupId]!;
+                  controller.state.messageGroupInfoMap[groupId]!;
               var time_format = timeStampToString(chatMsg.createTime);
               return buildMessageItem(
                   groupId,
@@ -45,11 +44,13 @@ class MessagePage extends GetView<HomeController> {
       child: InkWell(
           onTap: () {
             // TODO: 读取离线消息刷新页面
-            Get.to(() => ChatPage(), arguments: {
-              "groupId": groupId,
-              "maxMsgId": maxMsgId,
-              "aliasName": aliasName
-            }, transition: Transition.rightToLeft);
+            Get.to(() => ChatPage(),
+                arguments: {
+                  "groupId": groupId,
+                  "maxMsgId": maxMsgId,
+                  "aliasName": aliasName
+                },
+                transition: Transition.rightToLeft);
           },
           child: Row(children: [
             buildMessageItemAvatar(avator),

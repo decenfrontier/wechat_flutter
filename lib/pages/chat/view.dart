@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/style/icons.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 import 'package:ws_chat_flutter/common/widgets/chat_content.dart';
-import 'package:ws_chat_flutter/common/mock/data.dart';
 
-import '../controller.dart';
+import 'controller.dart';
 
-class ChatPage extends GetView<HomeController> {
-  ChatPage({Key? key}) : super(key: key);
+class ChatPage extends GetView<ChatController> {
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,6 @@ class ChatPage extends GetView<HomeController> {
     var maxMsgId = data["maxMsgId"];
     var aliasName = data["aliasName"];
     print("groupId: $groupId, maxMsgId: $maxMsgId, aliasName: $aliasName");
-    // 读取接口数据
-    // Gro
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: HeaderBar.BuildAppBar(aliasName),
@@ -37,7 +35,7 @@ class ChatPage extends GetView<HomeController> {
     );
   }
 
-  /// 聊天内容显示
+  // 聊天内容显示
   Widget chatView() {
     return Expanded(
       child: ListView.builder(
@@ -59,7 +57,7 @@ class ChatPage extends GetView<HomeController> {
     );
   }
 
-  /// 最下方的输入框部分
+  // 最下方的输入框部分
   Widget inputView() {
     return Container(
       padding: EdgeInsets.only(
@@ -152,5 +150,4 @@ class ChatPage extends GetView<HomeController> {
 
   //   _controller.clear();
   // }
-
 }

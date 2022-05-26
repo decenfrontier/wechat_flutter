@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
-import '../controller.dart';
+import 'index.dart';
 
-class FriendPage extends GetView<HomeController> {
+class FriendPage extends GetView<FriendController> {
   const FriendPage({Key? key}) : super(key: key);
 
   final String labels = "↑ABCDEFGHIJKLMNOPQRSTUVWSYZ#";

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:web_socket_channel/io.dart';
-import 'package:ws_chat_flutter/common/apis/group.dart';
 import 'package:ws_chat_flutter/common/entities/index.dart';
 // import 'package:web_socket_channel/status.dart' as status;
 import 'package:ws_chat_flutter/common/apis/user.dart';
@@ -13,9 +12,7 @@ class HomeController extends GetxController {
   HomeController();
 
   // 响应式成员变量
-  final homeState = HomeState();
-  final mineState = MineState();
-  final messageState = MessageState();
+  final state = HomeState();
 
   @override
   void onInit() {
@@ -25,10 +22,10 @@ class HomeController extends GetxController {
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
       // 我的
-      mineState.userId = personalResp.userId;
-      mineState.email = personalResp.email;
-      mineState.nickName = personalResp.nickName;
-      mineState.gender = personalResp.gender;
+      state.userId = personalResp.userId;
+      state.email = personalResp.email;
+      state.nickName = personalResp.nickName;
+      state.gender = personalResp.gender;
       print("获取个人信息成功");
     }).catchError((err) {
       var errInfo = "$err";
@@ -47,28 +44,6 @@ class HomeController extends GetxController {
       print("received $message");
       // channel.sink.add('received!'); // 收到消息后回复
       // channel.sink.close(status.goingAway);
-    });
-    // 发送请求 获取消息页数据
-    var data2 = MessageGroupInfoListRequest();
-    GroupAPI.messageGroupInfoList(data: data2).then((messageGroupInfoListResp) {
-      var messageGroupInfoList = messageGroupInfoListResp.list;
-      var messageGroupInfoMap = <String, dynamic>{};
-      var messageGroupList = <ChatMsg>[];
-      for (var i = 0; i < messageGroupInfoList.length; i++) {
-        var groupMsg = messageGroupInfoList[i];
-        var groupId = groupMsg.groupId;
-        messageGroupInfoMap[groupId] = {
-          "aliasName": groupMsg.aliasName,
-          "avatarUrl": groupMsg.avatarUrl,
-        };
-        messageGroupList.add(groupMsg.lastMsg);
-      }
-      messageState.messageGroupInfoMap = messageGroupInfoMap;
-      messageState.messageGroupList = messageGroupList;
-      print("获取消息页数据成功");
-    }).catchError((err) {
-      // 显示弹窗
-      Get.snackbar("获取消息页数据失败", "$err");
     });
   }
 

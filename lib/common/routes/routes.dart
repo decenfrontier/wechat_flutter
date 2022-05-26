@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/middlewares/auth.dart';
-import 'package:ws_chat_flutter/pages/home/views/chat.dart';
-import 'package:ws_chat_flutter/pages/home/views/discover.dart';
-import 'package:ws_chat_flutter/pages/home/views/friend.dart';
-import 'package:ws_chat_flutter/pages/home/views/message.dart';
-import 'package:ws_chat_flutter/pages/home/views/mine.dart';
+import 'package:ws_chat_flutter/pages/chat/index.dart';
+import 'package:ws_chat_flutter/pages/discover/index.dart';
+import 'package:ws_chat_flutter/pages/friend/index.dart';
+import 'package:ws_chat_flutter/pages/message/index.dart';
+import 'package:ws_chat_flutter/pages/mine/index.dart';
 import 'package:ws_chat_flutter/pages/frame/login/bindings.dart';
 import 'package:ws_chat_flutter/pages/frame/login/view.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
@@ -39,11 +39,11 @@ class AppRouter {
       binding: HomeBinding(),
       middlewares: [LoginRequired()],
       children: [
-        GetPage(name: Message, page: () => MessagePage()),
-        GetPage(name: Friend, page: () => FriendPage()),
-        GetPage(name: Discover, page: () => DiscoverPage()),
-        GetPage(name: Mine, page: () => MinePage()),
-        GetPage(name: Chat, page: () => ChatPage()),
+        GetPage(name: Message, page: () => MessagePage(), binding: MessageBinding()),
+        GetPage(name: Friend, page: () => FriendPage(), binding: FriendBinding()),
+        GetPage(name: Discover, page: () => DiscoverPage(), binding: DiscoverBinding()),
+        GetPage(name: Mine, page: () => MinePage(), binding: MineBinding()),
+        GetPage(name: Chat, page: () => ChatPage(), binding: ChatBinding()),
       ],
     ),
   ];
