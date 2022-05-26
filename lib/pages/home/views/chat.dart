@@ -13,6 +13,12 @@ class ChatPage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    var data = Get.arguments as Map<String, dynamic>; // 获取参数
+    var groupId = data["groupId"];
+    var lastMsgId = data["lastMsgId"];
+    print("groupId: $groupId, lastMsgId: $lastMsgId");
+    // 读取接口数据
+    // Gro
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: HeaderBar.BuildAppBar("群 聊"),

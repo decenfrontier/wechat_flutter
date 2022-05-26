@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/pages/home/index.dart';
 
-import 'views/chat.dart';
+// import 'views/chat.dart';
 import 'views/discover.dart';
 import 'views/mine.dart';
 import 'views/message.dart';
@@ -26,8 +26,8 @@ class HomePage extends GetView<HomeController> {
       children: [
         MessagePage(),
         FriendPage(),
-        ChatPage(),
-        // DiscoverPage(),
+        // ChatPage(),
+        DiscoverPage(),
         MinePage(),
       ],
     );

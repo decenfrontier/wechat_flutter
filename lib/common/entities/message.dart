@@ -82,6 +82,8 @@ class PullRequest {
 }
 
 class ChatMsg {
+  int id;
+
   final String groupId;
 
   final int senderId;
@@ -94,6 +96,7 @@ class ChatMsg {
 
   final int createTime;
   ChatMsg({
+    this.id = 0,
     required this.groupId,
     required this.senderId,
     required this.type,
@@ -103,6 +106,7 @@ class ChatMsg {
   });
   factory ChatMsg.fromJson(Map<String, dynamic> m) {
     return ChatMsg(
+      id: m['id'],
       groupId: m['groupId'],
       senderId: m['senderId'],
       type: m['type'],
@@ -113,6 +117,7 @@ class ChatMsg {
   }
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'groupId': groupId,
       'senderId': senderId,
       'type': type,
