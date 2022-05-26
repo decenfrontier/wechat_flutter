@@ -39,49 +39,51 @@ class DiscoverPage extends GetView<HomeController> {
     );
   }
 
-  Ink buildItem(Function press, String image, String text) {
-    return Ink(
-      child: InkWell(
-        child: Container(
-          color: Colors.white,
-          child: Row(
-            children: [
-              SizedBox(
-                width: 15,
+  
+}
+
+Ink buildItem(Function press, String image, String text) {
+  return Ink(
+    child: InkWell(
+      child: Container(
+        color: Colors.white,
+        child: Row(
+          children: [
+            SizedBox(
+              width: 15,
+            ),
+            Image.asset(
+              image,
+              width: 20,
+            ),
+            SizedBox(
+              width: 12,
+            ),
+            Expanded(
+                child: Container(
+              padding: EdgeInsets.only(top: 15, right: 15, bottom: 15),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom:
+                          BorderSide(color: Colors.grey.shade200, width: 1))),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                    text,
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                  )),
+                  Image.asset(
+                    "assets/images/next.png",
+                    width: 16,
+                    color: Colors.grey,
+                  )
+                ],
               ),
-              Image.asset(
-                image,
-                width: 20,
-              ),
-              SizedBox(
-                width: 12,
-              ),
-              Expanded(
-                  child: Container(
-                padding: EdgeInsets.only(top: 15, right: 15, bottom: 15),
-                decoration: BoxDecoration(
-                    border: Border(
-                        bottom:
-                            BorderSide(color: Colors.grey.shade200, width: 1))),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Text(
-                      text,
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    )),
-                    Image.asset(
-                      "assets/images/next.png",
-                      width: 20,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-              ))
-            ],
-          ),
+            ))
+          ],
         ),
       ),
-    );
-  }
+    ),
+  );
 }

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controller.dart';
+import './discover.dart';
 
 class MinePage extends GetView<HomeController> {
   const MinePage({Key? key}) : super(key: key);
@@ -117,46 +118,46 @@ class MinePage extends GetView<HomeController> {
     );
   }
 
-  Ink buildItem(Function press, String image, String text) {
-    return Ink(
-      child: InkWell(
-        onTap: () {},
-        child: Container(
-          color: Colors.white,
-          child: Row(
-            children: [
-              SizedBox(
-                width: 15,
-              ),
-              Image.asset(
-                image,
-                width: 20,
-              ),
-              SizedBox(
-                width: 12,
-              ),
-              Expanded(
-                  child: Container(
-                padding: EdgeInsets.only(top: 15, right: 15, bottom: 15),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Text(
-                      text,
-                      style: TextStyle(color: Colors.black, fontSize: 16),
-                    )),
-                    Image.asset(
-                      "assets/images/next.png",
-                      width: 18,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-              ))
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Ink buildItem(Function press, String image, String text) {
+  //   return Ink(
+  //     child: InkWell(
+  //       onTap: () {},
+  //       child: Container(
+  //         color: Colors.white,
+  //         child: Row(
+  //           children: [
+  //             SizedBox(
+  //               width: 15,
+  //             ),
+  //             Image.asset(
+  //               image,
+  //               width: 20,
+  //             ),
+  //             SizedBox(
+  //               width: 12,
+  //             ),
+  //             Expanded(
+  //                 child: Container(
+  //               padding: EdgeInsets.only(top: 15, right: 15, bottom: 15),
+  //               child: Row(
+  //                 children: [
+  //                   Expanded(
+  //                       child: Text(
+  //                     text,
+  //                     style: TextStyle(color: Colors.black, fontSize: 16),
+  //                   )),
+  //                   Image.asset(
+  //                     "assets/images/next.png",
+  //                     width: 18,
+  //                     color: Colors.grey,
+  //                   )
+  //                 ],
+  //               ),
+  //             ))
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
