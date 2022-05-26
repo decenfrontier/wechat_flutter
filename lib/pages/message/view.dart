@@ -17,13 +17,12 @@ class MessagePage extends GetView<MessageController> {
       appBar: HeaderBar.BuildAppBar("消 息"),
       body: SizedBox(
         height: size.height,
-        child: ListView.builder(
+        child: Obx(() => ListView.builder(
             itemCount: controller.state.messageGroupList.length,
             itemBuilder: (context, index) {
               ChatMsg chatMsg = controller.state.messageGroupList[index];
               var groupId = chatMsg.groupId;
-              var groupInfo =
-                  controller.state.messageGroupInfoMap[groupId]!;
+              var groupInfo = controller.state.messageGroupInfoMap[groupId]!;
               var time_format = timeStampToString(chatMsg.createTime);
               return buildMessageItem(
                   groupId,
@@ -32,7 +31,7 @@ class MessagePage extends GetView<MessageController> {
                   groupInfo["aliasName"]!,
                   time_format,
                   chatMsg.content);
-            }),
+            })),
       ),
     );
   }

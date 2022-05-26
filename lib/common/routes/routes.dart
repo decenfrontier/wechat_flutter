@@ -38,15 +38,36 @@ class AppRouter {
       page: () => HomePage(),
       binding: HomeBinding(),
       middlewares: [LoginRequired()],
-      children: [
-        GetPage(name: Message, page: () => MessagePage(), binding: MessageBinding()),
-        GetPage(name: Friend, page: () => FriendPage(), binding: FriendBinding()),
-        GetPage(name: Discover, page: () => DiscoverPage(), binding: DiscoverBinding()),
-        GetPage(name: Mine, page: () => MinePage(), binding: MineBinding()),
-        GetPage(name: Chat, page: () => ChatPage(), binding: ChatBinding()),
-      ],
+    ),
+    GetPage(
+      name: Message,
+      page: () => MessagePage(),
+      binding: MessageBinding(),
+      middlewares: [LoginRequired()],
+    ),
+    GetPage(
+      name: Friend,
+      page: () => FriendPage(),
+      binding: FriendBinding(),
+      middlewares: [LoginRequired()],
+    ),
+    GetPage(
+      name: Discover,
+      page: () => DiscoverPage(),
+      binding: DiscoverBinding(),
+      middlewares: [LoginRequired()],
+    ),
+    GetPage(
+      name: Mine,
+      page: () => MinePage(),
+      binding: MineBinding(),
+      middlewares: [LoginRequired()],
+    ),
+    GetPage(
+      name: Chat,
+      page: () => ChatPage(),
+      binding: ChatBinding(),
+      middlewares: [LoginRequired()],
     ),
   ];
-
-  
 }
