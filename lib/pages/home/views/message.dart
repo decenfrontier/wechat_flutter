@@ -26,26 +26,35 @@ class MessagePage extends GetView<HomeController> {
               var groupInfo =
                   controller.messageState.messageGroupInfoMap[groupId]!;
               var time_format = timeStampToString(chatMsg.createTime);
-              return buildMessageItem(groupId, chatMsg.id, groupInfo["avatarUrl"]!,
-                  groupInfo["aliasName"]!, time_format, chatMsg.content);
+              return buildMessageItem(
+                  groupId,
+                  chatMsg.id,
+                  groupInfo["avatarUrl"]!,
+                  groupInfo["aliasName"]!,
+                  time_format,
+                  chatMsg.content);
             }),
       ),
     );
   }
 
-  Container buildMessageItem(String groupId, int lastMsgId, String avator, String name,
-      String time_format, String lastMessage) {
+  Container buildMessageItem(String groupId, int maxMsgId, String avator,
+      String aliasName, String timeFormat, String lastMessage) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: InkWell(
           onTap: () {
-            print("打开群组会话: $name");
-            Get.to(() => ChatPage(), arguments: {"groupId": groupId, "lastMsgId": lastMsgId});
+            // TODO: 读取离线消息刷新页面
+            Get.to(() => ChatPage(), arguments: {
+              "groupId": groupId,
+              "maxMsgId": maxMsgId,
+              "aliasName": aliasName
+            }, transition: Transition.rightToLeft);
           },
           child: Row(children: [
             buildMessageItemAvatar(avator),
             SizedBox(width: 10),
-            buildMessageItemContent(name, time_format, lastMessage)
+            buildMessageItemContent(aliasName, timeFormat, lastMessage)
           ])),
     );
   }

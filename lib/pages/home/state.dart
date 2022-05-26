@@ -3,7 +3,7 @@ import 'package:ws_chat_flutter/common/entities/index.dart';
 
 // 通用状态
 class HomeState {
-  var _tabIndex = 2.obs;  // 当前选项卡索引
+  var _tabIndex = RxInt(0);  // 当前选项卡索引
   set tabIndex(value) => _tabIndex.value = value;
   get tabIndex => _tabIndex.value;
 }
@@ -20,12 +20,12 @@ class MessageState {
 }
 
 // 聊天页 状态
-// class ChatState {
-//   // 群组消息表
-//   var _groupMsgList = Rx<List<GroupMsgEntity>?>(null);
-//   set groupList(value) => _groupMsgList.value = value;
-//   get groupList => _groupMsgList.value;
-// }
+class ChatState {
+  // 群组消息表
+  var _groupMsgList = Rx<List<ChatMsg>?>([]);
+  set groupList(value) => _groupMsgList.value = value;
+  get groupList => _groupMsgList.value;
+}
 
 // 我的页 状态
 class MineState {

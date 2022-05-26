@@ -22,7 +22,7 @@ class AppRouter {
   static const Mine = '/mine'; // 我的
   static const Chat = '/chat'; // 聊天
   // 初始路由
-  static const INITIAL = Login;
+  static const INITIAL = Home;
   // 未知路由
   static final unknownRoute =
       GetPage(name: NotFound, page: () => NotFoundView());

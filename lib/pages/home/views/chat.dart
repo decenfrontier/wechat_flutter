@@ -15,32 +15,23 @@ class ChatPage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var data = Get.arguments as Map<String, dynamic>; // 获取参数
     var groupId = data["groupId"];
-    var lastMsgId = data["lastMsgId"];
-    print("groupId: $groupId, lastMsgId: $lastMsgId");
+    var maxMsgId = data["maxMsgId"];
+    var aliasName = data["aliasName"];
+    print("groupId: $groupId, maxMsgId: $maxMsgId, aliasName: $aliasName");
     // 读取接口数据
     // Gro
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: HeaderBar.BuildAppBar("群 聊"),
-      body: bodyView(),
-    );
-  }
-
-  Widget bodyView() {
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        // 点击其他地方的时候，让输入框失去焦点
-        // Focus.of(context).requestFocus(FocusNode());
-      },
-      child: SafeArea(
-        child: Column(
-          children: [
-            // 上半部分：聊天内容显示
-            chatView(),
-            // 下半部分：输入框
-            inputView(),
-          ],
+      appBar: HeaderBar.BuildAppBar(aliasName),
+      body: GestureDetector(
+        // behavior: HitTestBehavior.translucent,
+        child: SafeArea(
+          child: Column(
+            children: [
+              chatView(),
+              inputView(),
+            ],
+          ),
         ),
       ),
     );
@@ -49,7 +40,6 @@ class ChatPage extends GetView<HomeController> {
   /// 聊天内容显示
   Widget chatView() {
     return Expanded(
-      // 到了最后，再改成ListView.builder，现在代码少点，UI逻辑会更清楚
       child: ListView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
           itemCount: Data.mockchatMessageList.length,
