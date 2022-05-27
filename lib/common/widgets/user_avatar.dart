@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'network_img.dart';
+
 class UserAvatar extends StatelessWidget {
   final String image;
   final VoidCallback onPressed;
@@ -22,16 +24,7 @@ class UserAvatar extends StatelessWidget {
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         padding: padding,
         constraints: BoxConstraints(minWidth: 0.0, minHeight: 0.0),
-        child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-            child: FadeInImage.assetNetwork(
-              placeholder: 'assets/images/icon.png',  // https://s1.ax1x.com/2022/05/19/Oq3yDg.jpg
-              //预览图
-              fit: BoxFit.fitWidth,
-              image: image,
-              width: width,
-              height: height,
-            )),
+        child: FadeInNetworkImg(image, width: width, height: height),
         onPressed: onPressed);
   }
 }

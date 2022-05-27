@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/entities/message.dart';
 import 'package:ws_chat_flutter/common/utils/timex.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
+import 'package:ws_chat_flutter/common/widgets/network_img.dart';
 
 import '../chat/view.dart';
 import 'controller.dart';
@@ -59,16 +60,10 @@ class MessagePage extends GetView<MessageController> {
     );
   }
 
-  ClipRRect buildMessageItemAvatar(String avator) {
+  ClipRRect buildMessageItemAvatar(String avatarUrl) {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(5)),
-      child: FadeInImage.assetNetwork(
-        placeholder: 'assets/images/icon.png',
-        fit: BoxFit.fitWidth,
-        image: avator,
-        width: 40,
-        height: 40,
-      ),
+      child: FadeInNetworkImg(avatarUrl, width: 40, height: 40),
     );
   }
 

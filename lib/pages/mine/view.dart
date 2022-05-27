@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:ws_chat_flutter/common/widgets/network_img.dart';
 
 import '../discover/view.dart';
 import 'controller.dart';
@@ -34,11 +35,7 @@ class MinePage extends GetView<MineController> {
                   children: [
                     Row(
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          child: Image.asset("assets/images/avator1.jpg",
-                              width: 55),
-                        ),
+                        Obx(() => FadeInNetworkImg(controller.state.avatarUrl)),
                         SizedBox(
                           width: 15,
                         ),
@@ -118,3 +115,4 @@ class MinePage extends GetView<MineController> {
     );
   }
 }
+

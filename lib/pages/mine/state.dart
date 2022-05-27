@@ -16,4 +16,8 @@ class MineState {
   var _gender = 0.obs;
   set gender(value) => _gender.value = value;
   get gender => _gender.value;
+
+  var _avatarUrl = "".obs;
+  set avatarUrl(value) => _avatarUrl.value = value;
+  get avatarUrl => _avatarUrl.value;
 }
