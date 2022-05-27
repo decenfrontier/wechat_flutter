@@ -36,7 +36,7 @@ class MinePage extends GetView<MineController> {
                     children: [
                       Row(
                         children: [
-                          Obx(() => controller.state.loaded == true
+                          Obx(() => controller.state.loaded
                               ? FadeInNetworkImg(controller.state.avatarUrl)
                               : SizedBox()),
                           SizedBox(

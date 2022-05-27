@@ -59,24 +59,24 @@ class PullRequest {
 
   final String groupId;
 
-  final int chatMsgId;
+  final int maxMsgId;
   PullRequest({
     required this.platform,
     required this.groupId,
-    required this.chatMsgId,
+    required this.maxMsgId,
   });
   factory PullRequest.fromJson(Map<String, dynamic> m) {
     return PullRequest(
       platform: m['platform'],
       groupId: m['groupId'],
-      chatMsgId: m['chatMsgId'],
+      maxMsgId: m['maxMsgId'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
       'platform': platform,
       'groupId': groupId,
-      'chatMsgId': chatMsgId,
+      'maxMsgId': maxMsgId,
     };
   }
 }

@@ -54,7 +54,7 @@ class GroupAPI {
 
   // 消息页 群组信息列表
   static Future<MessageGroupInfoListResponse> messageGroupInfoList(
-      {MessageGroupInfoListRequest? data}) async {
+      MessageGroupInfoListRequest? data) async {
     var respData = await _httpClient.post(
       '/api/group/message_group_info_list',
       data: data?.toJson(),

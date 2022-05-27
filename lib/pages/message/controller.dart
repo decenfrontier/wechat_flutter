@@ -5,7 +5,7 @@ import 'package:ws_chat_flutter/common/entities/index.dart';
 import 'index.dart';
 
 class MessageController extends GetxController {
-  MessageController();
+  static MessageController get to => Get.find();
 
   final state = MessageState();
 
@@ -15,8 +15,8 @@ class MessageController extends GetxController {
     super.onInit();
     print("message on init");
     // 发送请求 获取消息页数据
-    var data2 = MessageGroupInfoListRequest();
-    GroupAPI.messageGroupInfoList(data: data2).then((messageGroupInfoListResp) {
+    var data = MessageGroupInfoListRequest();
+    GroupAPI.messageGroupInfoList(data).then((messageGroupInfoListResp) {
       var messageGroupInfoList = messageGroupInfoListResp.list;
       var messageGroupInfoMap = <String, dynamic>{};
       var messageGroupList = <ChatMsg>[];

@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/style/icons.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 import 'package:ws_chat_flutter/common/widgets/chat_content.dart';
+import 'package:ws_chat_flutter/pages/message/controller.dart';
 
 import 'controller.dart';
 
 class ChatPage extends GetView<ChatController> {
-  const ChatPage({Key? key}) : super(key: key);
+  ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var data = Get.arguments as Map<String, dynamic>; // 获取参数
-    var groupId = data["groupId"];
-    var maxMsgId = data["maxMsgId"];
-    var aliasName = data["aliasName"];
-    print("groupId: $groupId, maxMsgId: $maxMsgId, aliasName: $aliasName");
-    return Scaffold(
+    return Obx(() => Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: HeaderBar.BuildAppBar(aliasName),
+      appBar: HeaderBar.BuildAppBar(controller.state.aliasName),
       body: GestureDetector(
         // behavior: HitTestBehavior.translucent,
         child: SafeArea(
@@ -32,29 +27,29 @@ class ChatPage extends GetView<ChatController> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   // 聊天内容显示
   Widget chatView() {
     return Expanded(
-      child: ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
-          itemCount: Data.mockchatMessageList.length,
-          itemBuilder: (context, index) {
-            final chatMsg = Data.mockchatMessageList[index];
-            var senderId = chatMsg.senderId;
-            var groupId = chatMsg.groupId;
-            var groupInfo = Data.mockGroupInfoMap[groupId]!;
-            return ChatContentView(
-              isSelf: senderId == 2,
-              text: chatMsg.content,
-              avatar: groupInfo["avatarUrl"]!,
-              username: groupInfo["aliasName"]!,
-              type: chatMsg.type,
-            );
-          }),
-    );
+        child: Obx(() => ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
+            itemCount: controller.state.groupMsgList.length,
+            itemBuilder: (context, index) {
+              final chatMsg = controller.state.groupMsgList[index];
+              var senderId = chatMsg.senderId;
+              var groupId = chatMsg.groupId;
+              var groupInfo =
+                  MessageController.to.state.messageGroupInfoMap[groupId]!;
+              return ChatContentView(
+                isSelf: senderId == 2,
+                text: chatMsg.content,
+                avatar: groupInfo["avatarUrl"]!,
+                username: groupInfo["aliasName"]!,
+                type: chatMsg.type,
+              );
+            })));
   }
 
   // 最下方的输入框部分
