@@ -19,8 +19,8 @@ class FadeInNetworkImg extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
         child: FadeInImage.assetNetwork(
           placeholder: placeholderImg,
-          fit: BoxFit.fitWidth,
           image: image,
+          fit: BoxFit.fitWidth,
           width: width,
           height: height,
         ));

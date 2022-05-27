@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
 
 class MineState {
+  var _loaded = false.obs;
+  set loaded(value) => _loaded.value = value;
+  get loaded => _loaded.value;
+
   var _userId = 0.obs;
   set userId(value) => _userId.value = value;
   get userId => _userId.value;

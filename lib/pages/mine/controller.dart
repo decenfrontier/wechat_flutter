@@ -20,12 +20,12 @@ class MineController extends GetxController {
     // 发送请求 获取个人信息
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
-      // 我的
       state.userId = personalResp.userId;
       state.email = personalResp.email;
       state.nickName = personalResp.nickName;
       state.gender = personalResp.gender;
       state.avatarUrl = personalResp.avatarUrl;
+      state.loaded = true;
       print("获取个人信息成功: ${state.userId} ${state.avatarUrl}");
     }).catchError((err) {
       var errInfo = "$err";
