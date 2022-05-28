@@ -134,10 +134,13 @@ class PullResponse {
     required this.list,
   });
   factory PullResponse.fromJson(Map<String, dynamic> m) {
-    return PullResponse(
-      list:
-          (m['list'] as List<dynamic>).map((i) => ChatMsg.fromJson(i)).toList(),
-    );
+    return (m['list'] == null)
+        ? PullResponse(list: [])
+        : PullResponse(
+            list: (m['list'] as List<dynamic>)
+                .map((i) => ChatMsg.fromJson(i))
+                .toList(),
+          );
   }
   Map<String, dynamic> toJson() {
     return {
@@ -151,7 +154,10 @@ class GroupInfo {
   final String avatarUrl;
   final String aliasName;
 
-  GroupInfo({required this.groupId, required this.avatarUrl, required this.aliasName});
+  GroupInfo(
+      {required this.groupId,
+      required this.avatarUrl,
+      required this.aliasName});
 
   factory GroupInfo.fromJson(Map<String, dynamic> m) {
     return GroupInfo(

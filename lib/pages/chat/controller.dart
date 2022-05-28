@@ -4,7 +4,6 @@ import 'package:ws_chat_flutter/common/biz/custom_class.dart';
 import 'package:ws_chat_flutter/common/entities/index.dart';
 import 'package:ws_chat_flutter/pages/home/controller.dart';
 
-
 class ChatController extends GetxController {
   static ChatController get to => Get.find();
 
@@ -25,6 +24,9 @@ class ChatController extends GetxController {
     if (groupMsgList.isNotEmpty) {
       return;
     }
+    // 把最新消息先放入到群组消息列表中
+    groupMsgList.add(lastMsg);
+    update();
     // 判断当前maxMsgId的值根据maxMsgId从后往前拉取信息
     var maxMsgId = lastMsg.id;
     var data = PullRequest(
