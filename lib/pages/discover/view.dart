@@ -4,7 +4,7 @@ import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
 import 'controller.dart';
 
-class DiscoverPage extends GetView<DiscoverController> {
+class DiscoverPage extends StatelessWidget {
   const DiscoverPage({Key? key}) : super(key: key);
 
   @override

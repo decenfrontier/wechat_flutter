@@ -8,7 +8,7 @@ import '../friend/index.dart';
 import '../message/index.dart';
 import '../mine/index.dart';
 
-class HomePage extends GetView<HomeController> {
+class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   @override
@@ -22,81 +22,85 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildIndexedStack() {
-    return Obx(() => IndexedStack(
-          index: controller.state.tabIndex,
-          children: [
-            MessagePage(),
-            FriendPage(),
-            DiscoverPage(),
-            MinePage(),
-          ],
-        ));
+    print("build indexed stack, ${HomeController.to.tabIndex}");
+    return GetBuilder<HomeController>(
+        builder: (_) => IndexedStack(
+              index: HomeController.to.tabIndex,
+              children: [
+                MessagePage(),
+                FriendPage(),
+                DiscoverPage(),
+                MinePage(),
+              ],
+            ));
   }
 
   Widget buildBottomNavigationBar() {
-    return Obx(() => BottomNavigationBar(
-          currentIndex: controller.state.tabIndex,
-          selectedItemColor: Colors.green,
-          unselectedItemColor: Colors.grey,
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-          onTap: (index) {
-            controller.state.tabIndex = index;
-          },
-          items: [
-            BottomNavigationBarItem(
-              label: "消息",
-              icon: Image.asset(
-                "assets/images/message.png",
-                width: 22,
-              ),
-              activeIcon: Image.asset(
-                "assets/images/message.png",
-                width: 22,
-                color: Colors.green,
-              ),
-              tooltip: "",
-            ),
-            BottomNavigationBarItem(
-              label: "好友",
-              icon: Image.asset(
-                "assets/images/contact.png",
-                width: 22,
-              ),
-              activeIcon: Image.asset(
-                "assets/images/contact.png",
-                width: 22,
-                color: Colors.green,
-              ),
-              tooltip: "",
-            ),
-            BottomNavigationBarItem(
-              label: "发现",
-              icon: Image.asset(
-                "assets/images/find.png",
-                width: 22,
-              ),
-              activeIcon: Image.asset(
-                "assets/images/find.png",
-                width: 22,
-                color: Colors.green,
-              ),
-              tooltip: "",
-            ),
-            BottomNavigationBarItem(
-              label: "我的",
-              icon: Image.asset(
-                "assets/images/mine.png",
-                width: 22,
-              ),
-              activeIcon: Image.asset(
-                "assets/images/mine.png",
-                width: 22,
-                color: Colors.green,
-              ),
-              tooltip: "",
-            )
-          ],
-        ));
+    return GetBuilder<HomeController>(
+        builder: (_) => BottomNavigationBar(
+              currentIndex: HomeController.to.tabIndex,
+              selectedItemColor: Colors.green,
+              unselectedItemColor: Colors.grey,
+              showUnselectedLabels: true,
+              type: BottomNavigationBarType.fixed,
+              onTap: (index) {
+                print(index);
+                HomeController.to.setValue(tabIndex: index);
+              },
+              items: [
+                BottomNavigationBarItem(
+                  label: "消息",
+                  icon: Image.asset(
+                    "assets/images/message.png",
+                    width: 22,
+                  ),
+                  activeIcon: Image.asset(
+                    "assets/images/message.png",
+                    width: 22,
+                    color: Colors.green,
+                  ),
+                  tooltip: "",
+                ),
+                BottomNavigationBarItem(
+                  label: "好友",
+                  icon: Image.asset(
+                    "assets/images/contact.png",
+                    width: 22,
+                  ),
+                  activeIcon: Image.asset(
+                    "assets/images/contact.png",
+                    width: 22,
+                    color: Colors.green,
+                  ),
+                  tooltip: "",
+                ),
+                BottomNavigationBarItem(
+                  label: "发现",
+                  icon: Image.asset(
+                    "assets/images/find.png",
+                    width: 22,
+                  ),
+                  activeIcon: Image.asset(
+                    "assets/images/find.png",
+                    width: 22,
+                    color: Colors.green,
+                  ),
+                  tooltip: "",
+                ),
+                BottomNavigationBarItem(
+                  label: "我的",
+                  icon: Image.asset(
+                    "assets/images/mine.png",
+                    width: 22,
+                  ),
+                  activeIcon: Image.asset(
+                    "assets/images/mine.png",
+                    width: 22,
+                    color: Colors.green,
+                  ),
+                  tooltip: "",
+                )
+              ],
+            ));
   }
 }

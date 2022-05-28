@@ -5,7 +5,7 @@ import 'package:ws_chat_flutter/common/widgets/password.dart';
 
 import 'index.dart';
 
-class LoginPage extends GetView<LoginController> {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -39,7 +39,7 @@ class LoginPage extends GetView<LoginController> {
 
   Form _buildForm() {
     return Form(
-        key: controller.formKey,
+        key: LoginController.to.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: AutofillGroup(
           child: Column(
@@ -51,7 +51,7 @@ class LoginPage extends GetView<LoginController> {
               autofillHints: [AutofillHints.email],
               // initialValue: "ws156858@163.com",
               textInputAction: TextInputAction.next,
-              validator: controller.emailValidator,
+              validator: LoginController.to.emailValidator,
               decoration: InputDecoration(
                 filled: true,
                 border: const OutlineInputBorder(),
@@ -61,7 +61,7 @@ class LoginPage extends GetView<LoginController> {
               ),
               keyboardType: TextInputType.emailAddress,
               onSaved: (value) {
-                controller.userEmail = value!;
+                LoginController.to.userEmail = value!;
               },
               onEditingComplete: () => TextInput.finishAutofillContext(),
             ),
@@ -69,10 +69,10 @@ class LoginPage extends GetView<LoginController> {
             PasswordField(
               labelText: "login_password".tr,
               hintText: "login_password_hint".tr,
-              validator: controller.passwordValidator,
+              validator: LoginController.to.passwordValidator,
               textInputAction: TextInputAction.next,
               onSaved: (value) {
-                controller.userPassword = value!;
+                LoginController.to.userPassword = value!;
               },
               
             ),
@@ -90,7 +90,7 @@ class LoginPage extends GetView<LoginController> {
             child: Text("login_button_register".tr),
           ),
           onPressed: () {
-            controller.submitRegister();
+            LoginController.to.submitRegister();
           },
         ),
         SizedBox(width: 20),
@@ -100,7 +100,7 @@ class LoginPage extends GetView<LoginController> {
             child: Text("login_button_login".tr),
           ),
           onPressed: () {
-            controller.submitLogin();
+            LoginController.to.submitLogin();
           },
         )
       ],

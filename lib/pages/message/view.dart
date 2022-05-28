@@ -8,22 +8,21 @@ import 'package:ws_chat_flutter/common/widgets/network_img.dart';
 import '../chat/view.dart';
 import 'controller.dart';
 
-class MessagePage extends GetView<MessageController> {
+class MessagePage extends StatelessWidget {
   const MessagePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: BuildAppBar("消 息"),
       body: SizedBox(
-        height: size.height,
-        child: Obx(() => ListView.builder(
-            itemCount: controller.state.messageGroupList.length,
+        child: GetBuilder<MessageController>(
+          builder: (controller) => ListView.builder(
+            itemCount: controller.messageGroupList.length,
             itemBuilder: (context, index) {
-              ChatMsg chatMsg = controller.state.messageGroupList[index];
+              ChatMsg chatMsg = controller.messageGroupList[index];
               var groupId = chatMsg.groupId;
-              var groupInfo = controller.state.messageGroupInfoMap[groupId]!;
+              var groupInfo = controller.messageGroupInfoMap[groupId]!;
               var time_format = timeStampToString(chatMsg.createTime);
               return buildMessageItem(
                   groupId,
@@ -32,7 +31,8 @@ class MessagePage extends GetView<MessageController> {
                   groupInfo["aliasName"]!,
                   time_format,
                   chatMsg.content);
-            })),
+            })
+        ),
       ),
     );
   }

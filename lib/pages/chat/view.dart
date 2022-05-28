@@ -8,14 +8,14 @@ import 'package:ws_chat_flutter/pages/message/controller.dart';
 
 import 'controller.dart';
 
-class ChatPage extends GetView<ChatController> {
+class ChatPage extends StatelessWidget {
   ChatPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: BuildAppBar(controller.state.aliasName),
+      appBar: BuildAppBar(ChatController.to.aliasName),
       body: GestureDetector(
         // behavior: HitTestBehavior.translucent,
         child: SafeArea(
@@ -33,15 +33,15 @@ class ChatPage extends GetView<ChatController> {
   // 聊天内容显示
   Widget chatView() {
     return Expanded(
-        child: Obx(() => ListView.builder(
+        child: GetBuilder<ChatController>(builder: (_) => ListView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
-            itemCount: controller.state.groupMsgList.length,
+            itemCount: ChatController.to.groupMsgList.length,
             itemBuilder: (context, index) {
-              final chatMsg = controller.state.groupMsgList[index];
+              final chatMsg = ChatController.to.groupMsgList[index];
               var senderId = chatMsg.senderId;
               var groupId = chatMsg.groupId;
               var groupInfo =
-                  MessageController.to.state.messageGroupInfoMap[groupId]!;
+                  MessageController.to.messageGroupInfoMap[groupId]!;
               return ChatContentView(
                 isSelf: senderId == 2,
                 text: chatMsg.content,

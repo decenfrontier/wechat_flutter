@@ -6,12 +6,16 @@ import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 
-import 'index.dart';
 
 class MineController extends GetxController {
-  MineController();
+  static MineController get to => Get.find();
 
-  final state = MineState();
+  var loaded = false;
+  var userId = 0;
+  var nickName = "";
+  var email = "";
+  var gender = 0;
+  var avatarUrl = "";
 
   /// 在 widget 内存中分配后立即调用。
   @override
@@ -20,13 +24,13 @@ class MineController extends GetxController {
     // 发送请求 获取个人信息
     var data = PersonalInfoRequest();
     UserAPI.personalInfo(data: data).then((personalResp) {
-      state.userId = personalResp.userId;
-      state.email = personalResp.email;
-      state.nickName = personalResp.nickName;
-      state.gender = personalResp.gender;
-      state.avatarUrl = personalResp.avatarUrl;
-      state.loaded = true;
-      print("获取个人信息成功: ${state.userId} ${state.avatarUrl}");
+      userId = personalResp.userId;
+      email = personalResp.email;
+      nickName = personalResp.nickName;
+      gender = personalResp.gender;
+      avatarUrl = personalResp.avatarUrl;
+      loaded = true;
+      print("获取个人信息成功: $userId $avatarUrl");
     }).catchError((err) {
       var errInfo = "$err";
       if (err.runtimeType == RespBody) {

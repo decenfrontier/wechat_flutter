@@ -1,15 +1,16 @@
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/utils/platform.dart';
 
-import 'state.dart';
-
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
 
-  // 响应式成员变量
-  final state = HomeState();
-  // 普通成员变量
   final platform = getPlatform();
+  var tabIndex = 0;
+
+  setValue({dynamic tabIndex}) {
+    this.tabIndex = tabIndex ?? this.tabIndex;
+    update();
+  }
 
   @override
   void onInit() {

@@ -2,7 +2,7 @@ import '../entities/message.dart';
 
 extension MsgList on List<ChatMsg> {
   // 扩展List的方法
-  append(ChatMsg msg, {int startPos = -1}) {
+  append(ChatMsg msg, [int startPos = -1]) {
     if (startPos == -1) {
       startPos = this.length - 1; // 从哪里开始遍历
     }

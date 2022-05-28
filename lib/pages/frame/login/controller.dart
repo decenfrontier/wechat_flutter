@@ -6,7 +6,7 @@ import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 
 class LoginController extends GetxController {
-  LoginController();
+  static LoginController get to => Get.find();
 
   final formKey = GlobalKey<FormState>(); // 校验结果
   String userEmail = '';

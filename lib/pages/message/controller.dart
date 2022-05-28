@@ -2,12 +2,17 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/group.dart';
 import 'package:ws_chat_flutter/common/entities/index.dart';
 
-import 'index.dart';
-
 class MessageController extends GetxController {
   static MessageController get to => Get.find();
 
-  final state = MessageState();
+  var messageGroupInfoMap = <String, dynamic>{};
+  var messageGroupList = <ChatMsg>[];
+
+  setValue({messageGroupInfoMap, messageGroupList}) {
+    this.messageGroupInfoMap = messageGroupInfoMap ?? this.messageGroupInfoMap;
+    this.messageGroupList = messageGroupList ?? this.messageGroupList;
+    update();
+  }
 
   /// 在 widget 内存中分配后立即调用。
   @override
@@ -29,8 +34,9 @@ class MessageController extends GetxController {
         };
         messageGroupList.add(groupMsg.lastMsg);
       }
-      state.messageGroupInfoMap = messageGroupInfoMap;
-      state.messageGroupList = messageGroupList;
+      setValue(
+          messageGroupInfoMap: messageGroupInfoMap,
+          messageGroupList: messageGroupList);
       print("获取消息页数据成功");
     }).catchError((err) {
       // 显示弹窗

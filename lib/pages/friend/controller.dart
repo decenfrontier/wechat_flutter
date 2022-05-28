@@ -3,17 +3,7 @@ import 'package:get/get.dart';
 import 'index.dart';
 
 class FriendController extends GetxController {
-  FriendController();
-
-  final state = FriendState();
-
-  // tap
-  void handleTap(int index) {
-    Get.snackbar(
-      "标题",
-      "消息",
-    );
-  }
+  static FriendController get to => Get.find();
 
   /// 在 widget 内存中分配后立即调用。
   @override

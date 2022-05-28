@@ -6,7 +6,7 @@ import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
 import 'index.dart';
 
-class FriendPage extends GetView<FriendController> {
+class FriendPage extends StatelessWidget {
   const FriendPage({Key? key}) : super(key: key);
 
   final String labels = "↑ABCDEFGHIJKLMNOPQRSTUVWSYZ#";

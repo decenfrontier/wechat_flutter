@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'index.dart';
 
-class NotFoundView extends GetView<NotFoundController> {
+class NotFoundView extends StatelessWidget {
   const NotFoundView({Key? key}) : super(key: key);
 
   @override

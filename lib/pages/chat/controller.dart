@@ -1,14 +1,17 @@
 import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/message.dart';
+import 'package:ws_chat_flutter/common/biz/custom_class.dart';
 import 'package:ws_chat_flutter/common/entities/index.dart';
 import 'package:ws_chat_flutter/pages/home/controller.dart';
 
-import 'index.dart';
 
 class ChatController extends GetxController {
   static ChatController get to => Get.find();
 
-  final state = ChatState();
+  var groupId = "";
+  var maxMsgId = 0;
+  var aliasName = "";
+  var groupMsgList = <ChatMsg>[];
 
   /// 在 widget 内存中分配后立即调用。
   @override
@@ -19,16 +22,15 @@ class ChatController extends GetxController {
       return;
     }
     var args = Get.arguments as Map<String, dynamic>; // 获取参数
-    state.groupId = args["groupId"];
-    state.maxMsgId = args["maxMsgId"];
-    state.aliasName = args["aliasName"];
-    print(
-        "groupId: ${state.groupId}, maxMsgId: ${state.maxMsgId}, aliasName: ${state.aliasName}");
+    groupId = args["groupId"];
+    maxMsgId = args["maxMsgId"];
+    aliasName = args["aliasName"];
+    print("groupId: $groupId, maxMsgId: $maxMsgId, aliasName: $aliasName");
     // 根据maxMsgId从后往前拉取信息
     var data = PullRequest(
         platform: HomeController.to.platform,
-        groupId: state.groupId,
-        maxMsgId: state.maxMsgId);
+        groupId: groupId,
+        maxMsgId: maxMsgId);
     MessageAPI.pull(data).then((pullResp) {
       var groupMsgList = pullResp.list;
       if (groupMsgList.isEmpty) {
@@ -37,10 +39,10 @@ class ChatController extends GetxController {
       }
       int startPos = -1;
       for (var msg in groupMsgList) {
-        var nextIdx = state.groupMsgList.add(msg, startPos);
+        var nextIdx = groupMsgList.append(msg, startPos);
         startPos = nextIdx;
       }
-      print("获取群组${state.groupId}的消息列表成功");
+      print("获取群组$groupId的消息列表成功");
     }).catchError((err) {
       // 显示弹窗
       Get.snackbar("获取消息页数据失败", "$err");

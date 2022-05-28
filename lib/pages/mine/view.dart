@@ -6,7 +6,7 @@ import 'package:ws_chat_flutter/common/widgets/network_img.dart';
 import '../discover/view.dart';
 import 'controller.dart';
 
-class MinePage extends GetView<MineController> {
+class MinePage extends StatelessWidget {
   const MinePage({Key? key}) : super(key: key);
 
   @override
@@ -36,9 +36,11 @@ class MinePage extends GetView<MineController> {
                     children: [
                       Row(
                         children: [
-                          Obx(() => controller.state.loaded
-                              ? FadeInNetworkImg(controller.state.avatarUrl)
-                              : SizedBox()),
+                          GetBuilder<MineController>(
+                              builder: (_) => MineController.to.loaded
+                                  ? FadeInNetworkImg(
+                                      MineController.to.avatarUrl)
+                                  : SizedBox()),
                           SizedBox(
                             width: 15,
                           ),
@@ -46,19 +48,21 @@ class MinePage extends GetView<MineController> {
                               child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Obx(() => Text(
-                                    controller.state.nickName,
+                              GetBuilder<MineController>(
+                                builder: (_) => Text(
+                                    MineController.to.nickName,
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                     ),
-                                  )),
+                                  )
+                              ),
                               SizedBox(
                                 height: 5,
                               ),
                               Row(children: [
-                                Obx(() => Text(controller.state.email,
+                                GetBuilder<MineController>(builder: (_) => Text(MineController.to.email,
                                     style: TextStyle(
                                         fontSize: 14,
                                         color: Colors.grey.shade600))),
