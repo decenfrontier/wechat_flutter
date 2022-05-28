@@ -15,7 +15,7 @@ class MessagePage extends GetView<MessageController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: HeaderBar.BuildAppBar("消 息"),
+      appBar: BuildAppBar("消 息"),
       body: SizedBox(
         height: size.height,
         child: Obx(() => ListView.builder(

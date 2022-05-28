@@ -1,23 +1,25 @@
 import '../entities/message.dart';
 
-class MsgList {
-  List<ChatMsg> _list = [];
-  int startPos;
-  MsgList(this._list, {this.startPos = -1});
-
-  int add(ChatMsg msg) {
+extension MsgList on List<ChatMsg> {
+  // 扩展List的方法
+  append(ChatMsg msg, {int startPos = -1}) {
     if (startPos == -1) {
-      startPos = _list.length - 1;
+      startPos = this.length - 1; // 从哪里开始遍历
     }
     for (var i = startPos; i >= 0; i--) {
-      var cur = _list[i];
+      var cur = this[i];
+      // 自动去重
+      if (cur.createTime == msg.createTime) {
+        if (cur.uuid != msg.uuid) {  
+          this.insert(i + 1, msg);
+        }
+        return;
+      }
       // 从后往前遍历 找到第一个创建时间小于msg的createtime的
-      if ((cur.createTime == msg.createTime && cur.uuid != msg.uuid) ||
-          (cur.createTime < msg.createTime)) {
-        _list.insert(i + 1, msg);
-        return i;  // 插入成功, 告诉下一个要插入的从哪里开始比较
+      if (cur.createTime < msg.createTime) {
+        this.insert(i + 1, msg);
+        return;
       }
     }
-    return -1;
   }
 }

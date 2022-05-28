@@ -13,9 +13,9 @@ class ChatPage extends GetView<ChatController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
+    return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: HeaderBar.BuildAppBar(controller.state.aliasName),
+      appBar: BuildAppBar(controller.state.aliasName),
       body: GestureDetector(
         // behavior: HitTestBehavior.translucent,
         child: SafeArea(
@@ -27,7 +27,7 @@ class ChatPage extends GetView<ChatController> {
           ),
         ),
       ),
-    ));
+    );
   }
 
   // 聊天内容显示

@@ -11,7 +11,7 @@ class DiscoverPage extends GetView<DiscoverController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: HeaderBar.BuildAppBar("发 现"),
+      appBar: BuildAppBar("发 现"),
       body: SingleChildScrollView(
         child: Column(
           children: [
