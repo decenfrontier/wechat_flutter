@@ -26,28 +26,26 @@ class MessagePage extends StatelessWidget {
               var time_format = timeStampToString(chatMsg.createTime);
               return buildMessageItem(
                   groupId,
-                  chatMsg.id,
-                  groupInfo["avatarUrl"]!,
-                  groupInfo["aliasName"]!,
-                  time_format,
-                  chatMsg.content);
+                  chatMsg,
+                  groupInfo.avatarUrl,
+                  groupInfo.aliasName,
+                  time_format);
             })
         ),
       ),
     );
   }
 
-  Container buildMessageItem(String groupId, int maxMsgId, String avator,
-      String aliasName, String timeFormat, String lastMessage) {
+  Container buildMessageItem(String groupId, ChatMsg lastMsg, String avator,
+      String aliasName, String timeFormat) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
       child: InkWell(
           onTap: () {
-            // TODO: 读取离线消息刷新页面
-            Get.to(() => ChatPage(),
+            Get.to(() => ChatPage(tag: groupId),
                 arguments: {
                   "groupId": groupId,
-                  "maxMsgId": maxMsgId,
+                  "lastMsg": lastMsg,
                   "aliasName": aliasName
                 },
                 transition: Transition.rightToLeft);
@@ -55,7 +53,7 @@ class MessagePage extends StatelessWidget {
           child: Row(children: [
             buildMessageItemAvatar(avator),
             SizedBox(width: 10),
-            buildMessageItemContent(aliasName, timeFormat, lastMessage)
+            buildMessageItemContent(aliasName, timeFormat, lastMsg.content)
           ])),
     );
   }

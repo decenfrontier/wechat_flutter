@@ -9,13 +9,17 @@ import 'package:ws_chat_flutter/pages/message/controller.dart';
 import 'controller.dart';
 
 class ChatPage extends StatelessWidget {
-  ChatPage({Key? key}) : super(key: key);
+  final String tag;
+  final ChatController controller;
+  ChatPage({Key? key, required this.tag})
+      : controller = Get.put(ChatController(), tag: tag),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      appBar: BuildAppBar(ChatController.to.aliasName),
+      appBar: BuildAppBar(controller.aliasName),
       body: GestureDetector(
         // behavior: HitTestBehavior.translucent,
         child: SafeArea(
@@ -33,23 +37,25 @@ class ChatPage extends StatelessWidget {
   // 聊天内容显示
   Widget chatView() {
     return Expanded(
-        child: GetBuilder<ChatController>(builder: (_) => ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
-            itemCount: ChatController.to.groupMsgList.length,
-            itemBuilder: (context, index) {
-              final chatMsg = ChatController.to.groupMsgList[index];
-              var senderId = chatMsg.senderId;
-              var groupId = chatMsg.groupId;
-              var groupInfo =
-                  MessageController.to.messageGroupInfoMap[groupId]!;
-              return ChatContentView(
-                isSelf: senderId == 2,
-                text: chatMsg.content,
-                avatar: groupInfo["avatarUrl"]!,
-                username: groupInfo["aliasName"]!,
-                type: chatMsg.type,
-              );
-            })));
+        child: GetBuilder<ChatController>(
+            tag: tag,
+            builder: (controller) => ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
+                itemCount: controller.groupMsgList.length,
+                itemBuilder: (context, index) {
+                  final chatMsg = controller.groupMsgList[index];
+                  var senderId = chatMsg.senderId;
+                  var groupId = chatMsg.groupId;
+                  var groupInfo =
+                      MessageController.to.messageGroupInfoMap[groupId]!;
+                  return ChatContentView(
+                    isSelf: senderId == 2,
+                    text: chatMsg.content,
+                    avatar: groupInfo.avatarUrl,
+                    username: groupInfo.aliasName,
+                    type: chatMsg.type,
+                  );
+                })));
   }
 
   // 最下方的输入框部分

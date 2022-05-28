@@ -9,7 +9,7 @@ class ChatController extends GetxController {
   static ChatController get to => Get.find();
 
   var groupId = "";
-  var maxMsgId = 0;
+  late ChatMsg lastMsg;
   var aliasName = "";
   var groupMsgList = <ChatMsg>[];
 
@@ -18,15 +18,15 @@ class ChatController extends GetxController {
   void onInit() {
     super.onInit();
     print("chat on init");
-    if (Get.arguments == null) {
+    groupId = Get.arguments["groupId"];
+    lastMsg = Get.arguments["lastMsg"];
+    aliasName = Get.arguments["aliasName"];
+    // 有数据则不用拉取离线消息, 直接返回
+    if (groupMsgList.isNotEmpty) {
       return;
     }
-    var args = Get.arguments as Map<String, dynamic>; // 获取参数
-    groupId = args["groupId"];
-    maxMsgId = args["maxMsgId"];
-    aliasName = args["aliasName"];
-    print("groupId: $groupId, maxMsgId: $maxMsgId, aliasName: $aliasName");
-    // 根据maxMsgId从后往前拉取信息
+    // 判断当前maxMsgId的值根据maxMsgId从后往前拉取信息
+    var maxMsgId = lastMsg.id;
     var data = PullRequest(
         platform: HomeController.to.platform,
         groupId: groupId,

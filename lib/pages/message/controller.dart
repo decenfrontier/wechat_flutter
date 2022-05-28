@@ -5,7 +5,7 @@ import 'package:ws_chat_flutter/common/entities/index.dart';
 class MessageController extends GetxController {
   static MessageController get to => Get.find();
 
-  var messageGroupInfoMap = <String, dynamic>{};
+  var messageGroupInfoMap = <String, GroupInfo>{};
   var messageGroupList = <ChatMsg>[];
 
   setValue({messageGroupInfoMap, messageGroupList}) {
@@ -23,15 +23,15 @@ class MessageController extends GetxController {
     var data = MessageGroupInfoListRequest();
     GroupAPI.messageGroupInfoList(data).then((messageGroupInfoListResp) {
       var messageGroupInfoList = messageGroupInfoListResp.list;
-      var messageGroupInfoMap = <String, dynamic>{};
+      var messageGroupInfoMap = <String, GroupInfo>{};
       var messageGroupList = <ChatMsg>[];
       for (var i = 0; i < messageGroupInfoList.length; i++) {
         var groupMsg = messageGroupInfoList[i];
         var groupId = groupMsg.groupId;
-        messageGroupInfoMap[groupId] = {
-          "aliasName": groupMsg.aliasName,
-          "avatarUrl": groupMsg.avatarUrl,
-        };
+        messageGroupInfoMap[groupId] = GroupInfo(
+            groupId: groupId,
+            avatarUrl: groupMsg.avatarUrl,
+            aliasName: groupMsg.aliasName);
         messageGroupList.add(groupMsg.lastMsg);
       }
       setValue(

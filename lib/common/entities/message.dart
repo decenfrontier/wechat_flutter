@@ -145,3 +145,26 @@ class PullResponse {
     };
   }
 }
+
+class GroupInfo {
+  final String groupId;
+  final String avatarUrl;
+  final String aliasName;
+
+  GroupInfo({required this.groupId, required this.avatarUrl, required this.aliasName});
+
+  factory GroupInfo.fromJson(Map<String, dynamic> m) {
+    return GroupInfo(
+      groupId: m['groupId'],
+      avatarUrl: m['avatarUrl'],
+      aliasName: m['aliasName'],
+    );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'groupId': groupId,
+      'avatarUrl': avatarUrl,
+      'aliasName': aliasName,
+    };
+  }
+}
