@@ -5,6 +5,7 @@ import 'package:ws_chat_flutter/common/style/icons.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 import 'package:ws_chat_flutter/common/widgets/chat_content.dart';
 import 'package:ws_chat_flutter/pages/message/controller.dart';
+import 'package:ws_chat_flutter/pages/mine/controller.dart';
 
 import 'controller.dart';
 
@@ -39,23 +40,27 @@ class ChatPage extends StatelessWidget {
     return Expanded(
         child: GetBuilder<ChatController>(
             tag: tag,
-            builder: (controller) => ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
-                itemCount: controller.groupMsgList.length,
-                itemBuilder: (context, index) {
-                  final chatMsg = controller.groupMsgList[index];
-                  var senderId = chatMsg.senderId;
-                  var groupId = chatMsg.groupId;
-                  var groupInfo =
-                      MessageController.to.messageGroupInfoMap[groupId]!;
-                  return ChatContentView(
-                    isSelf: senderId == 2,
-                    text: chatMsg.content,
-                    avatar: groupInfo.avatarUrl,
-                    username: groupInfo.aliasName,
-                    type: chatMsg.type,
-                  );
-                })));
+            builder: (controller) {
+              print("uid: ${MineController.to.userId}");
+              return ListView.builder(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
+                  itemCount: controller.groupMsgList.length,
+                  itemBuilder: (context, index) {
+                    final chatMsg = controller.groupMsgList[index];
+                    var senderId = chatMsg.senderId;
+                    var groupId = chatMsg.groupId;
+                    var groupInfo =
+                        MessageController.to.messageGroupInfoMap[groupId]!;
+                    return ChatContentView(
+                      isSelf: senderId == MineController.to.userId,
+                      text: chatMsg.content,
+                      avatar: groupInfo.avatarUrl,
+                      username: groupInfo.aliasName,
+                      type: chatMsg.type,
+                    );
+                  });
+            }));
   }
 
   // 最下方的输入框部分

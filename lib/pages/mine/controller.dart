@@ -6,7 +6,6 @@ import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 
-
 class MineController extends GetxController {
   static MineController get to => Get.find();
 
@@ -30,6 +29,7 @@ class MineController extends GetxController {
       gender = personalResp.gender;
       avatarUrl = personalResp.avatarUrl;
       loaded = true;
+      update();
       print("获取个人信息成功: $userId $avatarUrl");
     }).catchError((err) {
       var errInfo = "$err";
