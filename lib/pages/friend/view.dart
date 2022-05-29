@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/mock/data.dart';
 import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
 
-import 'index.dart';
 
 class FriendPage extends StatelessWidget {
   const FriendPage({Key? key}) : super(key: key);
@@ -13,26 +11,20 @@ class FriendPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 获取app窗口大小
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: BuildAppBar("好 友"),
         body: Stack(
           alignment: Alignment.centerRight,
           children: [
-            Container(
-              height: size.height,
-              width: size.width,
-              child: ListView.builder(
-                  itemCount: Data.contact.keys.length,
-                  itemBuilder: (context, index) {
-                    String key = Data.contact.keys.toList()[index];
-                    List pItem = Data.contact[key];
-                    return key == "first"
-                        ? buildContactSysButton()
-                        : buildContactors(context, index, pItem);
-                  }),
-            ),
+            ListView.builder(
+                itemCount: Data.contact.keys.length,
+                itemBuilder: (context, index) {
+                  String key = Data.contact.keys.toList()[index];
+                  List pItem = Data.contact[key];
+                  return key == "first"
+                      ? buildContactSysButton()
+                      : buildContactors(context, index, pItem);
+                }),
             buildContactRightBar(),
           ],
         ));

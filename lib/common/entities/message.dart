@@ -33,22 +33,22 @@ class UploadRequest {
 }
 
 class UploadResponse {
-  final String uuid;
+  final int id;
 
   final int createTime;
   UploadResponse({
-    required this.uuid,
+    required this.id,
     required this.createTime,
   });
   factory UploadResponse.fromJson(Map<String, dynamic> m) {
     return UploadResponse(
-      uuid: m['uuid'],
+      id: m['id'],
       createTime: m['createTime'],
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'uuid': uuid,
+      'id': id,
       'createTime': createTime,
     };
   }

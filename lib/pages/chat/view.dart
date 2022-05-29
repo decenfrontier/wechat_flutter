@@ -40,27 +40,23 @@ class ChatPage extends StatelessWidget {
     return Expanded(
         child: GetBuilder<ChatController>(
             tag: tag,
-            builder: (controller) {
-              print("uid: ${MineController.to.userId}");
-              return ListView.builder(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
-                  itemCount: controller.groupMsgList.length,
-                  itemBuilder: (context, index) {
-                    final chatMsg = controller.groupMsgList[index];
-                    var senderId = chatMsg.senderId;
-                    var groupId = chatMsg.groupId;
-                    var groupInfo =
-                        MessageController.to.messageGroupInfoMap[groupId]!;
-                    return ChatContentView(
-                      isSelf: senderId == MineController.to.userId,
-                      text: chatMsg.content,
-                      avatar: groupInfo.avatarUrl,
-                      username: groupInfo.aliasName,
-                      type: chatMsg.type,
-                    );
-                  });
-            }));
+            builder: (controller) => ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 2),
+                itemCount: controller.groupMsgList.length,
+                itemBuilder: (context, index) {
+                  final chatMsg = controller.groupMsgList[index];
+                  var senderId = chatMsg.senderId;
+                  var groupId = chatMsg.groupId;
+                  var groupInfo =
+                      MessageController.to.messageGroupInfoMap[groupId]!;
+                  return ChatContentView(
+                    isSelf: senderId == MineController.to.userId,
+                    text: chatMsg.content,
+                    avatar: groupInfo.avatarUrl,
+                    username: groupInfo.aliasName,
+                    type: chatMsg.type,
+                  );
+                })));
   }
 
   // 最下方的输入框部分
@@ -92,26 +88,24 @@ class ChatPage extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 color: Colors.white),
-            child: TextField(
-              // controller: controller,
-              decoration: InputDecoration.collapsed(hintText: null),
-              maxLines: 1,
-              autocorrect: true,
-              autofocus: false,
-              textAlign: TextAlign.start,
-              style: TextStyle(color: Colors.black),
-              cursorColor: Colors.green,
-              // onChanged: (text) {
-              //   setState(() {
-              //       hasText = text.length > 0 ?  true : false;
-              //   });
-              //   print('change=================== $text');
-              // },
-              // onSubmitted:_handleSubmitted,
-              enabled: true, //是否禁用
-            ),
+            child: GetBuilder<ChatController>(
+                tag: tag,
+                builder: (controller) => TextField(
+                    decoration: InputDecoration.collapsed(hintText: null),
+                    maxLines: 1,
+                    autocorrect: true,
+                    autofocus: false,
+                    textAlign: TextAlign.start,
+                    style: TextStyle(color: Colors.black),
+                    cursorColor: Colors.green,
+                    onChanged: (text) {
+                      controller.setValue(inputContent: text, inputType: 1);
+                    },
+                    onSubmitted: (text) {
+                      print("onSubmitted");
+                    })),
           )),
-          Container(
+          SizedBox(
             width: ScreenUtil().setWidth(40.0),
             child: IconButton(
                 icon: Icon(ICons.FACES), //发送按钮图标
@@ -119,19 +113,14 @@ class ChatPage extends StatelessWidget {
                   print('打开表情面板');
                 }),
           ),
-          Container(
+          SizedBox(
             width: ScreenUtil().setWidth(40.0),
-            // margin: EdgeInsets.only(right: ScreenUtil().setWidth(20.0)),
-            child: IconButton(
-                //发送按钮或者+按钮
-                icon: Icon(Icons.send), //发送按钮图标
-                onPressed: () {
-                  // if(!hasText){
-                  //   print('打开功能面板');
-                  // }else{
-                  //   _handleSubmitted(controller.text);
-                  // }
-                }),
+            child: GetBuilder<ChatController>(
+                tag: tag,
+                builder: (controller) => IconButton(
+                    //发送按钮或者+按钮
+                    icon: Icon(Icons.send), //发送按钮图标
+                    onPressed: controller.sendMsg)),
           )
         ],
       ),

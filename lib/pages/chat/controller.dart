@@ -2,15 +2,32 @@ import 'package:get/get.dart';
 import 'package:ws_chat_flutter/common/apis/message.dart';
 import 'package:ws_chat_flutter/common/biz/custom_class.dart';
 import 'package:ws_chat_flutter/common/entities/index.dart';
+import 'package:ws_chat_flutter/common/utils/utils.dart';
 import 'package:ws_chat_flutter/pages/home/controller.dart';
+
+import '../mine/controller.dart';
 
 class ChatController extends GetxController {
   static ChatController get to => Get.find();
+
+  var inputContent = ""; // 输入内容
+  var inputType = 1; // 输入类型
 
   var groupId = "";
   late ChatMsg lastMsg;
   var aliasName = "";
   var groupMsgList = <ChatMsg>[];
+
+  setValue(
+      {inputContent, inputType, groupId, lastMsg, aliasName, groupMsgList}) {
+    this.inputContent = inputContent ?? this.inputContent;
+    this.inputType = inputType ?? this.inputType;
+    this.lastMsg = lastMsg ?? this.lastMsg;
+    this.groupId = groupId ?? this.groupId;
+    this.aliasName = aliasName ?? this.aliasName;
+    this.groupMsgList = groupMsgList ?? this.groupMsgList;
+    update();
+  }
 
   /// 在 widget 内存中分配后立即调用。
   @override
@@ -34,20 +51,47 @@ class ChatController extends GetxController {
         groupId: groupId,
         maxMsgId: maxMsgId);
     MessageAPI.pull(data).then((pullResp) {
-      var groupMsgList = pullResp.list;
-      if (groupMsgList.isEmpty) {
+      if (pullResp.list.isEmpty) {
         print("没有拉取到消息");
         return;
       }
       int startPos = -1;
-      for (var msg in groupMsgList) {
+      for (var msg in pullResp.list) {
         var nextIdx = groupMsgList.append(msg, startPos);
         startPos = nextIdx;
       }
+      update();
       print("获取群组$groupId的消息列表成功");
     }).catchError((err) {
       // 显示弹窗
       Get.snackbar("获取消息页数据失败", "$err");
+    });
+  }
+
+  void sendMsg() {
+    if (inputContent == "") {
+      Get.snackbar("提示", "不能发送空白信息");
+    }
+    print("send $inputContent");
+    var uuid = genUuid();
+    var data = UploadRequest(
+        groupId: groupId, content: inputContent, type: 1, uuid: uuid);
+    MessageAPI.upload(data).then((uploadResp) {
+      // 生成一个新的msg插入到消息列表中
+      var chatMsg = ChatMsg(
+          id: uploadResp.id,
+          groupId: groupId,
+          senderId: MineController.to.userId,
+          content: inputContent,
+          type: 1,
+          uuid: uuid,
+          createTime: uploadResp.createTime);
+      groupMsgList.append(chatMsg);
+      update();
+      print("消息上传成功");
+    }).catchError((err) {
+      // 显示弹窗
+      Get.snackbar("消息上传失败", "$err");
     });
   }
 

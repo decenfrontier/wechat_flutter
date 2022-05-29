@@ -7,7 +7,7 @@ class HomeController extends GetxController {
   final platform = getPlatform();
   var tabIndex = 0;
 
-  setValue({dynamic tabIndex}) {
+  setValue({tabIndex}) {
     this.tabIndex = tabIndex ?? this.tabIndex;
     update();
   }
