@@ -37,50 +37,50 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Form _buildForm() {
-    return Form(
-        key: LoginController.to.formKey,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: AutofillGroup(
-          child: Column(
-          children: [
-            TextFormField(
-              restorationId: 'email_field',
-              initialValue: "ws156858@163.com",
-              autofocus: true,
-              autofillHints: [AutofillHints.email],
-              // initialValue: "ws156858@163.com",
-              textInputAction: TextInputAction.next,
-              validator: LoginController.to.emailValidator,
-              decoration: InputDecoration(
-                filled: true,
-                border: const OutlineInputBorder(),
-                icon: const Icon(Icons.email),
-                hintText: "login_email_hint".tr,
-                labelText: "login_email".tr,
-              ),
-              keyboardType: TextInputType.emailAddress,
-              onSaved: (value) {
-                LoginController.to.userEmail = value!;
-              },
-              onEditingComplete: () => TextInput.finishAutofillContext(),
-            ),
-            SizedBox(height: 25),
-            PasswordField(
-              labelText: "login_password".tr,
-              hintText: "login_password_hint".tr,
-              validator: LoginController.to.passwordValidator,
-              textInputAction: TextInputAction.next,
-              onSaved: (value) {
-                LoginController.to.userPassword = value!;
-              },
-              
-            ),
-          ],
-        )));
+  Widget _buildForm() {
+    return GetBuilder<LoginController>(
+        builder: (controller) => Form(
+            key: LoginController.to.formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: AutofillGroup(
+                child: Column(
+              children: [
+                TextFormField(
+                  restorationId: 'email_field',
+                  initialValue: "ws156858@163.com",
+                  autofocus: true,
+                  autofillHints: [AutofillHints.email],
+                  // initialValue: "ws156858@163.com",
+                  textInputAction: TextInputAction.next,
+                  validator: LoginController.to.emailValidator,
+                  decoration: InputDecoration(
+                    filled: true,
+                    border: const OutlineInputBorder(),
+                    icon: const Icon(Icons.email),
+                    hintText: "login_email_hint".tr,
+                    labelText: "login_email".tr,
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  onSaved: (value) {
+                    LoginController.to.userEmail = value!;
+                  },
+                  onEditingComplete: () => TextInput.finishAutofillContext(),
+                ),
+                SizedBox(height: 25),
+                PasswordField(
+                  labelText: "login_password".tr,
+                  hintText: "login_password_hint".tr,
+                  validator: LoginController.to.passwordValidator,
+                  textInputAction: TextInputAction.next,
+                  onSaved: (value) {
+                    LoginController.to.userPassword = value!;
+                  },
+                ),
+              ],
+            ))));
   }
 
-  Row _buildButton() {
+  Widget _buildButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

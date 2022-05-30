@@ -6,6 +6,7 @@ import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
+import 'package:ws_chat_flutter/pages/frame/login/view.dart';
 
 class MineController extends GetxController {
   static MineController get to => Get.find();
@@ -42,7 +43,8 @@ class MineController extends GetxController {
       // 删除token
       UserStore.to.rmToken();
       // 跳转到登录页面
-      Get.offAllNamed(AppRouter.Login);
+      Get.offAll(() => LoginPage(), transition: Transition.fadeIn);
+      // Get.offAll(AppRouter.Login);
     });
     // 建立websocket连接
     print("建立websocket连接");
