@@ -4,6 +4,7 @@ import 'package:ws_chat_flutter/common/entities/index.dart';
 // import 'package:web_socket_channel/status.dart' as status;
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/routes/routes.dart';
+import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 
 class MineController extends GetxController {
@@ -38,6 +39,8 @@ class MineController extends GetxController {
       }
       // 显示弹窗
       Get.snackbar("personal_err_title".tr, errInfo);
+      // 删除token
+      UserStore.to.rmToken();
       // 跳转到登录页面
       Get.offAllNamed(AppRouter.Login);
     });
