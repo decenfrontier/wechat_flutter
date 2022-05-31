@@ -13,7 +13,7 @@ class ChatPage extends StatelessWidget {
   final String tag;
   final ChatController controller;
   ChatPage({Key? key, required this.tag})
-      : controller = Get.put(ChatController(), tag: tag),
+      : controller = Get.put(ChatController(), tag: tag, permanent: true),
         super(key: key);
 
   @override
