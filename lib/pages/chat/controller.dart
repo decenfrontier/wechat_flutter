@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:wechat_flutter/common/apis/message.dart';
 import 'package:wechat_flutter/common/biz/custom_class.dart';
@@ -10,7 +11,7 @@ import '../mine/controller.dart';
 class ChatController extends GetxController {
   static ChatController get to => Get.find();
 
-  var inputContent = ""; // 输入内容
+  var inputController = TextEditingController(); // 输入内容
   var inputType = 1; // 输入类型
 
   var groupId = "";
@@ -20,7 +21,7 @@ class ChatController extends GetxController {
 
   setValue(
       {inputContent, inputType, groupId, lastMsg, aliasName, groupMsgList}) {
-    this.inputContent = inputContent ?? this.inputContent;
+    this.inputController.text = inputContent ?? inputController.text;
     this.inputType = inputType ?? this.inputType;
     this.lastMsg = lastMsg ?? this.lastMsg;
     this.groupId = groupId ?? this.groupId;
@@ -69,13 +70,13 @@ class ChatController extends GetxController {
   }
 
   void sendMsg() {
-    if (inputContent == "") {
+    if (inputController.text == "") {
       Get.snackbar("提示", "不能发送空白信息");
     }
-    print("send $inputContent");
+    print("send ${inputController.text}");
     var uuid = genUuid();
     var data = UploadRequest(
-        groupId: groupId, content: inputContent, type: 1, uuid: uuid);
+        groupId: groupId, content: inputController.text, type: 1, uuid: uuid);
     MessageAPI.upload(data).then((uploadResp) {
       // // 生成一个新的msg插入到消息列表中
       // var chatMsg = ChatMsg(
@@ -89,6 +90,8 @@ class ChatController extends GetxController {
       // groupMsgList.append(chatMsg);
       // update();
       print("消息上传成功");
+      this.inputController.text = "";
+      update();
     }).catchError((err) {
       // 显示弹窗
       Get.snackbar("消息上传失败", "$err");

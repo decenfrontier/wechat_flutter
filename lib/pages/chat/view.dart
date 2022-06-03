@@ -49,7 +49,6 @@ class ChatPage extends StatelessWidget {
                   var groupId = chatMsg.groupId;
                   var groupInfo =
                       MessageController.to.messageGroupInfoMap[groupId]!;
-                  print("自己的id:${MineController.to.userId}, 发送者id:$senderId");
                   return ChatContentView(
                     isSelf: senderId == MineController.to.userId,
                     text: chatMsg.content,
@@ -92,6 +91,7 @@ class ChatPage extends StatelessWidget {
             child: GetBuilder<ChatController>(
                 tag: tag,
                 builder: (controller) => TextField(
+                    controller: controller.inputController,
                     decoration: InputDecoration.collapsed(hintText: null),
                     maxLines: 1,
                     autocorrect: true,
