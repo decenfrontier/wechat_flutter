@@ -38,8 +38,7 @@ class MinePage extends StatelessWidget {
                         children: [
                           GetBuilder<MineController>(
                               builder: (_) => MineController.to.loaded
-                                  ? FadeInNetworkImg(
-                                      MineController.to.avatarUrl)
+                                  ? CacheImg(MineController.to.avatarUrl)
                                   : SizedBox()),
                           SizedBox(
                             width: 15,
@@ -49,23 +48,24 @@ class MinePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               GetBuilder<MineController>(
-                                builder: (_) => Text(
-                                    MineController.to.nickName,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )
-                              ),
+                                  builder: (_) => Text(
+                                        MineController.to.nickName,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )),
                               SizedBox(
                                 height: 5,
                               ),
                               Row(children: [
-                                GetBuilder<MineController>(builder: (_) => Text(MineController.to.email,
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey.shade600))),
+                                GetBuilder<MineController>(
+                                    builder: (_) => Text(
+                                        MineController.to.email,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey.shade600))),
                                 Spacer(),
                                 Image.asset("assets/images/qrcode.png",
                                     width: 20),

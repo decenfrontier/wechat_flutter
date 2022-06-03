@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FadeInNetworkImg extends StatelessWidget {
+import "package:cached_network_image/cached_network_image.dart";
+
+class CacheImg extends StatelessWidget {
   final String image;
   final double width;
   final double height;
   final String placeholderImg;
-  FadeInNetworkImg(
+  CacheImg(
     this.image, {
     this.width = 50,
     this.height = 50,
@@ -17,9 +19,10 @@ class FadeInNetworkImg extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(5.0)),
-        child: FadeInImage.assetNetwork(
-          placeholder: placeholderImg,
-          image: image,
+        child: CachedNetworkImage(
+          imageUrl: image,
+          // placeholder: (context, url) => Image.asset(placeholderImg),
+          placeholder: (context, url) => const CircularProgressIndicator(),
           fit: BoxFit.fitWidth,
           width: width,
           height: height,

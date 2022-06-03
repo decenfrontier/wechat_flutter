@@ -46,6 +46,7 @@ dependencies:
   flutter_screenutil: ^5.5.2
   web_socket_channel: ^2.2.0
   device_info: ^2.0.3
+  cached_network_image: ^3.2.0
 
 dev_dependencies:
   flutter_test:

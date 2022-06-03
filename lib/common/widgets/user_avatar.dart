@@ -24,7 +24,7 @@ class UserAvatar extends StatelessWidget {
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         padding: padding,
         constraints: BoxConstraints(minWidth: 0.0, minHeight: 0.0),
-        child: FadeInNetworkImg(image, width: width, height: height),
+        child: CacheImg(image, width: width, height: height),
         onPressed: onPressed);
   }
 }

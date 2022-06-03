@@ -17,21 +17,16 @@ class MessagePage extends StatelessWidget {
       appBar: BuildAppBar("消 息"),
       body: SizedBox(
         child: GetBuilder<MessageController>(
-          builder: (controller) => ListView.builder(
-            itemCount: controller.messageGroupList.length,
-            itemBuilder: (context, index) {
-              ChatMsg chatMsg = controller.messageGroupList[index];
-              var groupId = chatMsg.groupId;
-              var groupInfo = controller.messageGroupInfoMap[groupId]!;
-              var time_format = timeStampToString(chatMsg.createTime);
-              return buildMessageItem(
-                  groupId,
-                  chatMsg,
-                  groupInfo.avatarUrl,
-                  groupInfo.aliasName,
-                  time_format);
-            })
-        ),
+            builder: (controller) => ListView.builder(
+                itemCount: controller.messageGroupList.length,
+                itemBuilder: (context, index) {
+                  ChatMsg chatMsg = controller.messageGroupList[index];
+                  var groupId = chatMsg.groupId;
+                  var groupInfo = controller.messageGroupInfoMap[groupId]!;
+                  var time_format = timeStampToString(chatMsg.createTime);
+                  return buildMessageItem(groupId, chatMsg, groupInfo.avatarUrl,
+                      groupInfo.aliasName, time_format);
+                })),
       ),
     );
   }
@@ -61,7 +56,7 @@ class MessagePage extends StatelessWidget {
   ClipRRect buildMessageItemAvatar(String avatarUrl) {
     return ClipRRect(
       borderRadius: BorderRadius.all(Radius.circular(5)),
-      child: FadeInNetworkImg(avatarUrl, width: 40, height: 40),
+      child: CacheImg(avatarUrl, width: 40, height: 40),
     );
   }
 
