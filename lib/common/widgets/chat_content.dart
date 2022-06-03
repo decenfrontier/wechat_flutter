@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ws_chat_flutter/common/style/colors.dart';
-import 'package:ws_chat_flutter/common/style/menus.dart';
+import 'package:wechat_flutter/common/style/colors.dart';
+import 'package:wechat_flutter/common/style/menus.dart';
 
 import 'user_avatar.dart';
 

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
-import 'package:ws_chat_flutter/common/xerr/index.dart';
-import 'package:ws_chat_flutter/common/xresp/xresp.dart';
-import 'package:ws_chat_flutter/common/utils/http.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/store/user.dart';
+import 'package:wechat_flutter/common/xerr/index.dart';
+import 'package:wechat_flutter/common/xresp/xresp.dart';
+import 'package:wechat_flutter/common/utils/http.dart';
 
 // 用户接口
 class UserAPI {

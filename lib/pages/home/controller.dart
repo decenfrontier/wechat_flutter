@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/utils/platform.dart';
+import 'package:wechat_flutter/common/utils/platform.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();

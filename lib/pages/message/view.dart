@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/entities/message.dart';
-import 'package:ws_chat_flutter/common/utils/timex.dart';
-import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-import 'package:ws_chat_flutter/common/widgets/network_img.dart';
+import 'package:wechat_flutter/common/entities/message.dart';
+import 'package:wechat_flutter/common/utils/timex.dart';
+import 'package:wechat_flutter/common/widgets/app_bar.dart';
+import 'package:wechat_flutter/common/widgets/network_img.dart';
 
 import '../chat/view.dart';
 import 'controller.dart';

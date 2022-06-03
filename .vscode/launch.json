@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ws_chat_flutter",
+            "name": "wechat_flutter",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "ws_chat_flutter (profile mode)",
+            "name": "wechat_flutter (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "ws_chat_flutter (release mode)",
+            "name": "wechat_flutter (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

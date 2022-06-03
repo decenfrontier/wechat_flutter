@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/biz/websocket.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
-import 'package:ws_chat_flutter/common/apis/user.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
-import 'package:ws_chat_flutter/common/xresp/xresp.dart';
-import 'package:ws_chat_flutter/pages/frame/login/view.dart';
-import 'package:ws_chat_flutter/pages/home/controller.dart';
+import 'package:wechat_flutter/common/biz/websocket.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/apis/user.dart';
+import 'package:wechat_flutter/common/store/user.dart';
+import 'package:wechat_flutter/common/xresp/xresp.dart';
+import 'package:wechat_flutter/pages/frame/login/view.dart';
+import 'package:wechat_flutter/pages/home/controller.dart';
 
 class MineController extends GetxController {
   static MineController get to => Get.find();

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/apis/group.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/apis/group.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
 
 class MessageController extends GetxController {
   static MessageController get to => Get.find();

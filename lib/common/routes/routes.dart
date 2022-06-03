@@ -1,14 +1,14 @@
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/middlewares/auth.dart';
-import 'package:ws_chat_flutter/pages/chat/index.dart';
-import 'package:ws_chat_flutter/pages/discover/index.dart';
-import 'package:ws_chat_flutter/pages/friend/index.dart';
-import 'package:ws_chat_flutter/pages/message/index.dart';
-import 'package:ws_chat_flutter/pages/mine/index.dart';
-import 'package:ws_chat_flutter/pages/frame/login/bindings.dart';
-import 'package:ws_chat_flutter/pages/frame/login/view.dart';
-import 'package:ws_chat_flutter/pages/home/index.dart';
-import 'package:ws_chat_flutter/pages/frame/notfound/index.dart';
+import 'package:wechat_flutter/common/middlewares/auth.dart';
+import 'package:wechat_flutter/pages/chat/index.dart';
+import 'package:wechat_flutter/pages/discover/index.dart';
+import 'package:wechat_flutter/pages/friend/index.dart';
+import 'package:wechat_flutter/pages/message/index.dart';
+import 'package:wechat_flutter/pages/mine/index.dart';
+import 'package:wechat_flutter/pages/frame/login/bindings.dart';
+import 'package:wechat_flutter/pages/frame/login/view.dart';
+import 'package:wechat_flutter/pages/home/index.dart';
+import 'package:wechat_flutter/pages/frame/notfound/index.dart';
 
 class AppRouter {
   // frame

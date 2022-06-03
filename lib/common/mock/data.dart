@@ -1,4 +1,4 @@
-import 'package:ws_chat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
 
 class Data {
   static var mockGroupInfoMap = {

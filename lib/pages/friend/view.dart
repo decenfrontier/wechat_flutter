@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ws_chat_flutter/common/mock/data.dart';
-import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-
+import 'package:wechat_flutter/common/mock/data.dart';
+import 'package:wechat_flutter/common/widgets/app_bar.dart';
 
 class FriendPage extends StatelessWidget {
   const FriendPage({Key? key}) : super(key: key);

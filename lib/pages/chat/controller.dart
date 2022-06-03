@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/apis/message.dart';
-import 'package:ws_chat_flutter/common/biz/custom_class.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
-import 'package:ws_chat_flutter/common/utils/utils.dart';
-import 'package:ws_chat_flutter/pages/home/controller.dart';
+import 'package:wechat_flutter/common/apis/message.dart';
+import 'package:wechat_flutter/common/biz/custom_class.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/utils/utils.dart';
+import 'package:wechat_flutter/pages/home/controller.dart';
 
 import '../mine/controller.dart';
 

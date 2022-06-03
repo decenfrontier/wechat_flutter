@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/style/icons.dart';
-import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
-import 'package:ws_chat_flutter/common/widgets/chat_content.dart';
-import 'package:ws_chat_flutter/pages/message/controller.dart';
-import 'package:ws_chat_flutter/pages/mine/controller.dart';
+import 'package:wechat_flutter/common/style/icons.dart';
+import 'package:wechat_flutter/common/widgets/app_bar.dart';
+import 'package:wechat_flutter/common/widgets/chat_content.dart';
+import 'package:wechat_flutter/pages/message/controller.dart';
+import 'package:wechat_flutter/pages/mine/controller.dart';
 
 import 'controller.dart';
 

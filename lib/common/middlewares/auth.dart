@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/routes/routes.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
+import 'package:wechat_flutter/common/routes/routes.dart';
+import 'package:wechat_flutter/common/store/user.dart';
 
 // 需要登录
 class LoginRequired extends GetMiddleware {

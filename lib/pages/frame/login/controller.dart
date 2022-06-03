@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/apis/user.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
-import 'package:ws_chat_flutter/common/routes/routes.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
+import 'package:wechat_flutter/common/apis/user.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/routes/routes.dart';
+import 'package:wechat_flutter/common/store/user.dart';
 
 class LoginController extends GetxController {
   static LoginController get to => Get.find();

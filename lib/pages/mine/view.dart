@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/widgets/network_img.dart';
+import 'package:wechat_flutter/common/widgets/network_img.dart';
 
 import '../discover/view.dart';
 import 'controller.dart';

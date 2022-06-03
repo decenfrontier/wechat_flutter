@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/widgets/app_bar.dart';
+import 'package:wechat_flutter/common/widgets/app_bar.dart';
 
 import 'controller.dart';
 

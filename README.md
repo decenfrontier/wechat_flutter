@@ -1,4 +1,4 @@
-# ws_chat_flutter
+# wechat_flutter
 
 ## 1 项目简介
 仿微信即时通信软件(基于GetX和Flutter框架)

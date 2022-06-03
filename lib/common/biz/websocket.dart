@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:web_socket_channel/io.dart';
-import 'package:ws_chat_flutter/common/entities/index.dart';
+import 'package:wechat_flutter/common/entities/index.dart';
 
 typedef OnRecvCallBack = Function(String msg);
 

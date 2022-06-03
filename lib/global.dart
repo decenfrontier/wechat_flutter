@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ws_chat_flutter/common/store/user.dart';
-import 'package:ws_chat_flutter/common/utils/index.dart';
+import 'package:wechat_flutter/common/store/user.dart';
+import 'package:wechat_flutter/common/utils/index.dart';
 import 'package:get/get.dart';
 
 // 全局静态数据

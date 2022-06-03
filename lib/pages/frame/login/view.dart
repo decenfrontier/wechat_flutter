@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ws_chat_flutter/common/widgets/password.dart';
+import 'package:wechat_flutter/common/widgets/password.dart';
 
 import 'index.dart';
 
