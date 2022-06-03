@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:web_socket_channel/io.dart';
 import 'package:ws_chat_flutter/common/biz/websocket.dart';
 import 'package:ws_chat_flutter/common/entities/index.dart';
 import 'package:ws_chat_flutter/common/apis/user.dart';
 import 'package:ws_chat_flutter/common/store/user.dart';
 import 'package:ws_chat_flutter/common/xresp/xresp.dart';
 import 'package:ws_chat_flutter/pages/frame/login/view.dart';
+import 'package:ws_chat_flutter/pages/home/controller.dart';
 
 class MineController extends GetxController {
   static MineController get to => Get.find();
@@ -48,9 +48,9 @@ class MineController extends GetxController {
     // 建立websocket连接
     wsConn = WsSocket(headers: {
       "Authorization": UserStore.to.token,
+      "platform": HomeController.to.platform,
     });
     wsConn.open();
-    
   }
 
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所

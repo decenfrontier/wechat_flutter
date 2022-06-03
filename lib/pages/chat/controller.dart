@@ -77,17 +77,17 @@ class ChatController extends GetxController {
     var data = UploadRequest(
         groupId: groupId, content: inputContent, type: 1, uuid: uuid);
     MessageAPI.upload(data).then((uploadResp) {
-      // 生成一个新的msg插入到消息列表中
-      var chatMsg = ChatMsg(
-          id: uploadResp.id,
-          groupId: groupId,
-          senderId: MineController.to.userId,
-          content: inputContent,
-          type: 1,
-          uuid: uuid,
-          createTime: uploadResp.createTime);
-      groupMsgList.append(chatMsg);
-      update();
+      // // 生成一个新的msg插入到消息列表中
+      // var chatMsg = ChatMsg(
+      //     id: uploadResp.id,
+      //     groupId: groupId,
+      //     senderId: MineController.to.userId,
+      //     content: inputContent,
+      //     type: 1,
+      //     uuid: uuid,
+      //     createTime: uploadResp.createTime);
+      // groupMsgList.append(chatMsg);
+      // update();
       print("消息上传成功");
     }).catchError((err) {
       // 显示弹窗
