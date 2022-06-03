@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wechat_flutter/common/store/user.dart';
 import 'package:wechat_flutter/common/widgets/app_bar.dart';
 
 import 'controller.dart';
@@ -83,6 +84,13 @@ Ink buildItem(Function press, String image, String text) {
           ],
         ),
       ),
+      onTap: () {
+        if (text == "退出") {
+          print("退出");
+          UserStore.to.rmToken();
+          Get.offAllNamed("/login");
+        }
+      },
     ),
   );
 }

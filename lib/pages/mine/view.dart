@@ -104,21 +104,15 @@ class MinePage extends StatelessWidget {
                       )
                     ],
                   )),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               buildItem(() {}, "assets/images/wxpay.png", "支付"),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10),
               buildItem(() {}, "assets/images/collect.png", "收藏"),
               buildItem(() {}, "assets/images/picture.png", "朋友圈"),
               buildItem(() {}, "assets/images/cardpackage.png", "卡包"),
               buildItem(() {}, "assets/images/emoij.png", "表情"),
-              SizedBox(
-                height: 10,
-              ),
-              buildItem(() {}, "assets/images/setting.png", "设置"),
+              SizedBox(height: 10),
+              buildItem(() {}, "assets/images/setting.png", "退出"),
             ],
           )),
         ));

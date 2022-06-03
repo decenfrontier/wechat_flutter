@@ -63,11 +63,11 @@ class AppRouter {
       binding: MineBinding(),
       middlewares: [LoginRequired()],
     ),
-    // GetPage(
-    //   name: Chat,
-    //   page: () => ChatPage(),
-    //   binding: ChatBinding(),
-    //   middlewares: [LoginRequired()],
-    // ),
+    GetPage(
+      name: Chat,
+      page: () => ChatPage(tag: '',),
+      binding: ChatBinding(),
+      middlewares: [LoginRequired()],
+    ),
   ];
 }
