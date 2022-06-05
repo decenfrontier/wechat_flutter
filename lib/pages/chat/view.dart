@@ -99,9 +99,6 @@ class ChatPage extends StatelessWidget {
                     textAlign: TextAlign.start,
                     style: TextStyle(color: Colors.black),
                     cursorColor: Colors.green,
-                    onChanged: (text) {
-                      controller.setValue(inputContent: text, inputType: 1);
-                    },
                     onSubmitted: (text) {
                       print("onSubmitted");
                     })),
@@ -127,23 +124,4 @@ class ChatPage extends StatelessWidget {
       ),
     );
   }
-
-  // Future<void> _onSend() async {
-  //   final text = _controller.text;
-  //   // 现在我们需要变成builder，把数据抽出来
-  //   // TODO: 这里要发送到后端，是个Future，异步
-  //   final model = Model(
-  //     // 头像去本地存储：比如share_pref，get_storage等去拿直链
-  //     // 这里我就写死
-  //     avatar: 'https://cdn.jsdelivr.net/gh/mocaraka/assets/temp/56.jpg',
-  //     text: text,
-  //     isMyself: true,
-  //   );
-
-  //   setState(() {
-  //     _data.add(model);
-  //   });
-
-  //   _controller.clear();
-  // }
 }

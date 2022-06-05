@@ -1,11 +1,9 @@
 import 'package:get/get.dart';
-import 'package:wechat_flutter/common/biz/websocket.dart';
 import 'package:wechat_flutter/common/entities/index.dart';
 import 'package:wechat_flutter/common/apis/user.dart';
 import 'package:wechat_flutter/common/store/user.dart';
 import 'package:wechat_flutter/common/xresp/xresp.dart';
 import 'package:wechat_flutter/pages/frame/login/view.dart';
-import 'package:wechat_flutter/pages/home/controller.dart';
 
 class MineController extends GetxController {
   static MineController get to => Get.find();
@@ -16,7 +14,6 @@ class MineController extends GetxController {
   var email = "";
   var gender = 0;
   var avatarUrl = "";
-  late WsSocket wsConn;
 
   /// 在 widget 内存中分配后立即调用。
   @override
@@ -45,12 +42,6 @@ class MineController extends GetxController {
       // 跳转到登录页面
       Get.offAll(() => LoginPage(), transition: Transition.fadeIn);
     });
-    // 建立websocket连接
-    wsConn = WsSocket(headers: {
-      "Authorization": UserStore.to.token,
-      "platform": HomeController.to.platform,
-    });
-    wsConn.open();
   }
 
   /// 在 onInit() 之后调用 1 帧。这是进入的理想场所

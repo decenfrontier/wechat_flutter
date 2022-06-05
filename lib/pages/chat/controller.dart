@@ -6,8 +6,6 @@ import 'package:wechat_flutter/common/entities/index.dart';
 import 'package:wechat_flutter/common/utils/utils.dart';
 import 'package:wechat_flutter/pages/home/controller.dart';
 
-import '../mine/controller.dart';
-
 class ChatController extends GetxController {
   static ChatController get to => Get.find();
 
@@ -78,19 +76,8 @@ class ChatController extends GetxController {
     var data = UploadRequest(
         groupId: groupId, content: inputController.text, type: 1, uuid: uuid);
     MessageAPI.upload(data).then((uploadResp) {
-      // // 生成一个新的msg插入到消息列表中
-      // var chatMsg = ChatMsg(
-      //     id: uploadResp.id,
-      //     groupId: groupId,
-      //     senderId: MineController.to.userId,
-      //     content: inputContent,
-      //     type: 1,
-      //     uuid: uuid,
-      //     createTime: uploadResp.createTime);
-      // groupMsgList.append(chatMsg);
-      // update();
       print("消息上传成功");
-      this.inputController.text = "";
+      this.inputController.text = ""; // 清空输入栏
       update();
     }).catchError((err) {
       // 显示弹窗
