@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wechat_flutter/common/store/user.dart';
 import 'package:wechat_flutter/common/widgets/app_bar.dart';
+import 'package:wechat_flutter/pages/friend/index.dart';
+import 'package:wechat_flutter/pages/message/controller.dart';
+import 'package:wechat_flutter/pages/mine/index.dart';
 
 import 'controller.dart';
 
@@ -88,6 +91,10 @@ Ink buildItem(Function press, String image, String text) {
         if (text == "退出") {
           print("退出");
           UserStore.to.rmToken();
+          Get.delete<MessageController>();
+          Get.delete<FriendController>();
+          Get.delete<DiscoverController>();
+          Get.delete<MineController>();
           Get.offAllNamed("/login");
         }
       },

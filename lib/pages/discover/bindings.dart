@@ -5,6 +5,6 @@ import 'controller.dart';
 class DiscoverBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<DiscoverController>(() => DiscoverController());
+    Get.lazyPut(() => DiscoverController(), fenix: true);
   }
 }

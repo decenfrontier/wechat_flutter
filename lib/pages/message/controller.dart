@@ -12,6 +12,7 @@ import 'package:wechat_flutter/pages/home/controller.dart';
 class MessageController extends GetxController {
   static MessageController get to => Get.find();
 
+  late WsSocket wsConn;
   var messageGroupInfoMap = <String, GroupInfo>{};
   var messageGroupList = <ChatMsg>[];
 
@@ -50,7 +51,7 @@ class MessageController extends GetxController {
       Get.snackbar("获取消息页数据失败", "$err");
     });
     // 建立websocket连接, 设置回调
-    var wsConn = WsSocket(
+    wsConn = WsSocket(
         headers: {
           "Authorization": UserStore.to.token,
           "platform": HomeController.to.platform,
@@ -80,6 +81,8 @@ class MessageController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    print("退出时关闭websocket连接");
+    wsConn.close();
   }
 
   /// dispose 释放内存
