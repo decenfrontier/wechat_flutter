@@ -25,10 +25,6 @@ class ChatContentView extends StatelessWidget {
     var tapPos;
     //头像组件
     Widget userAvatar = UserAvatar(
-        padding: EdgeInsets.only(
-            top: (isSelf == false ? ScreenUtil().setHeight(5) : 0.0),
-            right: (isSelf == false ? 0.0 : ScreenUtil().setWidth(10)),
-            left: (isSelf == false ? ScreenUtil().setWidth(10) : 0.0)),
         width: ScreenUtil().setWidth(40),
         height: ScreenUtil().setWidth(40),
         image: avatar,
@@ -99,13 +95,6 @@ class ChatContentView extends StatelessWidget {
         print('弹出会话菜单');
       },
       child: Container(
-        margin: isSelf == false
-            ? EdgeInsets.only(
-                left: ScreenUtil().setWidth(14),
-                right: ScreenUtil().setWidth(20))
-            : EdgeInsets.only(
-                left: ScreenUtil().setWidth(20),
-                right: ScreenUtil().setWidth(14)),
         child: Text(
           text,
           style: TextStyle(
@@ -114,12 +103,12 @@ class ChatContentView extends StatelessWidget {
               height: 1.2),
         ),
         padding: EdgeInsets.only(
-            left: ScreenUtil().setWidth(12),
-            right: ScreenUtil().setWidth(12),
-            bottom: ScreenUtil().setHeight(12),
-            top: ScreenUtil().setHeight(12)),
+            left: ScreenUtil().setWidth(10),
+            right: ScreenUtil().setWidth(10),
+            bottom: ScreenUtil().setHeight(10),
+            top: ScreenUtil().setHeight(10)),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(6.0),
           color: isSelf == false
               ? Color(AppColors.TextBobuleLeft)
               : Color(AppColors.TextBobuleRight),
@@ -145,11 +134,21 @@ class ChatContentView extends StatelessWidget {
       child: isSelf == false
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [userAvatar, textBubble()],
+              children: [
+                SizedBox(width: ScreenUtil().setWidth(10)),
+                userAvatar,
+                SizedBox(width: ScreenUtil().setWidth(10)),
+                textBubble()
+              ],
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [textBubble(), userAvatar],
+              children: [
+                textBubble(),
+                SizedBox(width: ScreenUtil().setWidth(10)),
+                userAvatar,
+                SizedBox(width: ScreenUtil().setWidth(10)),
+              ],
             ),
     );
   }
