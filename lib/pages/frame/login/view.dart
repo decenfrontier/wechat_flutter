@@ -6,7 +6,8 @@ import 'package:wechat_flutter/common/widgets/password.dart';
 import 'index.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+  final controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
