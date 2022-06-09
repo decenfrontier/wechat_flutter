@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("build home");
     ScreenUtil.init(context);
     return Scaffold(
       bottomNavigationBar: buildBottomNavigationBar(),
@@ -22,7 +21,6 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildIndexedStack() {
-    print("build indexed stack, ${HomeController.to.tabIndex}");
     return GetBuilder<HomeController>(
         builder: (_) => IndexedStack(
               index: HomeController.to.tabIndex,
