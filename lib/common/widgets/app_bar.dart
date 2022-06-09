@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:wechat_flutter/common/style/colors.dart';
 import 'package:wechat_flutter/common/style/icons.dart';
+import 'package:wechat_flutter/pages/more/add_friend/index.dart';
 
 enum ActionItems { GROUP_CHAT, ADD_FRIEND, QR_SCAN, PAYMENT, HELP }
 
@@ -91,6 +92,7 @@ AppBar BuildAppBar(String title) {
               print('点击了发起群聊');
             } else if (selected == ActionItems.ADD_FRIEND) {
               print('点击了添加朋友');
+              Get.to(AddFriendPage(), transition: Transition.rightToLeft);
             } else if (selected == ActionItems.QR_SCAN) {
               print('点击了扫一扫');
             } else if (selected == ActionItems.PAYMENT) {
