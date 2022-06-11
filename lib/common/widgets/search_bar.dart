@@ -39,7 +39,7 @@ class SearchBar extends StatelessWidget {
           ],
         ),
       ),
-      onTap: onTap ?? () {},
+      onTap: onTap,
     );
   }
 }
