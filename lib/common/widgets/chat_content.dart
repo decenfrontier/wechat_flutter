@@ -25,8 +25,8 @@ class ChatContentView extends StatelessWidget {
     var tapPos;
     //头像组件
     Widget userAvatar = UserAvatar(
-        width: ScreenUtil().setWidth(40),
-        height: ScreenUtil().setWidth(40),
+        width: 40,
+        height: 40,
         image: avatar,
         onPressed: () {
           print('点击头像');
@@ -34,14 +34,14 @@ class ChatContentView extends StatelessWidget {
 
     Widget userNameWidget = Container(
       margin: EdgeInsets.only(
-          left: isSelf == false ? ScreenUtil().setWidth(14) : 0,
+          left: isSelf == false ? 14 : 0,
           bottom: ScreenUtil().setHeight(5),
-          right: isSelf == false ? 0 : ScreenUtil().setWidth(14)),
+          right: isSelf == false ? 0 : 14),
       child: Text(
         username,
         style: TextStyle(
             color: Color(AppColors.ChatTime),
-            fontSize: ScreenUtil().setSp(12.0)),
+            fontSize: 12.0),
       ),
     );
 
@@ -98,15 +98,11 @@ class ChatContentView extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              fontSize: ScreenUtil().setSp(14.0),
+              fontSize: 14.0,
               color: Color(AppColors.TextBobule),
               height: 1.2),
         ),
-        padding: EdgeInsets.only(
-            left: ScreenUtil().setWidth(10),
-            right: ScreenUtil().setWidth(10),
-            bottom: ScreenUtil().setHeight(10),
-            top: ScreenUtil().setHeight(10)),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.0),
           color: isSelf == false
@@ -129,15 +125,15 @@ class ChatContentView extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(
-          bottom: ScreenUtil().setHeight(6.0),
-          top: ScreenUtil().setHeight(6.0)),
+          bottom: 6,
+          top: 6),
       child: isSelf == false
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(width: ScreenUtil().setWidth(10)),
+                SizedBox(width: 10),
                 userAvatar,
-                SizedBox(width: ScreenUtil().setWidth(10)),
+                SizedBox(width: 10),
                 textBubble()
               ],
             )
@@ -145,9 +141,9 @@ class ChatContentView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 textBubble(),
-                SizedBox(width: ScreenUtil().setWidth(10)),
+                SizedBox(width: 10),
                 userAvatar,
-                SizedBox(width: ScreenUtil().setWidth(10)),
+                SizedBox(width: 10),
               ],
             ),
     );

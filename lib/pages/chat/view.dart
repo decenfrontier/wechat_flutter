@@ -63,16 +63,16 @@ class ChatPage extends StatelessWidget {
   Widget inputView() {
     return Container(
       padding: EdgeInsets.only(
-          top: ScreenUtil().setHeight(2.0),
-          bottom: ScreenUtil().setHeight(2.0),
-          left: ScreenUtil().setWidth(5.0),
-          right: ScreenUtil().setWidth(5.0)),
+          top: 2.0,
+          bottom: 2.0,
+          left: 5.0,
+          right: 5.0),
       color: Color(0xFFF7F7F7),
       child: Row(
         children: [
           Container(
-            width: ScreenUtil().setWidth(40.0),
-            margin: EdgeInsets.only(right: ScreenUtil().setWidth(10.0)),
+            width: 40.0,
+            margin: EdgeInsets.only(right: 10.0),
             child: IconButton(
                 icon: Icon(ICons.VOICE),
                 onPressed: () {
@@ -82,9 +82,9 @@ class ChatPage extends StatelessWidget {
           Expanded(
               child: Container(
             padding: EdgeInsets.only(
-                top: ScreenUtil().setHeight(15.0),
-                bottom: ScreenUtil().setHeight(15.0)),
-            height: ScreenUtil().setHeight(40.0),
+                top: 10,
+                bottom: 10),
+            height: 40.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
                 color: Colors.white),
@@ -96,15 +96,17 @@ class ChatPage extends StatelessWidget {
                     maxLines: 1,
                     autocorrect: true,
                     autofocus: false,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xFF333333)),
                     textAlign: TextAlign.start,
-                    style: TextStyle(color: Colors.black),
                     cursorColor: Colors.green,
                     onSubmitted: (text) {
                       print("onSubmitted");
                     })),
           )),
           SizedBox(
-            width: ScreenUtil().setWidth(40.0),
+            width: 40.0,
             child: IconButton(
                 icon: Icon(ICons.FACES), //发送按钮图标
                 onPressed: () {
@@ -112,7 +114,7 @@ class ChatPage extends StatelessWidget {
                 }),
           ),
           SizedBox(
-            width: ScreenUtil().setWidth(40.0),
+            width: 40.0,
             child: GetBuilder<ChatController>(
                 tag: tag,
                 builder: (controller) => IconButton(

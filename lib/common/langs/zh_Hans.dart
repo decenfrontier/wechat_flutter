@@ -1,5 +1,5 @@
 const Map<String, String> zh_hans = {
-  'login_title': 'Ws Chat',
+  'login_title': '微 信',
   'login_email': '电子邮箱',
   'login_email_hint': 'xxx@foxmail.com',
   'login_password': "密码",

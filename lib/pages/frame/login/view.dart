@@ -51,7 +51,6 @@ class LoginPage extends StatelessWidget {
                   initialValue: "ws156858@163.com",
                   autofocus: true,
                   autofillHints: [AutofillHints.email],
-                  // initialValue: "ws156858@163.com",
                   textInputAction: TextInputAction.next,
                   validator: LoginController.to.emailValidator,
                   decoration: InputDecoration(
