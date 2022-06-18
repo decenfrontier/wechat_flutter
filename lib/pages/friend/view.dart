@@ -29,6 +29,7 @@ class FriendPage extends StatelessWidget {
         ));
   }
 
+  // 右侧字母
   Container buildContactRightBar() {
     final width = ScreenUtil().setWidth(18);
     final height = ScreenUtil().setHeight(18);
@@ -57,7 +58,7 @@ class FriendPage extends StatelessWidget {
                     labels[index],
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: Colors.grey, fontSize: ScreenUtil().setSp(9)),
+                        color: Colors.grey, fontSize: 12),
                   ),
                 ),
               ),
