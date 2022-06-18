@@ -1,8 +1,13 @@
 # wechat_flutter
+![dart](https://img.shields.io/badge/dart-2.16-blue.svg)
+![flutter](https://img.shields.io/badge/flutter-2.10-blue.svg) 
+![get](https://img.shields.io/badge/get-4.6-blue.svg)
+![star](https://img.shields.io/github/stars/wslynn/wechat-gozero?style=social)
+
 
 ## 1 项目简介
 仿微信即时通信软件(基于GetX和Flutter框架)
-
+![](https://img.gejiba.com/images/660ff7cde6d11c49e1ca7c8340a4057a.gif)
 
 
 ## 2 common目录说明
