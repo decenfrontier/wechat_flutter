@@ -48,11 +48,23 @@ class ChatPage extends StatelessWidget {
                   var groupId = chatMsg.groupId;
                   var groupInfo =
                       MessageController.to.messageGroupInfoMap[groupId]!;
+                  bool isSelf;
+                  String avatar;
+                  String userName;
+                  if (senderId == MineController.to.userId) {
+                    isSelf = true;
+                    avatar = MineController.to.avatarUrl;
+                    userName = MineController.to.nickName;
+                  } else {
+                    isSelf = false;
+                    avatar = groupInfo.avatarUrl;
+                    userName = groupInfo.aliasName;
+                  }
                   return ChatContentView(
-                    isSelf: senderId == MineController.to.userId,
+                    isSelf: isSelf,
                     text: chatMsg.content,
-                    avatar: groupInfo.avatarUrl,
-                    username: groupInfo.aliasName,
+                    avatar: avatar,
+                    username: userName,
                     type: chatMsg.type,
                   );
                 })));
@@ -61,11 +73,7 @@ class ChatPage extends StatelessWidget {
   // 最下方的输入框部分
   Widget inputView() {
     return Container(
-      padding: EdgeInsets.only(
-          top: 2.0,
-          bottom: 2.0,
-          left: 5.0,
-          right: 5.0),
+      padding: EdgeInsets.only(top: 2.0, bottom: 2.0, left: 5.0, right: 5.0),
       color: Color(0xFFF7F7F7),
       child: Row(
         children: [
@@ -80,9 +88,7 @@ class ChatPage extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-            padding: EdgeInsets.only(
-                top: 10,
-                bottom: 10),
+            padding: EdgeInsets.only(top: 10, bottom: 10),
             height: 40.0,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -95,9 +101,7 @@ class ChatPage extends StatelessWidget {
                     maxLines: 1,
                     autocorrect: true,
                     autofocus: false,
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFF333333)),
+                    style: TextStyle(fontSize: 20, color: Color(0xFF333333)),
                     textAlign: TextAlign.start,
                     cursorColor: Colors.green,
                     onSubmitted: (text) {

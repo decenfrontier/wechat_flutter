@@ -35,7 +35,7 @@ class ChatContentView extends StatelessWidget {
     Widget userNameWidget = Container(
       margin: EdgeInsets.only(
           left: isSelf == false ? 14 : 0,
-          bottom: ScreenUtil().setHeight(5),
+          bottom: 5,
           right: isSelf == false ? 0 : 14),
       child: Text(
         username,
@@ -113,7 +113,7 @@ class ChatContentView extends StatelessWidget {
     );
 
     final List<Widget> nameAndText = [userNameWidget, messageTextWidget];
-    final List<Widget> onlyText = [messageTextWidget];
+    final List<Widget> onlyText = [SizedBox(height: 5), messageTextWidget];
     textBubble() {
       return Expanded(
           child: Column(
