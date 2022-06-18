@@ -134,12 +134,14 @@ class ChatContentView extends StatelessWidget {
                 SizedBox(width: 10),
                 userAvatar,
                 SizedBox(width: 10),
-                textBubble()
+                textBubble(),
+                SizedBox(width: 50),
               ],
             )
           : Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(width: 50),
                 textBubble(),
                 SizedBox(width: 10),
                 userAvatar,
