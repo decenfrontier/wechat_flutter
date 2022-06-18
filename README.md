@@ -2,7 +2,7 @@
 ![dart](https://img.shields.io/badge/dart-2.16-blue.svg)
 ![flutter](https://img.shields.io/badge/flutter-2.10-blue.svg) 
 ![get](https://img.shields.io/badge/get-4.6-blue.svg)
-![star](https://img.shields.io/github/stars/wslynn/wechat-gozero?style=social)
+![star](https://img.shields.io/github/stars/wslynn/wechat_flutter?style=social)
 
 
 ## 1 项目简介
@@ -25,3 +25,30 @@
     - loading: 加载页面
 
 
+## 3 后端接口文档
+[ApiPost接口文档](https://console-docs.apipost.cn/preview/6c245af8bcc075c4/42820335d3df842c)
+欢迎各位flutter同学多多PR, 
+如果需要添加接口, 请邮箱联系我: ws156858@163.com
+
+## 4 数据库访问
+MySQL数据库: 101.42.134.18:3306
+账号: guest
+密码: 123456
+> 注意: 
+本数据库账号仅有读权限, 所有写操作均通过`Http`或`Websocket`接口实现
+
+![13456e16319b7ba652f4374297f9dce6.png](https://img.gejiba.com/images/13456e16319b7ba652f4374297f9dce6.png)
+
+
+## 5 接下来的开发计划
++ [ ] 添加好友
++ [ ] 同意好友申请
++ [ ] 聊天页上拉自动获取历史消息
++ [ ] 修改密码
++ [ ] 修改用户信息
++ [ ] 消息页按最后时间倒序
++ [ ] 前端发送消息时websocket断线重连
++ [ ] 重连后拉取离线消息
++ [ ] 支持发送图片和视频
+
+空闲时间会继续更新, 直至实现微信的大部分功能, 也欢迎各位大佬PR~
